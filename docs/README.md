@@ -9,6 +9,8 @@ Committed with the project:
 | [github-submission-checklist.md](./github-submission-checklist.md) | What to push to GitHub |
 | [INTEGRATIONS.md](./INTEGRATIONS.md) | Third-party provenance |
 | [CHANGELOG.md](./CHANGELOG.md) | Release history |
+| [REFERENCES.md](./REFERENCES.md) | Reference classification and provenance |
+| [THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md) | Third-party attribution and license boundaries |
 
 Repository governance:
 

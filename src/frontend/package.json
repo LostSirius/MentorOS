@@ -2,7 +2,7 @@
   "name": "mentoros",
   "version": "2.0.0",
   "private": true,
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "PolyForm-Noncommercial-1.0.0",
   "scripts": {
     "chat": "supabase start && npm run db-types && npm run dev",
     "restart": "supabase stop && npm run chat",

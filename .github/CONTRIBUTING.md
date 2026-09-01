@@ -58,12 +58,16 @@ Do **not** commit `.env.local`, `node_modules/`, `.next/`, `_vendor/`, or zip ar
 | `src/frontend/` | MentorOS Next.js app (runtime) |
 | `src/backend/` | Supervisor-Skills FastAPI (runtime) |
 | `docs/distill/` | Canonical module specs (source of truth) |
+| `docs/REFERENCES.md` | Upstream relationship and provenance classification |
+| `docs/THIRD_PARTY_NOTICES.md` | Third-party license boundaries and notices |
 | `assets/desktop-pet/` | Desktop-pet design source (not imported at runtime) |
 | `src/frontend/public/pets/qpack/` | Shipped pet SVGs |
 | `_vendor/` | Optional local clones — gitignored |
 
 ## License
 
-By contributing, you agree that your contributions are licensed under the
+By contributing original MentorOS work, you agree that your contributions are licensed under the
 [PolyForm Noncommercial License 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0).
-**Commercial use is not permitted.** See [`LICENSE`](../LICENSE).
+**Commercial use is not permitted.** Do not remove or relicense third-party
+notices when modifying derived components. See [`LICENSE`](../LICENSE) and
+[`docs/THIRD_PARTY_NOTICES.md`](../docs/THIRD_PARTY_NOTICES.md).

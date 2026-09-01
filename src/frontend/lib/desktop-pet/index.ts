@@ -12,7 +12,6 @@ export {
   READY_PET_CHARACTER_IDS,
   resolvePetCharacter
 } from "./catalog"
-export { CLAUDE_CLAWD_BRIDGE, buildClaudeActionAssets } from "./clawd-bridge"
 export {
   mapTriggerToAction,
   resolvePetAssetUrl,
@@ -29,10 +28,7 @@ export {
   type ScholarPetEventType,
   type ScholarPetEventDetail
 } from "./events"
-export {
-  PET_ATTRIBUTIONS,
-  getClaudeAttributionFooter
-} from "./attribution"
+export { PET_ATTRIBUTIONS } from "./attribution"
 export { usePetDriver } from "./use-pet-driver"
 export { getPetTheme, PET_THEMES, type PetTheme } from "./themes"
 export {

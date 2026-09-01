@@ -1,6 +1,8 @@
 # Source · academic-research-skills (ARS)
 
 - Repo: https://github.com/imbad0202/academic-research-skills
+- License: CC BY-NC 4.0
+- Relationship: methodology reference only; no upstream agent implementation vendored
 
 ## Absorb as product spine
 1. **Copilot not pilot** (HITL).  

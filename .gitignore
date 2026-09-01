@@ -70,8 +70,7 @@ src/frontend/.turbo/
 tool-schemas
 custom-prompts
 
-# --- Claude / Clawd SVGs (ARR / Anthropic IP; local fetch only) ---
-# See src/frontend/public/pets/claude/ATTRIBUTION.md
+# --- Never commit Clawd artwork (upstream assets are All Rights Reserved) ---
 src/frontend/public/pets/claude/*.svg
 src/frontend/public/pets/claude/fetch-manifest.json
 src/frontend/public/pets/claude/UPSTREAM_ASSETS_LICENSE.txt

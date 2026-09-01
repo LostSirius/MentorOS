@@ -1,6 +1,8 @@
 # Source · nature-skills
 
 - Repo: https://github.com/Yuan1z0825/nature-skills
+- License: Apache-2.0
+- Relationship: methodology reference only; no upstream skill files vendored
 
 ## Skill → module (operational)
 

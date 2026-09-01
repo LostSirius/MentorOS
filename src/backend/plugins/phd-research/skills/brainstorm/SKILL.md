@@ -7,7 +7,7 @@ description: >-
   ideas, wants to "brainstorm", "organize thoughts", "find angles", "generate
   research questions from ideas", or has captured voice notes that need
   structuring.
-license: CC-BY-4.0
+license: PolyForm-Noncommercial-1.0.0
 ---
 
 # Brainstorm

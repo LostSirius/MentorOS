@@ -1,8 +1,12 @@
 # Source · Supervisor-Skills
 
 - Repo: https://github.com/HKUSTDial/Supervisor-Skills
+- License: CC BY-NC-SA 4.0 at repository level; individual skills may declare
+  CC BY 4.0, CC BY-NC-SA 4.0, or a component-specific license
+- Relationship: direct integration / adaptation
 - Local vendor: `_vendor/Supervisor-Skills`
 - Runtime skills: `src/backend/plugins/phd-research/skills/`
+- Attribution map: `src/backend/plugins/phd-research/skills/ATTRIBUTION.md`
 
 ## Skills → Modules
 

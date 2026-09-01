@@ -5,7 +5,6 @@
 ```
 pets/
   qpack/           ← shipped mascot SVGs (synced from assets/desktop-pet/output)
-  claude/          ← legacy Clawd fetch (optional; gitignored SVGs)
 ```
 
 ## Ready characters
@@ -30,11 +29,3 @@ Each folder: `base.svg` + 9 actions (`idle`, `idleLook`, `thinking`, `working`, 
 ```
 
 Design workspace: [`assets/desktop-pet/`](../../../../assets/desktop-pet/README.md)
-
-## Legacy Claude (Clawd)
-
-```bash
-node scripts/fetch-clawd-claude-assets.mjs
-```
-
-ARR / Anthropic IP — local only. Catalog prefers `qpack/claude/`.

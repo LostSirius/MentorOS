@@ -30,7 +30,7 @@
 </p>
 
 > [!IMPORTANT]
-> MentorOS 是科研辅助工具，不替代研究者的事实核验、学术判断与责任。本项目采用 [PolyForm Noncommercial License 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0)：允许个人学习、研究、教学与非营利科研，**禁止商业使用**。
+> MentorOS 是科研辅助工具，不替代研究者的事实核验、学术判断与责任。MentorOS 原创部分采用 [PolyForm Noncommercial License 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0)：允许个人学习、研究、教学与非营利科研，**禁止商业使用**；第三方组件按各自许可证执行。
 
 ---
 
@@ -169,7 +169,8 @@ flowchart LR
 MentorOS/
 ├── README.md · LICENSE · CITATION.cff · AGENTS.md
 ├── .github/                    # 治理文档、Issue / PR 模板、CI
-├── docs/distill/                 # 模块实现真源
+├── docs/                        # 文档、来源与第三方声明
+│   └── distill/                 # 模块实现真源
 ├── assets/desktop-pet/           # 桌宠设计源
 ├── scripts/dev.ps1
 └── src/
@@ -243,7 +244,7 @@ npm run dev             # http://localhost:3000
 
 ## Agent 技能
 
-运行时：`src/backend/plugins/phd-research/skills/`，与 `docs/distill/injectable/*` 静默叠加。**产品 UI 不展示 skill 名。** 详见 [`docs/INTEGRATIONS.md`](docs/INTEGRATIONS.md)。
+运行时：`src/backend/plugins/phd-research/skills/`，与 `docs/distill/injectable/*` 静默叠加。**产品 UI 不展示 skill 名。** 详见 [集成说明](docs/INTEGRATIONS.md)与[技能归属](src/backend/plugins/phd-research/skills/ATTRIBUTION.md)。
 
 | Skill | 用途 |
 | --- | --- |
@@ -265,6 +266,8 @@ npm run dev             # http://localhost:3000
 | [docs/distill/modules/](docs/distill/modules/) | 分模块 playbook |
 | [docs/distill/shared/](docs/distill/shared/) | HITL / 证据 / 门禁 |
 | [docs/distill/schemas/handoff.ts](docs/distill/schemas/handoff.ts) | 交接契约 |
+| [docs/REFERENCES.md](docs/REFERENCES.md) | 参考来源及实际采用关系 |
+| [docs/THIRD_PARTY_NOTICES.md](docs/THIRD_PARTY_NOTICES.md) | 第三方许可证与归属 |
 
 ---
 
@@ -276,7 +279,7 @@ npm run dev             # http://localhost:3000
 literature → idea → experiment → writing → figures → review → polish → overview
 ```
 
-Quick start: `python main.py` in `src/backend`, `npm run dev` in `src/frontend`. License: **noncommercial** — see [`LICENSE`](LICENSE).
+Quick start: `python main.py` in `src/backend`, `npm run dev` in `src/frontend`. Original MentorOS contributions are **noncommercial**; third-party components retain their own licenses. See [`LICENSE`](LICENSE) and [third-party notices](docs/THIRD_PARTY_NOTICES.md).
 
 ---
 
@@ -288,10 +291,19 @@ Quick start: `python main.py` in `src/backend`, `npm run dev` in `src/frontend`.
 
 ### 致谢
 
-[Supervisor-Skills](https://github.com/HKUSTDial/Supervisor-Skills) · [LLM-scientific-feedback](https://github.com/Weixin-Liang/LLM-scientific-feedback) · Orchestra / AERS / AI-Scientist 等（见 `docs/distill/sources/`）· [chatbot-ui](https://github.com/mckaywrigley/chatbot-ui)
+[Supervisor-Skills](https://github.com/HKUSTDial/Supervisor-Skills) · [LLM-scientific-feedback](https://github.com/Weixin-Liang/LLM-scientific-feedback) · [chatbot-ui](https://github.com/mckaywrigley/chatbot-ui) · Orchestra / AERS / AI-Scientist 等。
+
+完整的“直接改编 / 方法论参考 / 未采用”判断见
+[`docs/REFERENCES.md`](docs/REFERENCES.md)，许可证与修改声明见
+[`docs/THIRD_PARTY_NOTICES.md`](docs/THIRD_PARTY_NOTICES.md)。
 
 ---
 
 ## 许可证
 
-[PolyForm Noncommercial License 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0) — **禁止商业使用**。全文见 [`LICENSE`](LICENSE)。
+MentorOS 原创部分采用
+[PolyForm Noncommercial License 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0)，**禁止商业使用**。这是一份 source-available 非商业许可证，不是 OSI 认可的开源许可证。
+
+第三方及改编内容不被重新许可，继续遵守各自的 CC、MIT、Apache、AGPL
+或其他上游条款。详见 [`LICENSE`](LICENSE) 与
+[`docs/THIRD_PARTY_NOTICES.md`](docs/THIRD_PARTY_NOTICES.md)。

@@ -1,6 +1,9 @@
 # Source · AI-Scientist (SakanaAI)
 
 - Repo: https://github.com/SakanaAI/AI-Scientist
+- License: AI Scientist Source Code License 1.0 (December 2025)
+- Relationship: workflow and documented failure-mode reference only; no
+  upstream source code vendored
 
 ## Absorb
 1. Pipeline: idea → templated experiment → writeup → LLM review.  

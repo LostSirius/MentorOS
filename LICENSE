@@ -1,12 +1,19 @@
 Copyright (c) 2026 MentorOS contributors
 
-This project is licensed under the PolyForm Noncommercial License 1.0.0.
-Commercial use is not permitted.
+Except for third-party and adapted material identified in
+docs/THIRD_PARTY_NOTICES.md or by a component-level notice, original MentorOS
+contributions are licensed under the PolyForm Noncommercial License 1.0.0.
+Commercial use of those MentorOS contributions is not permitted.
+
+Third-party material remains under its original license. Nothing in this file
+relicenses, supersedes, or restricts rights granted by those third-party
+licenses. Component-level notices take precedence for their covered material.
 
 SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 License-URL: https://polyformproject.org/licenses/noncommercial/1.0.0
 
 Required Notice: Copyright 2026 MentorOS contributors. Noncommercial use only.
+Required Notice: Third-party notices: https://github.com/LostSirius/MentorOS/blob/main/docs/THIRD_PARTY_NOTICES.md
 
 ---
 

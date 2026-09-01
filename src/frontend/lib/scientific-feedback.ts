@@ -1,6 +1,9 @@
 /**
  * Scientific feedback prompt builder adapted from
  * Weixin-Liang/LLM-scientific-feedback (Liang et al., arXiv:2310.01783).
+ * Source: https://github.com/Weixin-Liang/LLM-scientific-feedback
+ * License: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+ * Changes: text-only ingestion, bounded input, and MentorOS HITL integration.
  * Used silently by drafting critiques + /api/scientific-feedback.
  */
 

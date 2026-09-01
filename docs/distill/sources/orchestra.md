@@ -1,6 +1,8 @@
 # Source · AI-Research-SKILLs (Orchestra)
 
 - Repo: https://github.com/Orchestra-Research/AI-research-SKILLs
+- License: MIT
+- Relationship: methodology reference only; no upstream skill files vendored
 
 ## Takeaways to implement (not full 98-skill port)
 

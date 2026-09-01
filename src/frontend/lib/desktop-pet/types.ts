@@ -1,4 +1,4 @@
-/** Logical pet animation states used by MentorOS (subset of clawd + Q-pack). */
+/** Logical pet animation states used by MentorOS mascot packs. */
 export type PetAction =
   | "idle"
   | "idleLook"
@@ -18,7 +18,7 @@ export type PetAction =
   | "annoyed"
   | "double"
 
-/** Character ids aligned with Q-pack folders + Claude bridge. */
+/** Character ids aligned with shipped Q-pack folders. */
 export type PetCharacterId =
   | "claude"
   | "gpt"
@@ -32,7 +32,6 @@ export type PetAssetFormat = "svg" | "gif" | "apng" | "webp" | "png"
 
 export type PetAssetSource =
   | "local-qpack"
-  | "clawd-bridged"
   | "pending"
 
 export interface PetActionAsset {
@@ -40,8 +39,6 @@ export interface PetActionAsset {
   /** Public URL path once assets are present, e.g. /pets/claude/idle.svg */
   publicPath: string
   format: PetAssetFormat
-  /** Upstream relative path inside clawd-on-desk (Claude only). */
-  upstreamPath?: string
   /** Optional one-shot duration hint (ms); omit for looping. */
   durationMs?: number
   loop?: boolean

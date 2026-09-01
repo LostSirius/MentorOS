@@ -9,7 +9,7 @@ description: >-
   the user asks to 'draft the Introduction', 'outline the
   Introduction', 'intro logic needs clarifying', 'help structure the
   paper story', or before writing any Introduction prose.
-license: CC-BY-4.0
+license: CC-BY-NC-SA-4.0
 ---
 
 # Introduction Drafter

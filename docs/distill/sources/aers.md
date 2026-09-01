@@ -1,6 +1,8 @@
 # Source · Auto-Empirical-Research-Skills (AERS)
 
 - Repo: https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills
+- License: CC BY-SA 4.0
+- Relationship: methodology reference only; no upstream skill files vendored
 
 ## Nine-stage → Scholar modules
 
@@ -16,7 +18,7 @@
 | 8 Write + review | Writing + Polish + Review | Draft + polish + mock review |
 | 9 De-AIGC + submit | Polish + Review | Tone + submission pack |
 
-## Product principles stolen cleanly
+## Referenced product principles
 1. Artifact-idempotent stages (save JSON packets).  
 2. Human can interrupt any stage and resume.  
 3. Robustness is first-class, not an afterthought.  

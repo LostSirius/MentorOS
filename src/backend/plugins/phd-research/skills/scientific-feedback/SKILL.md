@@ -11,6 +11,8 @@ license: CC-BY-4.0
 metadata:
   source: https://github.com/Weixin-Liang/LLM-scientific-feedback
   paper: arXiv:2310.01783
+  license-url: https://creativecommons.org/licenses/by/4.0/
+  modified: MentorOS text-input, evidence, schema, and HITL adaptation
 ---
 
 # Scientific Feedback (Peer-Review Outline)

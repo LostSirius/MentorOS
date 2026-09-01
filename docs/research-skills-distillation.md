@@ -3,16 +3,20 @@
 > **状态：已蒸馏到可执行使用（L4-ready 文档包）**  
 > 细节不在本文件堆长文，而在 **`docs/distill/`** 蒸馏包。实现模块时以该目录为准。
 
-## 1. 六库来源
+## 1. 六库来源与采用边界
 
-| 库 | 链接 | 附录 |
-|----|------|------|
-| Supervisor-Skills | https://github.com/HKUSTDial/Supervisor-Skills | [sources/supervisor.md](distill/sources/supervisor.md) |
-| AI-Research-SKILLs | https://github.com/Orchestra-Research/AI-research-SKILLs | [sources/orchestra.md](distill/sources/orchestra.md) |
-| Auto-Empirical-Research-Skills | https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills | [sources/aers.md](distill/sources/aers.md) |
-| AI-Scientist | https://github.com/SakanaAI/AI-Scientist | [sources/ai-scientist.md](distill/sources/ai-scientist.md) |
-| academic-research-skills | https://github.com/imbad0202/academic-research-skills | [sources/ars.md](distill/sources/ars.md) |
-| nature-skills | https://github.com/Yuan1z0825/nature-skills | [sources/nature.md](distill/sources/nature.md) |
+| 库 | 关系 | 上游许可证 | 附录 |
+|----|------|------------|------|
+| [Supervisor-Skills](https://github.com/HKUSTDial/Supervisor-Skills) | 直接集成 / 改编 | CC BY-NC-SA 4.0；部分 skill 另有文件级许可 | [sources/supervisor.md](distill/sources/supervisor.md) |
+| [AI-Research-SKILLs](https://github.com/Orchestra-Research/AI-Research-SKILLs) | 方法论参考 | MIT | [sources/orchestra.md](distill/sources/orchestra.md) |
+| [Auto-Empirical-Research-Skills](https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills) | 方法论参考 | CC BY-SA 4.0 | [sources/aers.md](distill/sources/aers.md) |
+| [AI-Scientist](https://github.com/SakanaAI/AI-Scientist) | 方法论与反模式参考 | AI Scientist Source Code License 1.0 | [sources/ai-scientist.md](distill/sources/ai-scientist.md) |
+| [academic-research-skills](https://github.com/imbad0202/academic-research-skills) | 方法论参考 | CC BY-NC 4.0 | [sources/ars.md](distill/sources/ars.md) |
+| [nature-skills](https://github.com/Yuan1z0825/nature-skills) | 方法论参考 | Apache-2.0 | [sources/nature.md](distill/sources/nature.md) |
+
+其余候选链接、未采用项目及法律说明见
+[`REFERENCES.md`](REFERENCES.md) 和
+[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)。
 
 ## 2. 蒸馏包导航（请从这里用）
 
