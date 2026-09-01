@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="src/frontend/public/logo-mark.png" width="72" alt="MentorOS" />
+  <img src="../src/frontend/public/logo-mark.png" width="72" alt="MentorOS" />
 </p>
 
 # Contributing to MentorOS
@@ -12,7 +12,7 @@ Thank you for helping improve MentorOS. This repository follows a **research-wor
 - Evidence discipline: never invent citations, numbers, or paper metadata from model memory.
 - Silent skills: do **not** expose skill names or a skill marketplace in the product UI.
 - Locale: user-facing UI and generated narrative must support `en` and `zh`.
-- Module work: follow [`docs/distill/README.md`](docs/distill/README.md) and the matching `docs/distill/modules/<module>.md`.
+- Module work: follow [`docs/distill/README.md`](../docs/distill/README.md) and the matching `docs/distill/modules/<module>.md`.
 
 ## Development setup
 
@@ -66,4 +66,4 @@ Do **not** commit `.env.local`, `node_modules/`, `.next/`, `_vendor/`, or zip ar
 
 By contributing, you agree that your contributions are licensed under the
 [PolyForm Noncommercial License 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0).
-**Commercial use is not permitted.** See [`LICENSE`](LICENSE).
+**Commercial use is not permitted.** See [`LICENSE`](../LICENSE).

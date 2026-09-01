@@ -25,8 +25,8 @@
 **治理**
 
 - [ ] `README.md` · `LICENSE`（PolyForm Noncommercial，非 MIT）
-- [ ] `CONTRIBUTING.md` · `CODE_OF_CONDUCT.md` · `SECURITY.md`
-- [ ] `CITATION.cff` · `CHANGELOG.md` · `AGENTS.md`
+- [ ] `.github/CONTRIBUTING.md` · `.github/CODE_OF_CONDUCT.md` · `.github/SECURITY.md`
+- [ ] `CITATION.cff` · `docs/CHANGELOG.md` · `AGENTS.md`
 - [ ] `.editorconfig` · `.gitattributes` · `.gitignore` · `.nvmrc`
 - [ ] `.github/` · `.cursor/rules/mentoros-modules.mdc`
 
@@ -39,7 +39,7 @@
 
 - [ ] `docs/distill/` · `docs/research-skills-distillation.md` · `docs/README.md`
 - [ ] `assets/desktop-pet/`
-- [ ] `scripts/`（`dev.ps1`、`sync-qpack.ps1` 等）· `Makefile` · `INTEGRATIONS.md`
+- [ ] `scripts/`（`dev.ps1`、`sync-qpack.ps1` 等）· `Makefile` · `docs/INTEGRATIONS.md`
 
 ## 2. 首次推送
 

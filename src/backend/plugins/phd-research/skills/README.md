@@ -179,7 +179,7 @@ Benchmark 管线比技术论文更强调阶段先后，每个环节都要先于�
 
 ## 贡献与反馈
 
-新增技能、修订 SKILL.md、补 references，或者想把你用这些技能写出的顶会论文分享回来——都欢迎。请先阅读顶层 [CONTRIBUTING.md](../../../CONTRIBUTING.md)；新技能的硬性约定写在那里。
+新增技能、修订 SKILL.md、补 references，或者想把你用这些技能写出的顶会论文分享回来——都欢迎。请先阅读仓库的 [贡献指南](../../../../../.github/CONTRIBUTING.md)；新技能的硬性约定写在那里。
 
 有问题、建议、或想在自己的实验室推广 Supervisor-Skills，请发邮件给 Yuyu Luo (yuyuluo [AT] hkust-gz.edu.cn)。
 

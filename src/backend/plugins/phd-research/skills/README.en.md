@@ -179,7 +179,7 @@ Each skill's `references/` directory carries on-demand depth. For example, `idea
 
 ## Contributing and feedback
 
-New skills, SKILL.md revisions, reference additions, or top-venue papers you wrote with these skills are all welcome. Please read the top-level [CONTRIBUTING.md](../../../CONTRIBUTING.md) first; the hard rules for new skills live there.
+New skills, SKILL.md revisions, reference additions, or top-venue papers you wrote with these skills are all welcome. Please read the repository [contribution guide](../../../../../.github/CONTRIBUTING.md) first; the hard rules for new skills live there.
 
 For questions, feedback, or to bring Supervisor-Skills to your own lab, please email Yuyu Luo at yuyuluo [AT] hkust-gz.edu.cn.
 

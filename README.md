@@ -167,7 +167,8 @@ flowchart LR
 
 ```text
 MentorOS/
-├── README.md · LICENSE · CONTRIBUTING.md
+├── README.md · LICENSE · CITATION.cff · AGENTS.md
+├── .github/                    # 治理文档、Issue / PR 模板、CI
 ├── docs/distill/                 # 模块实现真源
 ├── assets/desktop-pet/           # 桌宠设计源
 ├── scripts/dev.ps1
@@ -242,7 +243,7 @@ npm run dev             # http://localhost:3000
 
 ## Agent 技能
 
-运行时：`src/backend/plugins/phd-research/skills/`，与 `docs/distill/injectable/*` 静默叠加。**产品 UI 不展示 skill 名。** 详见 [`INTEGRATIONS.md`](INTEGRATIONS.md)。
+运行时：`src/backend/plugins/phd-research/skills/`，与 `docs/distill/injectable/*` 静默叠加。**产品 UI 不展示 skill 名。** 详见 [`docs/INTEGRATIONS.md`](docs/INTEGRATIONS.md)。
 
 | Skill | 用途 |
 | --- | --- |
@@ -281,7 +282,7 @@ Quick start: `python main.py` in `src/backend`, `npm run dev` in `src/frontend`.
 
 ## 参与贡献
 
-请阅读 [`CONTRIBUTING.md`](CONTRIBUTING.md) 与 [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md)。安全问题走 [`SECURITY.md`](SECURITY.md)。
+请阅读 [贡献指南](.github/CONTRIBUTING.md) 与 [行为准则](.github/CODE_OF_CONDUCT.md)。安全问题请按 [安全政策](.github/SECURITY.md) 私下报告。
 
 曾用名 Scholar Canvas / 学导画布：浏览器会尝试把 `scholar-canvas-*` 迁移为 `mentoros-*`。
 
