@@ -18,7 +18,7 @@ export const Brand: FC<BrandProps> = () => {
       <div className="aspect-[3/2] overflow-hidden rounded-2xl bg-white p-3 dark:bg-black sm:aspect-[5/2] sm:p-4">
         <div className="flex size-full items-center justify-center gap-3 sm:gap-5">
           <Image
-            src="/logo-mark.svg"
+            src="/logo-mark.png"
             alt=""
             width={590}
             height={455}
@@ -26,7 +26,7 @@ export const Brand: FC<BrandProps> = () => {
             className="h-[72%] w-auto object-contain"
           />
           <Image
-            src="/logo-wordmark.svg"
+            src="/logo-wordmark.png"
             alt="MentorOS"
             width={820}
             height={170}

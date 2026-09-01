@@ -1,7 +1,5 @@
 <p align="center">
-  <img src="src/frontend/public/logo-mark.svg" width="132" alt="MentorOS logo" />
-  <br />
-  <img src="src/frontend/public/logo-wordmark.svg" width="300" alt="MentorOS" />
+  <img src="src/frontend/public/logo-readme.png" width="760" alt="MentorOS" />
 </p>
 
 <p align="center">
@@ -177,7 +175,7 @@ MentorOS/
     ├── backend/                  # FastAPI :6000
     └── frontend/                 # Next.js :3000
         └── public/
-            ├── logo-mark.svg
+            ├── logo-readme.png
             └── pets/qpack/       # GPT · Gemini · Grok · DeepSeek · Qwen · Claude
 ```
 

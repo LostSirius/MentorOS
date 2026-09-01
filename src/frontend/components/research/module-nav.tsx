@@ -47,7 +47,7 @@ export const ModuleNav: FC<ModuleNavProps> = ({ active, onSelect }) => {
       >
         <span className="relative flex h-12 w-12 items-center justify-center overflow-hidden">
           <Image
-            src="/logo-mark.svg"
+            src="/logo-mark.png"
             alt=""
             width={590}
             height={455}
@@ -57,7 +57,7 @@ export const ModuleNav: FC<ModuleNavProps> = ({ active, onSelect }) => {
         </span>
         <span className="relative h-4 w-[76px] overflow-hidden">
           <Image
-            src="/logo-wordmark.svg"
+            src="/logo-wordmark.png"
             alt="MentorOS"
             width={809}
             height={159}
