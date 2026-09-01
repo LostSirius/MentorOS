@@ -7,6 +7,8 @@ PolyForm license does not replace the licenses listed here.
 
 Source: [HKUSTDial/Supervisor-Skills](https://github.com/HKUSTDial/Supervisor-Skills)  
 Copyright: Copyright (c) 2026 Yuyu Luo (methodology) and contributors.
+License audit snapshot:
+[`aff5de9`](https://github.com/HKUSTDial/Supervisor-Skills/commit/aff5de9e5b902df0ef51e955d4c78b22793d763a)
 
 MentorOS relocated and, where noted by the Git history, modified these skills
 to integrate them with module handoffs, integrity gates, and silent runtime
@@ -46,6 +48,8 @@ License:
 - Source:
   [Weixin-Liang/LLM-scientific-feedback](https://github.com/Weixin-Liang/LLM-scientific-feedback)
 - Paper: [Liang et al., arXiv:2310.01783](https://arxiv.org/abs/2310.01783)
+- License audit snapshot:
+  [`56bb700`](https://github.com/Weixin-Liang/LLM-scientific-feedback/commit/56bb700f97bd57c927ee31665085f7f7a8386d6a)
 - License:
   [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 - Changes: adapted to the MentorOS text-input review flow, output schema,

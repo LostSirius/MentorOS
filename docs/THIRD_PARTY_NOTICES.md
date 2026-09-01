@@ -42,6 +42,8 @@ PolyForm.
 ### Chatbot UI
 
 - Source: [mckaywrigley/chatbot-ui](https://github.com/mckaywrigley/chatbot-ui)
+- License audit snapshot:
+  [`81328b6`](https://github.com/mckaywrigley/chatbot-ui/commit/81328b61d2a4ab597a7a057be70e785cf756d9f8)
 - License: MIT
 - MentorOS use: historical frontend foundation, substantially modified for the
   research workbench.
@@ -76,6 +78,8 @@ The `drawio-reconstruction` component carries its own MIT license and copyright
 notice at
 [`src/backend/plugins/phd-research/skills/drawio-reconstruction/LICENSE`](../src/backend/plugins/phd-research/skills/drawio-reconstruction/LICENSE).
 Its companion project is [VCG-Bench](https://github.com/sxy1499894281/VCG-Bench).
+The audited upstream snapshot is
+[`7bd7918`](https://github.com/sxy1499894281/VCG-Bench/commit/7bd7918794d01ca978955fe349d95e7c058522ab).
 
 ## Evaluated integration excluded from distribution
 
