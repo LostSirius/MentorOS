@@ -293,7 +293,7 @@ Quick start: `python main.py` in `src/backend`, `npm run dev` in `src/frontend`.
 
 [Supervisor-Skills](https://github.com/HKUSTDial/Supervisor-Skills) · [LLM-scientific-feedback](https://github.com/Weixin-Liang/LLM-scientific-feedback) · [chatbot-ui](https://github.com/mckaywrigley/chatbot-ui) · Orchestra / AERS / AI-Scientist 等。
 
-完整的“直接改编 / 方法论参考 / 未采用”判断见
+完整的“直接改编 / 方法论参考”来源分类见
 [`docs/REFERENCES.md`](docs/REFERENCES.md)，许可证与修改声明见
 [`docs/THIRD_PARTY_NOTICES.md`](docs/THIRD_PARTY_NOTICES.md)。
 

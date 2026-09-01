@@ -26,4 +26,4 @@ Cursor rule: `.cursor/rules/mentoros-modules.mdc`
 
 - Add a skill marketplace UI
 - Auto-publish papers
-- Commit `.env.local`, zip dumps, or Clawd ARR SVGs
+- Commit `.env.local` or zip dumps

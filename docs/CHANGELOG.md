@@ -25,7 +25,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 - Local dump archives (`MentorOS.zip`, duplicate mascot zip, `release/` source snapshot) from the working tree.
-- Unused Clawd artwork downloader and bridge code; the upstream artwork is
-  All Rights Reserved and is not part of MentorOS.
 
 [2.0.0]: https://github.com/LostSirius/MentorOS/releases/tag/v2.0.0

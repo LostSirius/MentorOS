@@ -14,7 +14,7 @@
 | [academic-research-skills](https://github.com/imbad0202/academic-research-skills) | 方法论参考 | CC BY-NC 4.0 | [sources/ars.md](distill/sources/ars.md) |
 | [nature-skills](https://github.com/Yuan1z0825/nature-skills) | 方法论参考 | Apache-2.0 | [sources/nature.md](distill/sources/nature.md) |
 
-其余候选链接、未采用项目及法律说明见
+完整来源映射与法律说明见
 [`REFERENCES.md`](REFERENCES.md) 和
 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)。
 

@@ -81,18 +81,6 @@ Its companion project is [VCG-Bench](https://github.com/sxy1499894281/VCG-Bench)
 The audited upstream snapshot is
 [`7bd7918`](https://github.com/sxy1499894281/VCG-Bench/commit/7bd7918794d01ca978955fe349d95e7c058522ab).
 
-## Evaluated integration excluded from distribution
-
-### clawd-on-desk
-
-- Source: [rullerzhou-afk/clawd-on-desk](https://github.com/rullerzhou-afk/clawd-on-desk)
-- Source-code license: AGPL-3.0.
-- Artwork status: `assets/LICENSE` in the upstream repository states
-  **All Rights Reserved**.
-- MentorOS boundary: no upstream source code, downloader, bridge implementation,
-  or Clawd SVG artwork is committed. The shipped `qpack/claude/` mascot is a
-  separate MentorOS asset and does not use Clawd artwork.
-
 ## Methodology references with no copied files
 
 These sources informed high-level workflows or risk controls. MentorOS does not
@@ -105,15 +93,5 @@ vendor their repositories:
 | [Auto-Empirical-Research-Skills](https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills) | CC BY-SA 4.0 | Conceptual reference only; no skill files copied. |
 | [AI-Scientist](https://github.com/SakanaAI/AI-Scientist) | AI Scientist Source Code License 1.0 (December 2025) | Workflow and failure-mode reference only; no source code copied. |
 | [academic-research-skills](https://github.com/imbad0202/academic-research-skills) | CC BY-NC 4.0 | Conceptual reference only. |
-
-The [Sakana AI Nature announcement](https://sakana.ai/ai-scientist-nature/) is
-background reading only; its text and artwork are not included.
-
-## Reviewed but not used
-
-- [Academic-MCP](https://github.com/Heisenbear-Rebirth/Academic-MCP):
-  no license was declared when checked on 2026-09-01. No content is copied.
-- [SkillsMP](https://skillsmp.com/skills): discovery index only. Each listed
-  skill has its own upstream author and license and must be audited separately.
 
 See [`REFERENCES.md`](REFERENCES.md) for the complete provenance classification.

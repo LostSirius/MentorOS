@@ -1,8 +1,7 @@
 # GitHub 提交清单 · MentorOS
 
-远程仓库建议命名 **`mentoros`**。许可证为 **PolyForm Noncommercial 1.0.0（禁止商业使用）**。
-
-本工作区已 `git init`（尚无 commit）。
+远程仓库：**`LostSirius/MentorOS`**。MentorOS 原创部分采用
+**PolyForm Noncommercial 1.0.0（禁止商业使用）**；第三方组件保留各自许可证。
 
 ## 0. 不要提交
 
@@ -12,7 +11,6 @@
 | `src/frontend/node_modules/`、`.next/` | 依赖与缓存 |
 | `_vendor/` | 上游整库克隆 |
 | `release/`、`*.zip` | 打包快照 |
-| `src/frontend/public/pets/claude/*.svg` | Clawd ARR |
 | `src/frontend/data/` | 本地库与上传 |
 | **`docs/presentation/`** | 演示讲稿、幻灯片、PDF（汇报） |
 | **`docs/product-overview.zh.md`** | PPT / 汇报用产品介绍 |
