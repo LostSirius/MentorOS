@@ -1,0 +1,35 @@
+name: Feature request
+description: Propose a change that fits HITL and distill specs
+title: "[feat] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      placeholder: What is hard or missing today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      placeholder: How should it work? Which module?
+    validations:
+      required: true
+  - type: dropdown
+    id: module
+    attributes:
+      label: Distill module
+      options:
+        - none / infra
+        - literature
+        - idea
+        - experiment
+        - writing
+        - figures
+        - review
+        - polish
+        - overview
+    validations:
+      required: true

@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Distill specs
+    url: https://github.com/LostSirius/MentorOS/blob/main/docs/distill/README.md
+    about: Module playbooks and integrity rules

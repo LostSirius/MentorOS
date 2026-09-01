@@ -1,0 +1,47 @@
+name: Bug report
+description: Something is broken in MentorOS
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Please search existing issues first. Do not paste API keys.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - frontend
+        - backend
+        - literature
+        - idea
+        - experiment
+        - writing
+        - figures
+        - review
+        - polish
+        - overview
+        - chat / upload
+        - desktop pet
+        - docs / repo
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      placeholder: Expected vs actual
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      placeholder: 1. npm run dev …
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: Windows 11 · Node 20 · Python 3.11 · Next 14.2

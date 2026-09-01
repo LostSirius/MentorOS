@@ -1,0 +1,151 @@
+{
+  "character": "gpt",
+  "action": "idle",
+  "keyframeCount": 8,
+  "keyframes": [
+    {
+      "index": 1,
+      "percent": 0,
+      "bodyY": 0,
+      "eyeScaleY": 1,
+      "shadowScaleX": 1,
+      "knotCoreOpacity": 0.82,
+      "knotGlowOpacity": 0.08,
+      "description": "机械待机基准姿态；眼睛张开；绿色结保持低亮呼吸起点。"
+    },
+    {
+      "index": 2,
+      "percent": 20,
+      "bodyY": -4,
+      "eyeScaleY": 1,
+      "shadowScaleX": 0.92,
+      "knotCoreOpacity": 0.9,
+      "knotGlowOpacity": 0.14,
+      "description": "整体机械上移 4 units；阴影收窄；绿色结亮度平稳上升。"
+    },
+    {
+      "index": 3,
+      "percent": 40,
+      "bodyY": -8,
+      "eyeScaleY": 1,
+      "shadowScaleX": 0.84,
+      "knotCoreOpacity": 1,
+      "knotGlowOpacity": 0.28,
+      "description": "到达最高点 8 units；阴影最窄最淡；胸前绿色结达到呼吸峰值。"
+    },
+    {
+      "index": 4,
+      "percent": 60,
+      "bodyY": -4,
+      "eyeScaleY": 1,
+      "shadowScaleX": 0.92,
+      "knotCoreOpacity": 0.92,
+      "knotGlowOpacity": 0.18,
+      "description": "由最高点稳定回落；阴影和绿色结光强同步恢复。"
+    },
+    {
+      "index": 5,
+      "percent": 76,
+      "bodyY": 1,
+      "eyeScaleY": 0.62,
+      "shadowScaleX": 1.05,
+      "knotCoreOpacity": 0.86,
+      "knotGlowOpacity": 0.12,
+      "description": "略低于基线 1 unit；开始短促机械眨眼；阴影轻微展开。"
+    },
+    {
+      "index": 6,
+      "percent": 79,
+      "bodyY": 2,
+      "eyeScaleY": 0.08,
+      "shadowScaleX": 1.08,
+      "knotCoreOpacity": 0.82,
+      "knotGlowOpacity": 0.08,
+      "description": "到达最低点 2 units；眼睛闭合；阴影最宽，绿色结回到低亮。"
+    },
+    {
+      "index": 7,
+      "percent": 82,
+      "bodyY": 1,
+      "eyeScaleY": 1,
+      "shadowScaleX": 1.05,
+      "knotCoreOpacity": 0.84,
+      "knotGlowOpacity": 0.1,
+      "description": "眼睛重新张开并回升；阴影和绿色结开始返回基准。"
+    },
+    {
+      "index": 8,
+      "percent": 100,
+      "bodyY": 0,
+      "eyeScaleY": 1,
+      "shadowScaleX": 1,
+      "knotCoreOpacity": 0.82,
+      "knotGlowOpacity": 0.08,
+      "description": "位置、眼睛、阴影和绿色结光强完全恢复首帧，形成无缝循环。"
+    }
+  ],
+  "durationMs": 4000,
+  "loop": true,
+  "easing": "cubic-bezier(0.45, 0, 0.55, 1)",
+  "blinkEasing": "linear",
+  "layers": [
+    "pointer-body-js",
+    "float-js",
+    "body-js",
+    "head-js",
+    "eyes-js",
+    "arms-js",
+    "accessory-js",
+    "effect-js",
+    "shadow-js",
+    "shadow-pulse-js"
+  ],
+  "pointerTrackingLayers": [
+    "eyes-js",
+    "pointer-body-js",
+    "shadow-js"
+  ],
+  "chestGlow": {
+    "coreOpacityMin": 0.82,
+    "coreOpacityMax": 1,
+    "haloOpacityMin": 0.08,
+    "haloOpacityMax": 0.28,
+    "baseStroke": "#75deb1",
+    "peakStroke": "#98f2cd",
+    "usesBlur": false
+  },
+  "pointerTracking": {
+    "normalization": {
+      "origin": "rendered GPT character center",
+      "fullScaleStageRatioX": 0.3,
+      "fullScaleStageRatioY": 0.3,
+      "clampMin": -1,
+      "clampMax": 1
+    },
+    "body": {
+      "maxXUserUnits": 16,
+      "maxYUserUnits": 12,
+      "maxTiltDeg": 3,
+      "layer": "pointer-body-js"
+    },
+    "eyes": {
+      "maxXUserUnits": 3,
+      "maxYUserUnits": 3,
+      "layer": "eyes-js"
+    },
+    "shadow": {
+      "maxReverseXUserUnits": 12,
+      "maxReverseYUserUnits": 5,
+      "maxPointerStretch": 1.08,
+      "layer": "shadow-js",
+      "idleScaleLayer": "shadow-pulse-js"
+    },
+    "response": {
+      "smoothingCoefficient": 0.2,
+      "returnDelayMs": 650,
+      "returnSettleThreshold": 0.001,
+      "expectedReturnDurationMs": 500
+    }
+  },
+  "seamStrategy": "第 8 帧恢复第 1 帧的机器人高度、眼睛开合、阴影尺度、绿色结颜色及核心与光晕透明度；所有首尾参数完全一致。"
+}

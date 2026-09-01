@@ -1,0 +1,120 @@
+{
+  "character": "gemini",
+  "action": "idle",
+  "keyframeCount": 8,
+  "keyframes": [
+    {
+      "index": 1,
+      "percent": 0,
+      "bodyY": 0,
+      "eyeScaleY": 1,
+      "shadowScaleX": 1,
+      "description": "中心基准姿态；眼睛张开；蓝紫粉光泽从左上开始。"
+    },
+    {
+      "index": 2,
+      "percent": 20,
+      "bodyY": -5,
+      "eyeScaleY": 1,
+      "shadowScaleX": 0.9,
+      "description": "身体缓慢上浮 5px；阴影收窄至 90%；光泽向中央移动。"
+    },
+    {
+      "index": 3,
+      "percent": 40,
+      "bodyY": -10,
+      "eyeScaleY": 1,
+      "shadowScaleX": 0.8,
+      "description": "到达最高点 10px；阴影收窄至 80% 且最淡；紫色光泽最明显。"
+    },
+    {
+      "index": 4,
+      "percent": 60,
+      "bodyY": -5,
+      "eyeScaleY": 1,
+      "shadowScaleX": 0.9,
+      "description": "由高点平缓回落至上方 5px；阴影恢复至 90%；粉色光泽向右下流动。"
+    },
+    {
+      "index": 5,
+      "percent": 76,
+      "bodyY": 1,
+      "eyeScaleY": 0.62,
+      "shadowScaleX": 1.05,
+      "description": "略低于基线 1px 并开始眨眼；阴影展开至 105%。"
+    },
+    {
+      "index": 6,
+      "percent": 79,
+      "bodyY": 3,
+      "eyeScaleY": 0.08,
+      "shadowScaleX": 1.1,
+      "description": "到达最低点 3px；眼睛自然闭合；阴影展开至 110%。"
+    },
+    {
+      "index": 7,
+      "percent": 82,
+      "bodyY": 1,
+      "eyeScaleY": 1,
+      "shadowScaleX": 1.05,
+      "description": "眨眼结束并回升至基线下方 1px；阴影回收至 105%；光泽淡出以隐藏循环接缝。"
+    },
+    {
+      "index": 8,
+      "percent": 100,
+      "bodyY": 0,
+      "eyeScaleY": 1,
+      "shadowScaleX": 1,
+      "description": "回到与第一帧完全一致的中心姿态，准备无缝续播。"
+    }
+  ],
+  "durationMs": 4000,
+  "loop": true,
+  "easing": "cubic-bezier(0.45, 0, 0.55, 1)",
+  "layers": [
+    "body-js",
+    "eyes-js",
+    "accessory-js",
+    "effect-js",
+    "shadow-js"
+  ],
+  "pointerTrackingLayers": [
+    "eyes-js",
+    "pointer-body-js",
+    "shadow-js"
+  ],
+  "pointerTracking": {
+    "normalization": {
+      "origin": "rendered character center",
+      "fullScaleStageRatioX": 0.3,
+      "fullScaleStageRatioY": 0.3,
+      "clampMin": -1,
+      "clampMax": 1
+    },
+    "body": {
+      "maxXUserUnits": 16,
+      "maxYUserUnits": 12,
+      "maxTiltDeg": 3,
+      "layer": "pointer-body-js"
+    },
+    "eyes": {
+      "maxXUserUnits": 3,
+      "maxYUserUnits": 3,
+      "layer": "eyes-js"
+    },
+    "shadow": {
+      "maxReverseXUserUnits": 12,
+      "maxReverseYUserUnits": 5,
+      "maxPointerStretch": 1.08,
+      "layer": "shadow-js",
+      "idleScaleLayer": "shadow-pulse-js"
+    },
+    "response": {
+      "smoothingCoefficient": 0.2,
+      "returnDelayMs": 650,
+      "returnSettleThreshold": 0.001,
+      "expectedReturnDurationMs": 500
+    }
+  },
+  "seamStrategy": "第 8 帧恢复第 1 帧的身体高度、眼睛开合、阴影尺度与渐变颜色；移动光泽在首尾均为零透明度，位置跳转不可见。"
+}

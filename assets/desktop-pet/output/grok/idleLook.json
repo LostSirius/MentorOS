@@ -1,0 +1,220 @@
+{
+  "character": "grok",
+  "action": "idleLook",
+  "keyframeCount": 8,
+  "keyframes": [
+    {
+      "index": 1,
+      "percent": 0,
+      "lookDirection": "left-up",
+      "poseX": 0,
+      "poseY": 0,
+      "poseRotateDeg": 0,
+      "headX": 0,
+      "headY": 0,
+      "gazeX": 0,
+      "gazeY": 0,
+      "eyeScaleY": 1,
+      "idleLookShadowScaleX": 1,
+      "description": "Baseline idle pose."
+    },
+    {
+      "index": 2,
+      "percent": 20,
+      "lookDirection": "left-up",
+      "poseX": 0,
+      "poseY": 0,
+      "poseRotateDeg": 0,
+      "headX": 0,
+      "headY": 0,
+      "gazeX": -1.2,
+      "gazeY": -0.8,
+      "eyeScaleY": 1,
+      "idleLookShadowScaleX": 0.997,
+      "description": "Eyes notice one direction before the pose follows."
+    },
+    {
+      "index": 3,
+      "percent": 32,
+      "lookDirection": "left-up",
+      "poseX": -0.4,
+      "poseY": -0.2,
+      "poseRotateDeg": -0.2,
+      "headX": -0.5,
+      "headY": -0.3,
+      "gazeX": -2.4,
+      "gazeY": -1.5,
+      "eyeScaleY": 1,
+      "idleLookShadowScaleX": 0.994,
+      "description": "Gaze reaches the target; head and body begin a restrained follow."
+    },
+    {
+      "index": 4,
+      "percent": 46,
+      "lookDirection": "left-up",
+      "poseX": -0.8,
+      "poseY": -0.4,
+      "poseRotateDeg": -0.4,
+      "headX": -1,
+      "headY": -0.6,
+      "gazeX": -2.4,
+      "gazeY": -1.5,
+      "eyeScaleY": 1,
+      "idleLookShadowScaleX": 0.99,
+      "description": "Stable single-direction look; no scanning or comparison."
+    },
+    {
+      "index": 5,
+      "percent": 58,
+      "lookDirection": "left-up",
+      "poseX": -0.8,
+      "poseY": -0.4,
+      "poseRotateDeg": -0.4,
+      "headX": -1,
+      "headY": -0.6,
+      "gazeX": -2.4,
+      "gazeY": -1.5,
+      "eyeScaleY": 0.08,
+      "idleLookShadowScaleX": 0.99,
+      "description": "Natural blink while holding the same direction."
+    },
+    {
+      "index": 6,
+      "percent": 70,
+      "lookDirection": "left-up",
+      "poseX": -0.8,
+      "poseY": -0.4,
+      "poseRotateDeg": -0.4,
+      "headX": -1,
+      "headY": -0.6,
+      "gazeX": -1.0000008,
+      "gazeY": -0.6000000000000001,
+      "eyeScaleY": 1,
+      "idleLookShadowScaleX": 0.994,
+      "description": "Eyes reopen and return first while the pose briefly holds."
+    },
+    {
+      "index": 7,
+      "percent": 84,
+      "lookDirection": "left-up",
+      "poseX": -0.27999999999999997,
+      "poseY": -0.1,
+      "poseRotateDeg": -0.15000000000000002,
+      "headX": -0.3,
+      "headY": -0.19999999999999998,
+      "gazeX": -0.19999999999999998,
+      "gazeY": -0.1,
+      "eyeScaleY": 1,
+      "idleLookShadowScaleX": 0.998,
+      "description": "Eyes are nearly centered; head and body follow back."
+    },
+    {
+      "index": 8,
+      "percent": 100,
+      "lookDirection": "left-up",
+      "poseX": 0,
+      "poseY": 0,
+      "poseRotateDeg": 0,
+      "headX": 0,
+      "headY": 0,
+      "gazeX": 0,
+      "gazeY": 0,
+      "eyeScaleY": 1,
+      "idleLookShadowScaleX": 1,
+      "description": "Every animated parameter matches the first frame exactly."
+    }
+  ],
+  "durationMs": 4000,
+  "loop": true,
+  "easing": "cubic-bezier(0.45, 0, 0.55, 1)",
+  "blinkEasing": "linear",
+  "layers": [
+    "pointer-body-js",
+    "float-js",
+    "idle-look-pose-js",
+    "head-follow-js",
+    "body-js",
+    "head-js",
+    "eyes-js",
+    "idle-look-gaze-js",
+    "blink-js",
+    "arms-js",
+    "accessory-js",
+    "effect-js",
+    "shadow-js",
+    "shadow-pulse-js",
+    "shadow-idle-look-js",
+    "helmet-idle-balance-js"
+  ],
+  "pointerTrackingLayers": [
+    "pointer-body-js",
+    "eyes-js",
+    "shadow-js"
+  ],
+  "partMotion": {
+    "direction": "left-up",
+    "bodyMaxXUserUnits": 0.8,
+    "bodyMaxYUserUnits": 0.4,
+    "bodyMaxRotateDeg": 0.4,
+    "headMaxXUserUnits": 1,
+    "headMaxYUserUnits": 0.6,
+    "headMaxRotateDeg": 0.5,
+    "gazeMaxXUserUnits": 2.4,
+    "gazeMaxYUserUnits": 1.5,
+    "blinkMinScaleY": 0.08,
+    "idleLookShadowScaleXMin": 0.99,
+    "idleLookShadowScaleXMax": 1,
+    "accessoriesAnimated": false,
+    "effectsAnimated": false,
+    "usesNewGeometry": false,
+    "usesWholeBodyScale": false,
+    "usesBlur": false
+  },
+  "baseIdleMotion": {
+    "preservedLayers": [
+      "float-js",
+      "helmet-idle-balance-js",
+      "shadow-pulse-js"
+    ],
+    "durationMs": 4000,
+    "easing": "cubic-bezier(0.45, 0, 0.55, 1)",
+    "preservedFromIdle": true
+  },
+  "pointerTracking": {
+    "normalization": {
+      "origin": "rendered grok character center",
+      "fullScaleStageRatioX": 0.3,
+      "fullScaleStageRatioY": 0.3,
+      "clampMin": -1,
+      "clampMax": 1
+    },
+    "body": {
+      "maxXUserUnits": 16,
+      "maxYUserUnits": 12,
+      "maxTiltDeg": 3,
+      "layer": "pointer-body-js"
+    },
+    "eyes": {
+      "maxXUserUnits": 3,
+      "maxYUserUnits": 3,
+      "layer": "eyes-js"
+    },
+    "shadow": {
+      "maxReverseXUserUnits": 12,
+      "maxReverseYUserUnits": 5,
+      "maxPointerStretch": 1.08,
+      "layer": "shadow-js",
+      "idleScaleLayer": "shadow-pulse-js",
+      "idleLookScaleLayer": "shadow-idle-look-js"
+    },
+    "response": {
+      "smoothingCoefficient": 0.2,
+      "returnDelayMs": 650,
+      "returnSettleThreshold": 0.003,
+      "expectedReturnDurationMs": 500,
+      "engine": "requestAnimationFrame"
+    }
+  },
+  "seamStrategy": "Frame 8 exactly restores gaze, blink, head/body follow and added shadow state to frame 1; preserved idle layers also return to their 0% values on the same 4000ms timeline."
+}
+

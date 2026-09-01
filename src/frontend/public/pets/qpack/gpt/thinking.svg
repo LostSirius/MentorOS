@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" preserveAspectRatio="xMidYMid meet" style="--eye-x:0px;--eye-y:0px;--body-x:0px;--body-y:0px;--body-tilt:0deg;--shadow-x:0px;--shadow-y:0px;--shadow-stretch:1;--play-state:running">
+  <defs>
+    <path id="gpt-knot-segment-thinking" d="M128 168h14l9 9v12h-8v-9l-5-4h-10"/>
+    <g id="gpt-knot-shape-thinking">
+      <use href="#gpt-knot-segment-thinking"/>
+      <use href="#gpt-knot-segment-thinking" transform="rotate(60 128 188)"/>
+      <use href="#gpt-knot-segment-thinking" transform="rotate(120 128 188)"/>
+      <use href="#gpt-knot-segment-thinking" transform="rotate(180 128 188)"/>
+      <use href="#gpt-knot-segment-thinking" transform="rotate(240 128 188)"/>
+      <use href="#gpt-knot-segment-thinking" transform="rotate(300 128 188)"/>
+    </g>
+    <style>
+      #pointer-body-js{transform:translate(var(--body-x),var(--body-y)) rotate(var(--body-tilt));transform-box:view-box;transform-origin:128px 160px}
+      #thinking-pose-js{animation:gpt-thinking-pose 3600ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 160px}
+      #head-motion-js{animation:gpt-thinking-head 3600ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 140px}
+      #eyes-js{transform:translate(var(--eye-x),var(--eye-y))}
+      #thinking-gaze-js{animation:gpt-thinking-gaze 3600ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 141px}
+      #blink-js{animation:gpt-thinking-blink 3600ms linear infinite;animation-play-state:var(--play-state);transform-box:fill-box;transform-origin:center}
+      #knot-core-rotation-js{animation:gpt-thinking-knot-core 3600ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 188px}
+      #knot-glow-rotation-js{animation:gpt-thinking-knot-glow 3600ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 188px}
+      #knot-glow-js{animation:gpt-thinking-knot-glow-strength 3600ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state)}
+      #shadow-js{transform:translate(var(--shadow-x),var(--shadow-y)) scaleX(var(--shadow-stretch));transform-box:view-box;transform-origin:128px 235px}
+      #shadow-pulse-js{animation:gpt-thinking-shadow 3600ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:fill-box;transform-origin:center}
+      .is-paused *{animation-play-state:paused!important}.is-restarting *{animation:none!important}
+
+      @keyframes gpt-thinking-pose{
+        0%{transform:translateY(0) rotate(0)}
+        16%{transform:translateY(-1px) rotate(-0.4deg)}
+        32%{transform:translateY(-2px) rotate(0.4deg)}
+        48%{transform:translateY(-1px) rotate(0)}
+        64%{transform:translateY(-2px) rotate(0.6deg)}
+        76%{transform:translateY(0) rotate(-0.3deg)}
+        84%{transform:translateY(-1px) rotate(0)}
+        100%{transform:translateY(0) rotate(0)}
+      }
+      @keyframes gpt-thinking-head{
+        0%{transform:translate(0,0) rotate(0)}
+        16%{transform:translate(-1px,0) rotate(-0.3deg)}
+        32%{transform:translate(1px,-1px) rotate(0.3deg)}
+        48%{transform:translate(0,-1px) rotate(0)}
+        64%{transform:translate(0,0) rotate(0.2deg)}
+        76%{transform:translate(-0.5px,0) rotate(-0.2deg)}
+        84%{transform:translate(0,0) rotate(0)}
+        100%{transform:translate(0,0) rotate(0)}
+      }
+      @keyframes gpt-thinking-gaze{
+        0%{transform:translate(0,0)}
+        16%{transform:translate(-1.2px,0)}
+        32%{transform:translate(1.5px,0)}
+        48%{transform:translate(0,-0.5px)}
+        64%{transform:translate(0,-1.2px)}
+        76%{transform:translate(-0.5px,-0.5px)}
+        84%{transform:translate(0,-0.4px)}
+        100%{transform:translate(0,0)}
+      }
+      @keyframes gpt-thinking-blink{
+        0%{transform:scaleY(1)}16%{transform:scaleY(1)}32%{transform:scaleY(1)}48%{transform:scaleY(1)}64%{transform:scaleY(1)}76%{transform:scaleY(0.08)}84%{transform:scaleY(1)}100%{transform:scaleY(1)}
+      }
+      @keyframes gpt-thinking-knot-core{
+        0%{transform:rotate(0)}16%{transform:rotate(2deg)}32%{transform:rotate(6deg)}48%{transform:rotate(12deg)}64%{transform:rotate(8deg)}76%{transform:rotate(4deg)}84%{transform:rotate(2deg)}100%{transform:rotate(0)}
+      }
+      @keyframes gpt-thinking-knot-glow{
+        0%{transform:rotate(0)}16%{transform:rotate(-1deg)}32%{transform:rotate(-3deg)}48%{transform:rotate(-6deg)}64%{transform:rotate(-4deg)}76%{transform:rotate(-2deg)}84%{transform:rotate(-1deg)}100%{transform:rotate(0)}
+      }
+      @keyframes gpt-thinking-knot-glow-strength{
+        0%{opacity:0.08}16%{opacity:0.10}32%{opacity:0.14}48%{opacity:0.18}64%{opacity:0.14}76%{opacity:0.10}84%{opacity:0.09}100%{opacity:0.08}
+      }
+      @keyframes gpt-thinking-shadow{
+        0%{transform:scaleX(1);opacity:0.22}16%{transform:scaleX(0.99);opacity:0.21}32%{transform:scaleX(0.97);opacity:0.20}48%{transform:scaleX(0.99);opacity:0.21}64%{transform:scaleX(0.97);opacity:0.20}76%{transform:scaleX(1.02);opacity:0.23}84%{transform:scaleX(0.99);opacity:0.21}100%{transform:scaleX(1);opacity:0.22}
+      }
+    </style>
+  </defs>
+
+  <g id="shadow-js"><ellipse id="shadow-pulse-js" cx="128" cy="235" rx="48" ry="6" fill="#131721"/></g>
+
+  <g id="pointer-body-js" shape-rendering="crispEdges">
+    <g id="float-js">
+      <g id="thinking-pose-js">
+        <g id="arms-js">
+          <path d="M58 156h8v-8h10v48h-10v8H52v-28h4v-16h2z" fill="#323844"/>
+          <path d="M52 184h14v20H52z" fill="#a9ead0"/>
+          <path d="M198 156h-8v-8h-10v48h10v8h14v-28h-4v-16h-2z" fill="#323844"/>
+          <path d="M190 184h14v20h-14z" fill="#a9ead0"/>
+          <path d="M58 164h8v20h-8zM190 164h8v20h-8z" fill="#4a5260" opacity="0.7"/>
+        </g>
+
+        <g id="body-js">
+          <path d="M86 216h20v8H86zM150 216h20v8h-20z" fill="#a9ead0"/>
+          <path d="M84 100h88v4h8v8h8v92h-8v8h-8v4H84v-4h-8v-8h-8v-92h8v-8h8z" fill="#3c424e"/>
+          <path d="M84 104h88v4h8v12h-4v-4H80v88h4v8h-8v-8h-4v-92h8v-8z" fill="#59616f" opacity="0.38"/>
+          <path d="M80 204h8v8h84v-4h8v4h-8v4H84v-4h-8z" fill="#292f3a" opacity="0.55"/>
+        </g>
+
+        <g id="head-motion-js">
+          <g id="head-js">
+            <rect x="124" y="90" width="8" height="12" fill="#303642"/>
+            <rect x="126" y="90" width="4" height="12" fill="#505866"/>
+            <path d="M120 72h16v4h6v12h-6v4h-16v-4h-6V76h6z" fill="#9fe5c8"/>
+            <path d="M120 88h16v4h-16z" fill="#7fd4b2"/>
+            <path d="M88 116h80v4h8v8h4v24h-4v8h-8v4H88v-4h-8v-8h-4v-24h4v-8h8z" fill="#c7f0de"/>
+            <path d="M88 120h80v4h8v8h-4v-4H84v28h4v4h-8v-8h-4v-24h4v-8h8z" fill="#ddf8ec" opacity="0.48"/>
+            <path id="mouth-js" d="M116 150h8v6h16v-6h8v8h-8v6h-16v-6h-8z" fill="#080b12"/>
+          </g>
+          <g id="eyes-js" fill="#080b12">
+            <g id="thinking-gaze-js">
+              <g id="blink-js"><rect x="96" y="132" width="12" height="18"/><rect x="148" y="132" width="12" height="18"/></g>
+            </g>
+          </g>
+        </g>
+
+        <g id="accessory-js"><g id="knot-core-rotation-js"><use id="knot-core-js" href="#gpt-knot-shape-thinking" fill="none" stroke="#75deb1" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter"/></g></g>
+
+        <g id="effect-js">
+          <g id="knot-glow-rotation-js"><use id="knot-glow-js" href="#gpt-knot-shape-thinking" fill="none" stroke="#96f0ca" stroke-width="9" stroke-linecap="square" stroke-linejoin="miter" opacity="0.08"/></g>
+          <path d="M124 20h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#8ce5bd"/>
+          <path d="M154 44h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#43c5e8"/>
+          <path d="M94 56h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#ffc847"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

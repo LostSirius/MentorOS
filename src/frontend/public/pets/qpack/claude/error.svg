@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" preserveAspectRatio="xMidYMid meet" style="background-color:transparent;overflow:visible;--eye-x:0px;--eye-y:0px;--body-x:0px;--body-y:0px;--body-tilt:0deg;--shadow-x:0px;--shadow-y:0px;--shadow-stretch:1;--play-state:running">
+  <defs>
+    <style>
+      #pointer-body-js{transform:translate(var(--body-x),var(--body-y)) rotate(var(--body-tilt));transform-box:view-box;transform-origin:128px 158px}
+      #eyes-js{transform:translate(var(--eye-x),var(--eye-y))}
+      #shadow-js{transform:translate(var(--shadow-x),var(--shadow-y)) scaleX(var(--shadow-stretch));transform-box:view-box;transform-origin:128px 232px}
+      .is-restarting *{animation:none!important}
+      #error-pose-js{animation:claude-error-pose 3000ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 158px}
+      #top-tuft-js{animation:claude-error-tuft 3000ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 96px}
+      #left-arm-js{animation:claude-error-left-arm 3000ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:52px 168px}
+      #right-arm-js{animation:claude-error-right-arm 3000ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:204px 168px}
+      #gaze-js{animation:claude-error-gaze 3000ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 138px}
+      #emblem-js{animation:claude-error-emblem 3000ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 199px}
+      #blink-js{animation:claude-error-blink 3000ms linear infinite;animation-play-state:var(--play-state);transform-box:fill-box;transform-origin:center}
+      #shadow-pulse-js{animation:claude-error-shadow 3000ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:fill-box;transform-origin:center}
+      @keyframes claude-error-pose{0%{transform:translate(0px,0px) rotate(0deg)}10%{transform:translate(-2px,2px) rotate(-1deg)}22%{transform:translate(1.5px,2.5px) rotate(0.8deg)}38%{transform:translate(-1.2px,2.5px) rotate(-0.6deg)}56%{transform:translate(-1.2px,2.5px) rotate(-0.6deg)}70%{transform:translate(-0.6px,1.5px) rotate(-0.3deg)}86%{transform:translate(0px,0.5px) rotate(-0.1deg)}100%{transform:translate(0px,0px) rotate(0deg)}}
+      @keyframes claude-error-tuft{0%{transform:translate(0px,0px) rotate(0deg)}10%{transform:translate(0px,1px) rotate(-5deg)}22%{transform:translate(0px,1.5px) rotate(5deg)}38%{transform:translate(0px,1.5px) rotate(-4deg)}56%{transform:translate(0px,1.5px) rotate(-4deg)}70%{transform:translate(0px,0.8px) rotate(-2deg)}86%{transform:translate(0px,0.2px) rotate(-0.5deg)}100%{transform:translate(0px,0px) rotate(0deg)}}
+      @keyframes claude-error-left-arm{0%{transform:translate(0px,0px) rotate(0deg)}10%{transform:translate(2px,1px) rotate(4deg)}22%{transform:translate(2.5px,1.2px) rotate(5deg)}38%{transform:translate(2.5px,1.2px) rotate(5deg)}56%{transform:translate(2.5px,1.2px) rotate(5deg)}70%{transform:translate(1.5px,0.7px) rotate(3deg)}86%{transform:translate(0.5px,0.2px) rotate(1deg)}100%{transform:translate(0px,0px) rotate(0deg)}}
+      @keyframes claude-error-right-arm{0%{transform:translate(0px,0px) rotate(0deg)}10%{transform:translate(-2px,1px) rotate(-4deg)}22%{transform:translate(-2.5px,1.2px) rotate(-5deg)}38%{transform:translate(-2.5px,1.2px) rotate(-5deg)}56%{transform:translate(-2.5px,1.2px) rotate(-5deg)}70%{transform:translate(-1.5px,0.7px) rotate(-3deg)}86%{transform:translate(-0.5px,0.2px) rotate(-1deg)}100%{transform:translate(0px,0px) rotate(0deg)}}
+      @keyframes claude-error-gaze{0%{transform:translate(0px,0px)}10%{transform:translate(-0.8px,0.8px)}22%{transform:translate(0.8px,0.8px)}38%{transform:translate(-0.5px,0.8px)}56%{transform:translate(-0.5px,0.8px)}70%{transform:translate(-0.2px,0.4px)}86%{transform:translate(0px,0.1px)}100%{transform:translate(0px,0px)}}
+      @keyframes claude-error-emblem{0%{transform:rotate(0deg)}10%{transform:rotate(0deg)}22%{transform:rotate(0deg)}38%{transform:rotate(0deg)}56%{transform:rotate(0deg)}70%{transform:rotate(0deg)}86%{transform:rotate(0deg)}100%{transform:rotate(0deg)}}
+      @keyframes claude-error-blink{0%{transform:scaleY(1)}10%{transform:scaleY(1)}22%{transform:scaleY(0.7)}38%{transform:scaleY(0.55)}56%{transform:scaleY(0.55)}70%{transform:scaleY(0.75)}86%{transform:scaleY(1)}100%{transform:scaleY(1)}}
+      @keyframes claude-error-shadow{0%{transform:scaleX(1)}10%{transform:scaleX(1.04)}22%{transform:scaleX(1.05)}38%{transform:scaleX(1.05)}56%{transform:scaleX(1.05)}70%{transform:scaleX(1.03)}86%{transform:scaleX(1.01)}100%{transform:scaleX(1)}}
+    </style>
+  </defs>
+  <g id="shadow-js">
+    <g id="shadow-pulse-js" opacity="0.22">
+      <ellipse cx="128" cy="232" rx="46" ry="6" fill="#6b2817"/>
+    </g>
+  </g>
+  <g id="pointer-body-js" shape-rendering="crispEdges">
+    <g id="float-js">
+      <g id="error-pose-js">
+      <g id="accessory-js">
+        <g id="top-tuft-js">
+          <path d="M100 100h34V82h-8V70h-8v-8H98v6h-10v14h8v10h4z" fill="#b43d1b"/>
+          <path d="M104 94h22V82h-8V72h-8v-6H100v6h-8v8h8v8h4z" fill="#f36b2e"/>
+          <path d="M98 66h12v6h8v8h-8v-6H98z" fill="#ffad4d"/>
+          <path d="M118 100h42V78h-8V52h-8V40h-14v12h-8v26h-4z" fill="#b43d1b"/>
+          <path d="M124 94h28V78h-6V54h-8V44h-6v12h-6v24h-2z" fill="#f36b2e"/>
+          <path d="M132 44h8v12h6v12h-8V58h-6z" fill="#ffad4d"/>
+          <path d="M144 100h20v-8h12v-10h10V68h-20v6h-10v8h-12z" fill="#b43d1b"/>
+          <path d="M150 94h12v-8h10v-8h8v-6h-12v6h-10v8h-8z" fill="#f36b2e"/>
+          <path d="M168 72h12v6h-8v8h-10v-8h6z" fill="#ffad4d"/>
+        </g>
+      </g>
+      <g id="arms-js">
+        <g id="left-arm-js">
+          <path d="M36 140h18v8h8v38h-8v10H36v-6h-8v-34h8z" fill="#a83a1c"/>
+          <path d="M40 146h10v8h6v28h-6v8H40v-6h-6v-26h6z" fill="#f2672d"/>
+          <path d="M34 156h6v28h6v6h-8v-6h-4z" fill="#ff9a43"/>
+        </g>
+        <g id="right-arm-js">
+          <path d="M202 140h18v16h8v34h-8v6h-18v-10h-8v-38h8z" fill="#a83a1c"/>
+          <path d="M206 146h10v12h6v26h-6v6h-10v-8h-6v-28h6z" fill="#f2672d"/>
+          <path d="M216 156h6v28h-4v6h-8v-6h6z" fill="#ff9a43"/>
+        </g>
+      </g>
+      <g id="feet-js">
+        <g id="left-foot-js">
+          <path d="M82 212h34v6h6v14H78v-14h4z" fill="#9b351a"/>
+          <path d="M86 216h26v4h4v8H84v-8h2z" fill="#f2672d"/>
+          <rect x="88" y="216" width="10" height="10" fill="#ffae4d"/>
+        </g>
+        <g id="right-foot-js">
+          <path d="M142 212h34v6h4v14h-44v-14h6z" fill="#9b351a"/>
+          <path d="M146 216h26v4h2v8h-32v-8h4z" fill="#f2672d"/>
+          <rect x="146" y="216" width="10" height="10" fill="#ffae4d"/>
+        </g>
+      </g>
+      <g id="body-js">
+        <path d="M82 82h92v6h18v10h12v14h8v18h6v54h-6v18h-10v12h-16v8h-24v6H94v-6H70v-8H54v-12H44v-18h-6v-54h6v-18h8V98h12V88h18z" fill="#9f3419"/>
+        <path d="M86 88h84v6h18v10h10v14h8v20h4v42h-4v18h-10v10h-14v8h-22v6H98v-6H76v-8H62v-10H52v-18h-4v-42h4v-20h8v-14h10V94h16z" fill="#f2692f"/>
+        <path d="M86 92h80v6h18v10h10v14h8v18h-8v-10h-8v-10h-14v-8H84v6H70v10H60v14h-8v20h-4v-24h4v-20h8v-14h10V96h16z" fill="#ff8b3e"/>
+        <path d="M48 178h8v18h10v10h14v8h22v6h58v-6h22v-8h14v-10h10v-18h8v8h-2v16h-10v12h-16v8h-24v6H94v-6H70v-8H54v-12H44v-16h4z" fill="#c94a21"/>
+        <path d="M62 126h8v-10h12v-8h18v6H84v8H72v12H62z" fill="#ffab4b"/>
+      </g>
+      <g id="head-js">
+        <g id="face-js">
+          <path d="M78 100h100v6h14v10h8v44h-8v10h-14v8H78v-8H64v-10h-8v-44h8v-10h14z" fill="#efb657"/>
+          <path d="M82 106h92v6h12v8h6v36h-6v8h-12v6H82v-6H70v-8h-6v-36h6v-8h12z" fill="#ffe4a0"/>
+          <path d="M82 110h84v4h14v8H80v4H70v28h-6v-34h6v-8h12z" fill="#fff0bd"/>
+        </g>
+        <g id="eyes-js">
+          <g id="gaze-js">
+            <g id="blink-js">
+              <g id="left-eye-js">
+                <path d="M84 124h18v4h4v20h-4v6H84v-4h-4v-22h4z" fill="#7b2c17"/>
+                <path d="M86 122h14v4h4v18h-4v4H86v-4h-4v-18h4z" fill="#28150e"/>
+                <rect x="94" y="126" width="6" height="8" fill="#fff0b7"/>
+              </g>
+              <g id="right-eye-js">
+                <path d="M154 124h18v4h4v22h-4v4h-18v-6h-4v-20h4z" fill="#7b2c17"/>
+                <path d="M156 122h14v4h4v18h-4v4h-14v-4h-4v-18h4z" fill="#28150e"/>
+                <rect x="164" y="126" width="6" height="8" fill="#fff0b7"/>
+              </g>
+            </g>
+          </g>
+        </g>
+        <path id="mouth-js" d="M112 150h8v4h16v-4h8v8h-8v4h-16v-4h-8z" fill="#4b1d13"/>
+      </g>
+      <g id="emblem-js" fill="#ffd383">
+        <rect x="124" y="180" width="8" height="38"/>
+        <rect x="106" y="195" width="44" height="8"/>
+        <path d="M110 182h8v6h6v12h-8v-8h-6z"/>
+        <path d="M140 182h8v10h-6v8h-8v-12h6z"/>
+        <path d="M110 208h6v-8h8v12h-6v8h-8z"/>
+        <path d="M134 200h8v8h6v12h-8v-8h-6z"/>
+        <rect x="124" y="195" width="8" height="8" fill="#ffe6a5"/>
+      </g>
+      </g>
+    </g>
+  </g>
+</svg>

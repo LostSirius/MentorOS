@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" preserveAspectRatio="xMidYMid meet" style="background-color:transparent;overflow:visible;--eye-x:0px;--eye-y:0px;--body-x:0px;--body-y:0px;--body-tilt:0deg;--shadow-x:0px;--shadow-y:0px;--shadow-stretch:1;--play-state:running">
+  <defs>
+    <linearGradient id="gemini-body-gradient-base" x1="128" y1="72" x2="128" y2="216" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4388f5"/>
+      <stop offset="0.38" stop-color="#696fee"/>
+      <stop offset="0.68" stop-color="#a45ee7"/>
+      <stop offset="1" stop-color="#fb6aac"/>
+    </linearGradient>
+    <clipPath id="gemini-body-clip-base">
+      <path d="M114 72h20v8h8v8h8v8h8v8h8v8h8v8h8v8h16v8h16v16h-16v8h-8v8h-8v8h-8v8h-8v16h-16v16h-16v-16h-16v16h-16v-16H86v-16h-8v-8h-8v-8h-8v-8H46v-8h-8v-16h16v-8h8v-8h8v-8h8v-8h8v-8h8v-8h8v-8h12z"/>
+    </clipPath>
+    <style>
+    #pointer-body-js{transform:translate(var(--body-x),var(--body-y)) rotate(var(--body-tilt));transform-box:view-box;transform-origin:128px 152px}
+    #eyes-js{transform:translate(var(--eye-x),var(--eye-y))}
+    #shadow-js{transform:translate(var(--shadow-x),var(--shadow-y)) scaleX(var(--shadow-stretch));transform-box:view-box;transform-origin:128px 224px}
+    #notification-pose-js{animation:gemini-notification-pose 2400ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 152px}
+    #notification-gaze-js{animation:gemini-notification-gaze 2400ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state)}
+    #blink-js{animation:gemini-notification-blink 2400ms linear infinite;animation-play-state:var(--play-state);transform-box:fill-box;transform-origin:center}
+    #shadow-pulse-js{animation:gemini-notification-shadow 2400ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:fill-box;transform-origin:center}
+    #effect-js{animation:gemini-notification-facets 2400ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 148px}
+    #build-star-yellow-js{animation:gemini-notification-star-yellow 2400ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:fill-box;transform-origin:center}
+    #build-star-green-js{animation:gemini-notification-star-green 2400ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:fill-box;transform-origin:center}
+    #build-star-cyan-js{animation:gemini-notification-star-cyan 2400ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:fill-box;transform-origin:center}
+    .is-restarting *{animation:none!important}
+    @keyframes gemini-notification-pose{0%{transform:translateY(0px) rotate(0deg)}8%{transform:translateY(-1px) rotate(-0.2deg)}18%{transform:translateY(-2px) rotate(0.4deg)}34%{transform:translateY(-1px) rotate(-0.3deg)}52%{transform:translateY(-2px) rotate(0.3deg)}68%{transform:translateY(-0.5px) rotate(-0.1deg)}84%{transform:translateY(-0.25px) rotate(0.1deg)}100%{transform:translateY(0px) rotate(0deg)}}
+    @keyframes gemini-notification-gaze{0%{transform:translate(0px,0px)}8%{transform:translate(0px,-1px)}18%{transform:translate(0px,-1.5px)}34%{transform:translate(0px,-1px)}52%{transform:translate(0px,-1.5px)}68%{transform:translate(0px,-0.5px)}84%{transform:translate(0px,0px)}100%{transform:translate(0px,0px)}}
+    @keyframes gemini-notification-blink{0%{transform:scaleY(1)}8%{transform:scaleY(1)}18%{transform:scaleY(1)}34%{transform:scaleY(1)}52%{transform:scaleY(0.22)}68%{transform:scaleY(1)}84%{transform:scaleY(1)}100%{transform:scaleY(1)}}
+    @keyframes gemini-notification-shadow{0%{transform:scaleX(1)}8%{transform:scaleX(0.99)}18%{transform:scaleX(0.98)}34%{transform:scaleX(0.99)}52%{transform:scaleX(0.98)}68%{transform:scaleX(1)}84%{transform:scaleX(1)}100%{transform:scaleX(1)}}
+    @keyframes gemini-notification-facets{0%{transform:translate(0px,0px) rotate(0deg)}8%{transform:translate(0px,-1px) rotate(-2deg)}18%{transform:translate(0px,-2px) rotate(4deg)}34%{transform:translate(0px,-1px) rotate(-3deg)}52%{transform:translate(0px,-2px) rotate(3deg)}68%{transform:translate(0px,-0.5px) rotate(-1deg)}84%{transform:translate(0px,0px) rotate(0deg)}100%{transform:translate(0px,0px) rotate(0deg)}}
+    @keyframes gemini-notification-star-yellow{0%{transform:translate(0px,0px) rotate(0deg)}8%{transform:translate(0px,2px) rotate(0deg)}18%{transform:translate(0px,-2px) rotate(0deg)}34%{transform:translate(0px,1px) rotate(0deg)}52%{transform:translate(0px,-2px) rotate(0deg)}68%{transform:translate(0px,1px) rotate(0deg)}84%{transform:translate(0px,0px) rotate(0deg)}100%{transform:translate(0px,0px) rotate(0deg)}}
+    @keyframes gemini-notification-star-green{0%{transform:translate(0px,0px) rotate(0deg)}8%{transform:translate(2px,1px) rotate(0deg)}18%{transform:translate(-2px,-1px) rotate(0deg)}34%{transform:translate(1px,1px) rotate(0deg)}52%{transform:translate(-2px,-1px) rotate(0deg)}68%{transform:translate(1px,0px) rotate(0deg)}84%{transform:translate(0px,0px) rotate(0deg)}100%{transform:translate(0px,0px) rotate(0deg)}}
+    @keyframes gemini-notification-star-cyan{0%{transform:translate(0px,0px) rotate(0deg)}8%{transform:translate(-2px,1px) rotate(0deg)}18%{transform:translate(2px,-1px) rotate(0deg)}34%{transform:translate(-1px,1px) rotate(0deg)}52%{transform:translate(2px,-1px) rotate(0deg)}68%{transform:translate(-1px,0px) rotate(0deg)}84%{transform:translate(0px,0px) rotate(0deg)}100%{transform:translate(0px,0px) rotate(0deg)}}
+  </style>
+  </defs>
+  <g id="shadow-js" opacity="0.22"><ellipse id="shadow-pulse-js" cx="128" cy="224" rx="48" ry="6" fill="#120d2b"/></g>
+  <g id="pointer-body-js" shape-rendering="crispEdges"><g id="float-js"><g id="notification-pose-js">
+    <g id="accessory-js">
+      <g id="build-star-yellow-js"><path d="M122 18h12v9h9v12h-9v9h-12v-9h-9V27h9z" fill="#ffd81a"/></g>
+      <g id="build-star-green-js"><path d="M92 45h10v8h8v10h-8v8H92v-8h-8V53h8z" fill="#55b94a"/></g>
+      <g id="build-star-cyan-js"><path d="M158 49h10v9h9v10h-9v9h-10v-9h-9V58h9z" fill="#3bb9e9"/></g>
+    </g>
+    <g id="body-js">
+      <path d="M114 72h20v8h8v8h8v8h8v8h8v8h8v8h8v8h16v8h16v16h-16v8h-8v8h-8v8h-8v8h-8v16h-16v16h-16v-16h-16v16h-16v-16H86v-16h-8v-8h-8v-8h-8v-8H46v-8h-8v-16h16v-8h8v-8h8v-8h8v-8h8v-8h8v-8h8v-8h12z" fill="url(#gemini-body-gradient-base)"/>
+      <g clip-path="url(#gemini-body-clip-base)"><path d="M94 88h68v16h16v16h-40v8h-36v-8H78v-16h16z" fill="#4d83f5" opacity="0.36"/><path d="M62 128h40v-8h36v8h40v-8h20v24h-36v8h-36v-8H86v8H62z" fill="#bd65ea" opacity="0.34"/><path d="M54 160h32v-8h32v8h44v-8h32v32h-28v16H86v-16H62z" fill="#ff70ae" opacity="0.34"/></g>
+    </g>
+    <g id="effect-js" clip-path="url(#gemini-body-clip-base)" opacity="0.42"><path d="M70 112h36v-8h28v8h32v8h-40v8H94v-8H70z" fill="#77a1ff"/><path d="M62 144h28v-8h36v8h32v-8h36v16h-36v8h-36v-8H86v8H62z" fill="#d77aec" opacity="0.58"/></g>
+    <g id="eyes-js" fill="#080b16"><g id="notification-gaze-js"><g id="blink-js"><rect x="96" y="140" width="14" height="24"/><rect x="146" y="140" width="14" height="24"/></g></g></g>
+    <path id="mouth-js" d="M116 164h8v6h12v-6h8v6h-4v7h-20v-7h-4z" fill="#080b16"/>
+  </g></g></g>
+</svg>

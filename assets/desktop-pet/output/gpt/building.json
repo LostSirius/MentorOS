@@ -1,0 +1,24 @@
+{
+  "character":"gpt",
+  "action":"building",
+  "keyframeCount":8,
+  "keyframes":[
+    {"index":1,"percent":0,"poseY":0,"poseRotateDeg":0,"headY":0,"headRotateDeg":0,"gazeY":0,"eyeScaleY":1,"leftArmX":0,"leftArmY":0,"leftArmRotateDeg":0,"rightArmX":0,"rightArmY":0,"rightArmRotateDeg":0,"knotRotateDeg":0,"knotGlowRotateDeg":0,"shadowScaleX":1,"buildingPhase":"base"},
+    {"index":2,"percent":12,"poseY":-1,"poseRotateDeg":-0.2,"headY":0.5,"headRotateDeg":0.2,"gazeY":0.5,"eyeScaleY":1,"leftArmX":2,"leftArmY":-1,"leftArmRotateDeg":-2,"rightArmX":0,"rightArmY":0,"rightArmRotateDeg":0,"knotRotateDeg":0,"knotGlowRotateDeg":0,"shadowScaleX":0.99,"buildingPhase":"left-arm-start"},
+    {"index":3,"percent":26,"poseY":-1,"poseRotateDeg":0.2,"headY":1,"headRotateDeg":-0.2,"gazeY":1,"eyeScaleY":1,"leftArmX":4,"leftArmY":-2,"leftArmRotateDeg":-4,"rightArmX":-2,"rightArmY":-1,"rightArmRotateDeg":2,"knotRotateDeg":0,"knotGlowRotateDeg":0,"shadowScaleX":0.99,"buildingPhase":"right-arm-join"},
+    {"index":4,"percent":36,"poseY":-2,"poseRotateDeg":-0.4,"headY":1,"headRotateDeg":0.3,"gazeY":1,"eyeScaleY":1,"leftArmX":4,"leftArmY":-4,"leftArmRotateDeg":-5,"rightArmX":-4,"rightArmY":-3,"rightArmRotateDeg":5,"knotRotateDeg":12,"knotGlowRotateDeg":-6,"shadowScaleX":0.98,"buildingPhase":"merge-and-lock"},
+    {"index":5,"percent":44,"poseY":-2,"poseRotateDeg":0,"headY":1,"headRotateDeg":0,"gazeY":1,"eyeScaleY":1,"leftArmX":4,"leftArmY":-4,"leftArmRotateDeg":-5,"rightArmX":-4,"rightArmY":-4,"rightArmRotateDeg":5,"knotRotateDeg":18,"knotGlowRotateDeg":-9,"shadowScaleX":0.98,"buildingPhase":"lock-hold-start"},
+    {"index":6,"percent":64,"poseY":-2,"poseRotateDeg":0,"headY":1,"headRotateDeg":0,"gazeY":1,"eyeScaleY":1,"leftArmX":4,"leftArmY":-4,"leftArmRotateDeg":-5,"rightArmX":-4,"rightArmY":-4,"rightArmRotateDeg":5,"knotRotateDeg":18,"knotGlowRotateDeg":-9,"shadowScaleX":0.98,"buildingPhase":"lock-hold-end"},
+    {"index":7,"percent":80,"poseY":-0.5,"poseRotateDeg":-0.2,"headY":0.3,"headRotateDeg":-0.1,"gazeY":0.5,"eyeScaleY":1,"leftArmX":0,"leftArmY":0,"leftArmRotateDeg":0,"rightArmX":-2,"rightArmY":-1,"rightArmRotateDeg":2,"knotRotateDeg":6,"knotGlowRotateDeg":-3,"shadowScaleX":1,"buildingPhase":"left-then-right-reset"},
+    {"index":8,"percent":100,"poseY":0,"poseRotateDeg":0,"headY":0,"headRotateDeg":0,"gazeY":0,"eyeScaleY":1,"leftArmX":0,"leftArmY":0,"leftArmRotateDeg":0,"rightArmX":0,"rightArmY":0,"rightArmRotateDeg":0,"knotRotateDeg":0,"knotGlowRotateDeg":0,"shadowScaleX":1,"buildingPhase":"base"}
+  ],
+  "durationMs":3600,
+  "loop":true,
+  "easing":"cubic-bezier(0.45, 0, 0.55, 1)",
+  "blinkEasing":"linear",
+  "layers":["pointer-body-js","float-js","building-pose-js","body-js","head-build-js","head-js","eyes-js","building-gaze-js","blink-js","arms-js","left-arm-build-js","right-arm-build-js","accessory-js","knot-core-js","effect-js","knot-glow-js","shadow-js","shadow-pulse-js"],
+  "pointerTrackingLayers":["pointer-body-js","eyes-js","shadow-js"],
+  "partMotion":{"bodyMaxYUserUnits":2,"bodyMaxRotateDeg":0.4,"headMaxYUserUnits":1,"headMaxRotateDeg":0.3,"gazeMaxYUserUnits":1,"armMaxTranslateUserUnits":4,"armMaxRotateDeg":5,"knotMaxRotateDeg":18,"knotGlowMaxRotateDeg":9,"usesNewGeometry":false,"usesWholeBodyScale":false,"usesColorChange":false,"usesBlur":false,"usesRaster":false},
+  "pointerTracking":{"normalization":{"origin":"rendered gpt character center","fullScaleStageRatioX":0.3,"fullScaleStageRatioY":0.3,"clampMin":-1,"clampMax":1},"body":{"maxXUserUnits":16,"maxYUserUnits":12,"maxTiltDeg":3,"layer":"pointer-body-js"},"eyes":{"maxXUserUnits":3,"maxYUserUnits":3,"layer":"eyes-js"},"shadow":{"maxReverseXUserUnits":12,"maxReverseYUserUnits":5,"maxPointerStretch":1.08,"layer":"shadow-js","buildingScaleLayer":"shadow-pulse-js"},"response":{"smoothingCoefficient":0.2,"returnDelayMs":650,"returnSettleThreshold":0.001,"expectedReturnDurationMs":500,"engine":"requestAnimationFrame"}},
+  "seamStrategy":"The green knot only turns at the completion node; keyframes 5 and 6 hold the completed arm-and-knot lock unchanged for 20% of the loop, then the arms exit asymmetrically before keyframe 8 restores keyframe 1."
+}

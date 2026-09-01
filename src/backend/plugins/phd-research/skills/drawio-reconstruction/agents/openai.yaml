@@ -1,0 +1,4 @@
+interface:
+  display_name: "Draw.io Reconstruction"
+  short_description: "Rebuild images as editable Draw.io with visual audits"
+  default_prompt: "Use $drawio-reconstruction to rebuild the provided diagram image or image folder as editable Draw.io files with PNG previews and visual-fidelity audits."

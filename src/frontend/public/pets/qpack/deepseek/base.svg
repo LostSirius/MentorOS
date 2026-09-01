@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" preserveAspectRatio="xMidYMid meet" style="background-color:transparent">
+  <g id="shadow-js" opacity="0.22">
+    <ellipse id="shadow-pulse-js" cx="128" cy="241" rx="48" ry="6" fill="#09255f"/>
+  </g>
+
+  <g id="pointer-body-js" shape-rendering="crispEdges">
+    <g id="float-js">
+      <g id="buoyancy-sway-js">
+        <g id="tail-js">
+          <path d="M96 82h20v8h8v8h8v-8h8v-8h20v12h-12v8h-8v10h-24v-10h-8v-8H96z" fill="#1655c7"/>
+          <path d="M100 82h16v6h8v8h8v-6h8v-8h16v4h-12v8h-8v10h-16V96h-8v-8h-12z" fill="#3485eb" opacity="0.72"/>
+        </g>
+
+        <g id="body-js">
+          <path d="M88 110h80v4h16v8h8v8h8v16h4v50h-4v12h-8v8h-12v8h-20v6H96v-6H76v-8H64v-8h-8v-12h-4v-50h4v-16h8v-8h8v-8h16z" fill="#093a9a"/>
+          <path d="M92 114h72v4h16v8h8v8h8v16h4v42h-4v12h-8v8h-16v8H84v-8H68v-8h-8v-12h-4v-42h4v-16h8v-8h8v-8h16z" fill="#1459c7"/>
+          <path d="M96 118h64v4h16v8h8v8h8v24h-8v-12h-8v-8h-8v-8h-72v4H80v8h-8v16H60v-12h4v-16h8v-8h8v-4h16z" fill="#2e88ef" opacity="0.74"/>
+          <path d="M84 126h16v8h-8v8h-8v8H72v-12h4v-8h8z" fill="#68b8ff" opacity="0.62"/>
+          <path d="M80 156h8v8h-8zM72 164h8v8h-8z" fill="#0a3b9b"/>
+          <path d="M160 218h20v6h-20zM76 216h20v8H76z" fill="#0a347f" opacity="0.72"/>
+          <path d="M96 224h24v8H96zM140 224h24v8h-24z" fill="#0a347f"/>
+          <path d="M100 224h20v6h-20zM144 224h20v6h-20z" fill="#2783e8"/>
+        </g>
+
+        <g id="arms-js">
+          <g id="left-fin-js">
+            <path d="M56 170h12v12h4v18h-8v8h-8v8H40v-18h8v-20h8z" fill="#0a398f"/>
+            <path d="M52 178h12v20h-8v10H44v-10h4v-16h4z" fill="#246ed6"/>
+            <path d="M44 198h12v10H44z" fill="#3895ee" opacity="0.62"/>
+          </g>
+          <g id="right-fin-js">
+            <path d="M200 170h-12v12h-4v18h8v8h8v8h16v-18h-8v-20h-8z" fill="#0a398f"/>
+            <path d="M204 178h-12v20h8v10h12v-10h-4v-16h-4z" fill="#246ed6"/>
+            <path d="M200 198h12v10h-12z" fill="#3895ee" opacity="0.62"/>
+          </g>
+        </g>
+
+        <g id="head-js">
+          <path d="M84 154h88v4h12v8h8v30h-8v8h-12v8H84v-4H72v-8h-8v-34h8v-8h12z" fill="#f4f8ff"/>
+          <path d="M88 158h80v4h12v8h8v22h-8v8h-12v8H88v-4H76v-8h-8v-26h8v-8h12z" fill="#ffffff"/>
+          <path d="M80 170h8v26h8v8H84v-4H76v-30zM108 202h8v10h-8zM124 202h8v10h-8zM140 202h8v10h-8zM156 200h8v8h-8z" fill="#d8eaff" opacity="0.78"/>
+          <path id="mouth-js" d="M116 188h8v5h24v-5h8v9h-8v5h-24v-5h-8z" fill="#123b91"/>
+        </g>
+
+        <g id="eyes-js">
+          <g id="blink-js" fill="#10479f">
+            <rect x="96" y="174" width="12" height="18"/>
+            <rect x="152" y="174" width="12" height="18"/>
+          </g>
+        </g>
+
+        <g id="accessory-js">
+          <path d="M160 146h24v4h8v8h4v8h4v24h-4v8h-4v8h-8v4h-24v-4h-8v-8h-4v-8h-4v-24h4v-8h4v-8h8z" fill="#082868"/>
+          <path d="M160 150h24v4h8v8h4v32h-4v8h-8v4h-24v-4h-8v-8h-4v-32h4v-8h8z" fill="#dceeff"/>
+          <path d="M164 156h16v4h8v8h4v20h-4v8h-8v4h-16v-4h-8v-8h-4v-20h4v-8h8z" fill="#0b64c7"/>
+          <path id="lens-glass-js" d="M164 162h16v4h6v8h4v12h-4v8h-6v4h-16v-4h-6v-8h-4v-12h4v-8h6z" fill="#12cfdf" opacity="0.88"/>
+          <path id="lens-highlight-js" d="M166 164h6v8h-6zM172 172h6v6h-6z" fill="#9dffff" opacity="0.86"/>
+          <path d="M188 196h8v12h8v8h-12v-8h-4z" fill="#082868"/>
+        </g>
+
+        <g id="effect-js">
+          <path id="star-cyan-js" d="M124 20h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#08d6df"/>
+          <path id="star-blue-js" d="M92 48h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#1663e9"/>
+          <path id="star-yellow-js" d="M154 54h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#fff26c"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

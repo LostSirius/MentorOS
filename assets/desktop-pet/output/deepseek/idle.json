@@ -1,0 +1,39 @@
+{
+  "character": "deepseek",
+  "action": "idle",
+  "keyframeCount": 8,
+  "keyframes": [
+    {"index":1,"percent":0,"bodyY":0,"bodySwayDeg":0,"tailX":0,"leftFinY":0,"rightFinY":0,"eyeScaleY":1,"lensOpacity":0.84,"starMaxOffset":0,"shadowScaleX":1,"description":"水下浮力基准；鲸鱼居中，鳍尾舒展，搜索镜处于低亮起点。"},
+    {"index":2,"percent":20,"bodyY":-3,"bodySwayDeg":0.8,"tailX":2,"leftFinY":-1,"rightFinY":1,"eyeScaleY":1,"lensOpacity":0.9,"starMaxOffset":1,"shadowScaleX":0.94,"description":"缓慢上浮3 units，身体轻微右偏，尾巴和双鳍错相摆动。"},
+    {"index":3,"percent":40,"bodyY":-7,"bodySwayDeg":1.5,"tailX":3,"leftFinY":-2,"rightFinY":2,"eyeScaleY":1,"lensOpacity":1,"starMaxOffset":2,"shadowScaleX":0.86,"description":"到达最高点；身体重心右移至1.5度，搜索镜高光达到峰值，阴影最窄。"},
+    {"index":4,"percent":60,"bodyY":-4,"bodySwayDeg":0.5,"tailX":1,"leftFinY":-1,"rightFinY":1,"eyeScaleY":1,"lensOpacity":0.94,"starMaxOffset":1,"shadowScaleX":0.93,"description":"平缓回落，尾鳍和搜索镜高光同步回归。"},
+    {"index":5,"percent":76,"bodyY":1,"bodySwayDeg":-0.8,"tailX":-2,"leftFinY":2,"rightFinY":-2,"eyeScaleY":0.62,"lensOpacity":0.88,"starMaxOffset":1,"shadowScaleX":1.04,"description":"越过基线1 unit并开始自然眨眼；鳍尾反向摆动。"},
+    {"index":6,"percent":79,"bodyY":3,"bodySwayDeg":-1.5,"tailX":-3,"leftFinY":3,"rightFinY":-3,"eyeScaleY":0.08,"lensOpacity":0.84,"starMaxOffset":2,"shadowScaleX":1.07,"description":"到达最低点；眼睛短暂闭合，身体重心左偏，阴影最宽。"},
+    {"index":7,"percent":82,"bodyY":1,"bodySwayDeg":-0.6,"tailX":-1,"leftFinY":1,"rightFinY":-1,"eyeScaleY":1,"lensOpacity":0.86,"starMaxOffset":1,"shadowScaleX":1.04,"description":"重新睁眼并回升；尾巴、鳍、搜索镜和星星开始复位。"},
+    {"index":8,"percent":100,"bodyY":0,"bodySwayDeg":0,"tailX":0,"leftFinY":0,"rightFinY":0,"eyeScaleY":1,"lensOpacity":0.84,"starMaxOffset":0,"shadowScaleX":1,"description":"所有参数精确回到第1帧，形成无跳变水下循环。"}
+  ],
+  "durationMs": 4000,
+  "loop": true,
+  "easing": "cubic-bezier(0.45, 0, 0.55, 1)",
+  "blinkEasing": "linear",
+  "layers": ["pointer-body-js","float-js","buoyancy-sway-js","body-js","head-js","eyes-js","arms-js","tail-js","accessory-js","effect-js","shadow-js","shadow-pulse-js"],
+  "pointerTrackingLayers": ["pointer-body-js","eyes-js","shadow-js"],
+  "partMotion": {
+    "bodySwayMaxDeg": 1.5,
+    "tailMaxXUserUnits": 3,
+    "finMaxYUserUnits": 3,
+    "starMaxOffsetUserUnits": 2,
+    "lensOpacityMin": 0.84,
+    "lensOpacityMax": 1,
+    "lensHighlightMaxXUserUnits": 2,
+    "usesBlur": false
+  },
+  "pointerTracking": {
+    "normalization": {"origin":"rendered DeepSeek character center","fullScaleStageRatioX":0.3,"fullScaleStageRatioY":0.3,"clampMin":-1,"clampMax":1},
+    "body": {"maxXUserUnits":16,"maxYUserUnits":12,"maxTiltDeg":3,"layer":"pointer-body-js"},
+    "eyes": {"maxXUserUnits":3,"maxYUserUnits":3,"layer":"eyes-js"},
+    "shadow": {"maxReverseXUserUnits":12,"maxReverseYUserUnits":5,"maxPointerStretch":1.08,"layer":"shadow-js","idleScaleLayer":"shadow-pulse-js"},
+    "response": {"smoothingCoefficient":0.2,"returnDelayMs":650,"returnSettleThreshold":0.003,"expectedReturnDurationMs":500,"engine":"requestAnimationFrame"}
+  },
+  "seamStrategy": "第8帧将高度、重心角、鳍尾位置、眼睛、搜索镜、星星和阴影全部还原为第1帧；所有动画共享同一4000ms时间轴。"
+}

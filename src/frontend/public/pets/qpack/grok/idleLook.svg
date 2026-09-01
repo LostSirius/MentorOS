@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" preserveAspectRatio="xMidYMid meet" style="background-color:transparent;overflow:visible;--eye-x:0px;--eye-y:0px;--body-x:0px;--body-y:0px;--body-tilt:0deg;--shadow-x:0px;--shadow-y:0px;--shadow-stretch:1;--play-state:running">
+  <defs>
+    <path id="grok-bolt-shape-base" d="M144 158h18l-18 18h14l-40 40h-20l18-18h-14z"/>
+      <style>
+      #pointer-body-js { transform:translate(var(--body-x),var(--body-y)) rotate(var(--body-tilt)); transform-box:view-box; transform-origin:128px 164px; }
+      #eyes-js { transform:translate(var(--eye-x),var(--eye-y)); }
+      #idle-look-gaze-js { animation:grok-idle-look-gaze 4000ms cubic-bezier(0.45,0,0.55,1) infinite; animation-play-state:var(--play-state); transform-box:view-box; transform-origin:128px 164px; }
+      #blink-js { animation:grok-idle-look-blink 4000ms linear infinite; animation-play-state:var(--play-state); transform-box:fill-box; transform-origin:center; }
+      #idle-look-pose-js { animation:grok-idle-look-pose 4000ms cubic-bezier(0.45,0,0.55,1) infinite; animation-play-state:var(--play-state); transform-box:view-box; transform-origin:128px 164px; }
+      #head-follow-js { animation:grok-idle-look-head 4000ms cubic-bezier(0.45,0,0.55,1) infinite; animation-play-state:var(--play-state); transform-box:view-box; transform-origin:128px 150px; }
+      #shadow-js { transform:translate(var(--shadow-x),var(--shadow-y)) scaleX(var(--shadow-stretch)); transform-box:view-box; transform-origin:128px 241px; }
+      #shadow-pulse-js { animation:grok-idle-shadow 4000ms cubic-bezier(0.45,0,0.55,1) infinite; animation-play-state:var(--play-state); transform-box:fill-box; transform-origin:center; }
+      #shadow-idle-look-js { animation:grok-idle-look-shadow 4000ms cubic-bezier(0.45,0,0.55,1) infinite; animation-play-state:var(--play-state); transform-box:fill-box; transform-origin:center; }
+      .is-restarting * { animation:none !important; }
+      #float-js { animation:grok-idle-float 4000ms cubic-bezier(0.45,0,0.55,1) infinite; animation-play-state:var(--play-state); transform-box:view-box; transform-origin:128px 164px; }
+      #helmet-idle-balance-js { animation:grok-idle-helmet-balance 4000ms cubic-bezier(0.45,0,0.55,1) infinite; animation-play-state:var(--play-state); transform-box:view-box; transform-origin:128px 140px; }
+      @keyframes grok-idle-float { 0%{transform:translateY(0)} 20%{transform:translateY(-5px)} 40%{transform:translateY(-10px)} 60%{transform:translateY(-5px)} 76%{transform:translateY(1px)} 79%{transform:translateY(3px)} 82%{transform:translateY(1px)} 100%{transform:translateY(0)} }
+      @keyframes grok-idle-helmet-balance { 0%{transform:rotate(0)} 20%{transform:rotate(.2deg)} 40%{transform:rotate(.38deg)} 60%{transform:rotate(.16deg)} 76%{transform:rotate(-.1deg)} 79%{transform:rotate(-.24deg)} 82%{transform:rotate(-.08deg)} 100%{transform:rotate(0)} }
+      @keyframes grok-idle-shadow { 0%{transform:scaleX(1);opacity:.22} 20%{transform:scaleX(.91);opacity:.20} 40%{transform:scaleX(.82);opacity:.17} 60%{transform:scaleX(.91);opacity:.20} 76%{transform:scaleX(1.05);opacity:.23} 79%{transform:scaleX(1.10);opacity:.24} 82%{transform:scaleX(1.05);opacity:.23} 100%{transform:scaleX(1);opacity:.22} }
+      @keyframes grok-idle-look-pose {
+        0%{transform:translate(0,0) rotate(0)} 20%{transform:translate(0,0) rotate(0)}
+        32%{transform:translate(-0.4px,-0.2px) rotate(-0.2deg)}
+        46%{transform:translate(-0.8px,-0.4px) rotate(-0.4deg)}
+        58%{transform:translate(-0.8px,-0.4px) rotate(-0.4deg)}
+        70%{transform:translate(-0.8px,-0.4px) rotate(-0.4deg)}
+        84%{transform:translate(-0.27999999999999997px,-0.1px) rotate(-0.15000000000000002deg)}
+        100%{transform:translate(0,0) rotate(0)}
+      }
+      @keyframes grok-idle-look-head {
+        0%{transform:translate(0,0) rotate(0)} 20%{transform:translate(0,0) rotate(0)}
+        32%{transform:translate(-0.5px,-0.3px) rotate(-0.25deg)}
+        46%{transform:translate(-1px,-0.6px) rotate(-0.5deg)}
+        58%{transform:translate(-1px,-0.6px) rotate(-0.5deg)}
+        70%{transform:translate(-1px,-0.6px) rotate(-0.5deg)}
+        84%{transform:translate(-0.3px,-0.19999999999999998px) rotate(-0.15deg)}
+        100%{transform:translate(0,0) rotate(0)}
+      }
+      @keyframes grok-idle-look-gaze {
+        0%{transform:translate(0,0)}
+        20%{transform:translate(-1.2px,-0.7999995px)}
+        32%{transform:translate(-2.4px,-1.5px)}
+        46%{transform:translate(-2.4px,-1.5px)}
+        58%{transform:translate(-2.4px,-1.5px)}
+        70%{transform:translate(-1.0000008px,-0.6000000000000001px)}
+        84%{transform:translate(-0.19999999999999998px,-0.1px)}
+        100%{transform:translate(0,0)}
+      }
+      @keyframes grok-idle-look-blink {
+        0%{transform:scaleY(1)} 20%{transform:scaleY(1)} 32%{transform:scaleY(1)} 46%{transform:scaleY(1)}
+        58%{transform:scaleY(.08)} 70%{transform:scaleY(1)} 84%{transform:scaleY(1)} 100%{transform:scaleY(1)}
+      }
+      @keyframes grok-idle-look-shadow {
+        0%{transform:scaleX(1)} 20%{transform:scaleX(.997)} 32%{transform:scaleX(.994)} 46%{transform:scaleX(.99)}
+        58%{transform:scaleX(.99)} 70%{transform:scaleX(.994)} 84%{transform:scaleX(.998)} 100%{transform:scaleX(1)}
+      }
+    </style>
+  </defs>
+
+  <g id="shadow-js">
+    <g id="shadow-pulse-js" opacity="0.22">
+      <g id="shadow-idle-look-js">
+        <ellipse cx="128" cy="241" rx="48" ry="6" fill="#111217"/>
+      </g>
+    </g>
+  </g>
+
+  <g id="pointer-body-js" shape-rendering="crispEdges">
+    <g id="float-js">
+      <g id="idle-look-pose-js">
+      <g id="body-js">
+        <path d="M80 152h96v4h12v8h8v40h-8v8h-12v8h-16v8H96v-8H80v-8H68v-8h-8v-40h8v-8h12z" fill="#090a0c"/>
+        <path d="M80 160h96v4h8v8h4v28h-8v8h-12v4h-16v8h-48v-8H88v-4H76v-8h-8v-28h4v-8h8z" fill="#1b1c20"/>
+        <path d="M76 168h16v8h-8v20h8v8H76v-8h-8v-20h8zM164 168h16v8h8v20h-8v8h-16v-8h8v-20h-8z" fill="#28292e" opacity="0.68"/>
+        <path d="M88 208h16v8h48v-8h16v8h-16v8h-48v-8H88z" fill="#25262b" opacity="0.68"/>
+        <path d="M88 216h24v12H88zM144 216h24v12h-24z" fill="#08090b"/>
+        <path d="M92 216h16v8H92zM148 216h16v8h-16z" fill="#d9d9d9"/>
+        <path d="M92 216h16v4H92zM148 216h16v4h-16z" fill="#ffffff" opacity="0.72"/>
+      </g>
+
+      <g id="arms-js">
+        <path d="M60 164h12v8h4v28h-4v8H60v-8h-8v-28h8z" fill="#090a0c"/>
+        <path d="M56 176h12v8h4v16h-4v8H56v-8h-8v-16h8z" fill="#f4f4f4"/>
+        <path d="M52 184h12v16H52zM56 200h8v8h-8z" fill="#d5d5d5"/>
+        <path d="M196 164h-12v8h-4v28h4v8h12v-8h8v-28h-8z" fill="#090a0c"/>
+        <path d="M200 176h-12v8h-4v16h4v8h12v-8h8v-16h-8z" fill="#f4f4f4"/>
+        <path d="M192 184h12v16h-12zM192 200h8v8h-8z" fill="#d5d5d5"/>
+      </g>
+
+      <g id="head-follow-js">
+      <g id="head-js">
+      <g id="helmet-idle-balance-js">
+        <path d="M84 100h88v4h8v8h8v12h4v28h-4v8h-8v4h-8v4H84v-4h-8v-4h-8v-8h-4v-28h4v-12h8v-8h8z" fill="#08090b"/>
+        <path d="M88 104h80v4h8v8h8v12h4v24h-4v8h-8v4h-8v4H88v-4h-8v-4h-8v-8h-4v-24h4v-12h8v-8h8z" fill="#f6f6f6"/>
+        <path d="M92 108h72v4h8v8h8v12h4v24h-4v8h-8v4h-8v4H92v-4h-8v-4h-8v-8h-4v-24h4v-12h8v-8h8z" fill="#d8d8d8" opacity="0.62"/>
+        <path d="M92 112h72v4h8v8h8v12h4v20h-4v8h-8v4H92v-4h-8v-8h-4v-20h4v-12h8z" fill="#0b0c0e"/>
+        <path d="M92 112h72v4h8v8h8v8h-8v-8h-8v-4H96v4h-8v8h-8v-8h4v-12h8z" fill="#ffffff" opacity="0.34"/>
+        <path d="M68 124h8v-8h8v44h-8v-8h-8zM180 124h8v-8h8v44h-8v-8h-8z" fill="#08090b"/>
+        <path d="M68 132h8v24h-8zM180 132h8v24h-8z" fill="#f4f4f4"/>
+        <path d="M68 136h4v20h-4zM184 136h4v20h-4z" fill="#d4d4d4"/>
+        <path id="mouth-js" d="M120 150h16v5h-16z" fill="#f6f6f6"/>
+      
+      </g>
+    </g>
+
+      <g id="eyes-js" fill="#f8f8f8">
+      <g id="idle-look-gaze-js">
+        <g id="blink-js">
+          <rect x="96" y="130" width="12" height="18"/>
+          <rect x="148" y="130" width="12" height="18"/>
+        </g>
+      
+      </g>
+    </g>
+      </g>
+
+      <g id="accessory-js">
+        <use id="bolt-js" href="#grok-bolt-shape-base" fill="#eeeeee"/>
+      </g>
+
+      <g id="effect-js">
+        <path d="M116 28h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#f8f8f8"/>
+        <path d="M156 46h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#23bff0"/>
+        <path d="M124 68h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#ffe56a"/>
+      </g>
+    
+      </g>
+    </g>
+  </g>
+</svg>
+
+

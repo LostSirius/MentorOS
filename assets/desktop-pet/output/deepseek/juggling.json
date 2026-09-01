@@ -1,0 +1,228 @@
+{
+  "character": "deepseek",
+  "action": "juggling",
+  "keyframeCount": 8,
+  "keyframes": [
+    {
+      "index": 1,
+      "percent": 0,
+      "phase": "base",
+      "transforms": {
+        "#juggling-pose-js": "translateY(0px) rotate(0deg)",
+        "#juggling-gaze-js": "translate(0px,0px)",
+        "#blink-js": "scaleY(1)",
+        "#shadow-pulse-js": "scaleX(1)",
+        "#head-build-js": "translate(0px,0px) rotate(0deg)",
+        "#left-fin-js": "translate(0px,0px) rotate(0deg)",
+        "#right-fin-js": "translate(0px,0px) rotate(0deg)",
+        "#tail-js": "translate(0px,0px) rotate(0deg)",
+        "#star-cyan-js": "translate(0px,0px) rotate(0deg)",
+        "#star-blue-js": "translate(0px,0px) rotate(0deg)",
+        "#star-yellow-js": "translate(0px,0px) rotate(0deg)"
+      }
+    },
+    {
+      "index": 2,
+      "percent": 12,
+      "phase": "toss-a",
+      "transforms": {
+        "#juggling-pose-js": "translateY(-0.5px) rotate(-0.2deg)",
+        "#juggling-gaze-js": "translate(-1px,-0.5px)",
+        "#blink-js": "scaleY(1)",
+        "#shadow-pulse-js": "scaleX(1)",
+        "#head-build-js": "translate(0px,-0.5px) rotate(-0.15deg)",
+        "#left-fin-js": "translate(2px,-4px) rotate(-5deg)",
+        "#right-fin-js": "translate(-1px,3px) rotate(-2deg)",
+        "#tail-js": "translate(-3px,0px) rotate(-3deg)",
+        "#star-cyan-js": "translate(0px,-5px) rotate(0deg)",
+        "#star-blue-js": "translate(-4px,-2px) rotate(0deg)",
+        "#star-yellow-js": "translate(4px,-2px) rotate(0deg)"
+      }
+    },
+    {
+      "index": 3,
+      "percent": 26,
+      "phase": "transfer-b",
+      "transforms": {
+        "#juggling-pose-js": "translateY(-1px) rotate(0.3deg)",
+        "#juggling-gaze-js": "translate(1px,-1px)",
+        "#blink-js": "scaleY(1)",
+        "#shadow-pulse-js": "scaleX(0.99)",
+        "#head-build-js": "translate(0px,0.5px) rotate(0.15deg)",
+        "#left-fin-js": "translate(4px,-1px) rotate(-3deg)",
+        "#right-fin-js": "translate(-3px,-1px) rotate(2deg)",
+        "#tail-js": "translate(3px,0px) rotate(3deg)",
+        "#star-cyan-js": "translate(4px,-2px) rotate(0deg)",
+        "#star-blue-js": "translate(0px,-5px) rotate(0deg)",
+        "#star-yellow-js": "translate(0px,4px) rotate(0deg)"
+      }
+    },
+    {
+      "index": 4,
+      "percent": 40,
+      "phase": "catch-c",
+      "transforms": {
+        "#juggling-pose-js": "translateY(-0.5px) rotate(-0.3deg)",
+        "#juggling-gaze-js": "translate(1px,0.5px)",
+        "#blink-js": "scaleY(1)",
+        "#shadow-pulse-js": "scaleX(1)",
+        "#head-build-js": "translate(0px,-0.5px) rotate(-0.2deg)",
+        "#left-fin-js": "translate(1px,3px) rotate(2deg)",
+        "#right-fin-js": "translate(-2px,-4px) rotate(5deg)",
+        "#tail-js": "translate(-2px,0px) rotate(-2deg)",
+        "#star-cyan-js": "translate(0px,4px) rotate(0deg)",
+        "#star-blue-js": "translate(4px,-2px) rotate(0deg)",
+        "#star-yellow-js": "translate(-4px,-2px) rotate(0deg)"
+      }
+    },
+    {
+      "index": 5,
+      "percent": 54,
+      "phase": "exchange-a",
+      "transforms": {
+        "#juggling-pose-js": "translateY(-1px) rotate(0.3deg)",
+        "#juggling-gaze-js": "translate(-1px,0.5px)",
+        "#blink-js": "scaleY(1)",
+        "#shadow-pulse-js": "scaleX(0.99)",
+        "#head-build-js": "translate(0px,0.5px) rotate(0.2deg)",
+        "#left-fin-js": "translate(-1px,-4px) rotate(-4deg)",
+        "#right-fin-js": "translate(-4px,-1px) rotate(3deg)",
+        "#tail-js": "translate(3px,0px) rotate(3deg)",
+        "#star-cyan-js": "translate(-4px,-2px) rotate(0deg)",
+        "#star-blue-js": "translate(0px,4px) rotate(0deg)",
+        "#star-yellow-js": "translate(0px,-5px) rotate(0deg)"
+      }
+    },
+    {
+      "index": 6,
+      "percent": 68,
+      "phase": "exchange-b",
+      "transforms": {
+        "#juggling-pose-js": "translateY(-0.5px) rotate(-0.2deg)",
+        "#juggling-gaze-js": "translate(1px,-0.5px)",
+        "#blink-js": "scaleY(0.25)",
+        "#shadow-pulse-js": "scaleX(1)",
+        "#head-build-js": "translate(0px,0px) rotate(0deg)",
+        "#left-fin-js": "translate(3px,-1px) rotate(-2deg)",
+        "#right-fin-js": "translate(-1px,3px) rotate(-2deg)",
+        "#tail-js": "translate(-3px,0px) rotate(-3deg)",
+        "#star-cyan-js": "translate(0px,-5px) rotate(0deg)",
+        "#star-blue-js": "translate(-4px,-2px) rotate(0deg)",
+        "#star-yellow-js": "translate(4px,-2px) rotate(0deg)"
+      }
+    },
+    {
+      "index": 7,
+      "percent": 84,
+      "phase": "settle",
+      "transforms": {
+        "#juggling-pose-js": "translateY(-0.25px) rotate(0.1deg)",
+        "#juggling-gaze-js": "translate(0px,0px)",
+        "#blink-js": "scaleY(1)",
+        "#shadow-pulse-js": "scaleX(1)",
+        "#head-build-js": "translate(0px,-0.2px) rotate(-0.1deg)",
+        "#left-fin-js": "translate(1px,0px) rotate(-1deg)",
+        "#right-fin-js": "translate(-1px,0px) rotate(1deg)",
+        "#tail-js": "translate(1px,0px) rotate(1deg)",
+        "#star-cyan-js": "translate(1px,-1px) rotate(0deg)",
+        "#star-blue-js": "translate(0px,1px) rotate(0deg)",
+        "#star-yellow-js": "translate(-1px,1px) rotate(0deg)"
+      }
+    },
+    {
+      "index": 8,
+      "percent": 100,
+      "phase": "base",
+      "transforms": {
+        "#juggling-pose-js": "translateY(0px) rotate(0deg)",
+        "#juggling-gaze-js": "translate(0px,0px)",
+        "#blink-js": "scaleY(1)",
+        "#shadow-pulse-js": "scaleX(1)",
+        "#head-build-js": "translate(0px,0px) rotate(0deg)",
+        "#left-fin-js": "translate(0px,0px) rotate(0deg)",
+        "#right-fin-js": "translate(0px,0px) rotate(0deg)",
+        "#tail-js": "translate(0px,0px) rotate(0deg)",
+        "#star-cyan-js": "translate(0px,0px) rotate(0deg)",
+        "#star-blue-js": "translate(0px,0px) rotate(0deg)",
+        "#star-yellow-js": "translate(0px,0px) rotate(0deg)"
+      }
+    }
+  ],
+  "durationMs": 3000,
+  "loop": true,
+  "easing": "cubic-bezier(0.45, 0, 0.55, 1)",
+  "blinkEasing": "linear",
+  "layers": [
+    "pointer-body-js",
+    "float-js",
+    "juggling-pose-js",
+    "body-js",
+    "head-js",
+    "eyes-js",
+    "juggling-gaze-js",
+    "blink-js",
+    "arms-js",
+    "accessory-js",
+    "effect-js",
+    "shadow-js",
+    "shadow-pulse-js",
+    "head-build-js",
+    "left-fin-js",
+    "right-fin-js",
+    "tail-js",
+    "star-cyan-js",
+    "star-blue-js",
+    "star-yellow-js"
+  ],
+  "pointerTrackingLayers": [
+    "pointer-body-js",
+    "eyes-js",
+    "shadow-js"
+  ],
+  "partMotion": {
+    "bodyMaxTranslateUserUnits": 2,
+    "bodyMaxRotateDeg": 0.6,
+    "partMaxTranslateUserUnits": 5,
+    "partMaxRotateDeg": 6,
+    "usesNewGeometry": false,
+    "usesWholeBodyScale": false,
+    "usesColorChange": false,
+    "usesBlur": false,
+    "usesRaster": false
+  },
+  "pointerTracking": {
+    "normalization": {
+      "origin": "rendered deepseek character center",
+      "fullScaleStageRatioX": 0.3,
+      "fullScaleStageRatioY": 0.3,
+      "clampMin": -1,
+      "clampMax": 1
+    },
+    "body": {
+      "maxXUserUnits": 16,
+      "maxYUserUnits": 12,
+      "maxTiltDeg": 3,
+      "layer": "pointer-body-js"
+    },
+    "eyes": {
+      "maxXUserUnits": 3,
+      "maxYUserUnits": 3,
+      "layer": "eyes-js"
+    },
+    "shadow": {
+      "maxReverseXUserUnits": 12,
+      "maxReverseYUserUnits": 5,
+      "maxPointerStretch": 1.08,
+      "layer": "shadow-js",
+      "stateScaleLayer": "shadow-pulse-js"
+    },
+    "response": {
+      "smoothingCoefficient": 0.2,
+      "returnDelayMs": 650,
+      "returnSettleThreshold": 0.003,
+      "expectedReturnDurationMs": 500,
+      "engine": "requestAnimationFrame"
+    }
+  },
+  "seamStrategy": "Keyframe 8 restores every transform, gaze, blink and shadow value to keyframe 1; all juggling layers share one 3000ms timeline."
+}

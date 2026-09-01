@@ -1,0 +1,52 @@
+{
+  "character": "deepseek",
+  "action": "thinking",
+  "keyframeCount": 8,
+  "keyframes": [
+    {"index":1,"percent":0,"bodyX":0,"bodyY":0,"bodyRotateDeg":0,"headX":0,"headY":0,"headRotateDeg":0,"gazeX":0,"gazeY":0,"eyeScaleY":1,"tailX":0,"tailRotateDeg":0,"leftFinY":0,"leftFinRotateDeg":0,"rightFinY":0,"rightFinRotateDeg":0,"lensX":0,"lensY":0,"lensRotateDeg":0,"shadowScaleX":1,"description":"完整基准姿态：视线、搜索镜、双鳍、尾部和阴影均位于初始状态。"},
+    {"index":2,"percent":16,"bodyX":0,"bodyY":1,"bodyRotateDeg":-0.2,"headX":0,"headY":0.5,"headRotateDeg":-0.1,"gazeX":0,"gazeY":1.2,"eyeScaleY":1,"tailX":-0.5,"tailRotateDeg":-1,"leftFinY":0.5,"leftFinRotateDeg":1,"rightFinY":0.5,"rightFinRotateDeg":-1,"lensX":0,"lensY":0.8,"lensRotateDeg":-2,"shadowScaleX":1.01,"description":"身体与面部轻微下沉，视线向下，搜索镜同步压低，进入聚焦状态。"},
+    {"index":3,"percent":32,"bodyX":-1,"bodyY":2,"bodyRotateDeg":-0.5,"headX":-0.5,"headY":1,"headRotateDeg":-0.3,"gazeX":-1.5,"gazeY":1.5,"eyeScaleY":1,"tailX":-1.5,"tailRotateDeg":-3,"leftFinY":1.5,"leftFinRotateDeg":3,"rightFinY":0.5,"rightFinRotateDeg":-1,"lensX":-1,"lensY":1.5,"lensRotateDeg":-5,"shadowScaleX":1.02,"description":"保持最低检索位，视线和搜索镜转向左下；左鳍与尾部作克制响应，核查第一组信息。"},
+    {"index":4,"percent":48,"bodyX":1.2,"bodyY":2,"bodyRotateDeg":0.5,"headX":0.5,"headY":1,"headRotateDeg":0.3,"gazeX":1.5,"gazeY":1.5,"eyeScaleY":1,"tailX":1.5,"tailRotateDeg":3,"leftFinY":0.5,"leftFinRotateDeg":1,"rightFinY":1.5,"rightFinRotateDeg":-3,"lensX":1.5,"lensY":1,"lensRotateDeg":5,"shadowScaleX":1.02,"description":"视线与搜索镜平滑转向右下；右鳍接替响应，完成另一组信息的交叉核对。"},
+    {"index":5,"percent":64,"bodyX":0,"bodyY":0.5,"bodyRotateDeg":0,"headX":0,"headY":-0.5,"headRotateDeg":0,"gazeX":0,"gazeY":-0.8,"eyeScaleY":1,"tailX":0,"tailRotateDeg":0,"leftFinY":-1,"leftFinRotateDeg":-1.5,"rightFinY":-1,"rightFinRotateDeg":1.5,"lensX":0,"lensY":-1,"lensRotateDeg":0,"shadowScaleX":0.99,"description":"视线回到中央并略微上抬，身体回升；双鳍向上收拢，搜索镜回正，表现信息汇合。"},
+    {"index":6,"percent":76,"bodyX":0,"bodyY":0,"bodyRotateDeg":0,"headX":0,"headY":0,"headRotateDeg":0,"gazeX":0,"gazeY":-0.3,"eyeScaleY":0.08,"tailX":0.5,"tailRotateDeg":1,"leftFinY":0,"leftFinRotateDeg":0,"rightFinY":0,"rightFinRotateDeg":0,"lensX":0,"lensY":-0.5,"lensRotateDeg":0,"shadowScaleX":0.98,"description":"中央短暂停顿并短促收眼；搜索镜停在略高位置，形成得出判断前的收束。"},
+    {"index":7,"percent":84,"bodyX":0,"bodyY":0.2,"bodyRotateDeg":0,"headX":0,"headY":0.2,"headRotateDeg":0,"gazeX":0,"gazeY":-0.2,"eyeScaleY":1,"tailX":0,"tailRotateDeg":0,"leftFinY":0.2,"leftFinRotateDeg":0.5,"rightFinY":0.2,"rightFinRotateDeg":-0.5,"lensX":0,"lensY":-0.2,"lensRotateDeg":0,"shadowScaleX":1,"description":"重新睁眼，身体、视线、搜索镜、双鳍与尾部平滑复位。"},
+    {"index":8,"percent":100,"bodyX":0,"bodyY":0,"bodyRotateDeg":0,"headX":0,"headY":0,"headRotateDeg":0,"gazeX":0,"gazeY":0,"eyeScaleY":1,"tailX":0,"tailRotateDeg":0,"leftFinY":0,"leftFinRotateDeg":0,"rightFinY":0,"rightFinRotateDeg":0,"lensX":0,"lensY":0,"lensRotateDeg":0,"shadowScaleX":1,"description":"全部参数精确回到第1帧，形成无跳变的检索—收敛循环。"}
+  ],
+  "durationMs": 3600,
+  "loop": true,
+  "easing": "cubic-bezier(0.45, 0, 0.55, 1)",
+  "blinkEasing": "linear",
+  "layers": ["pointer-body-js","float-js","thinking-pose-js","body-js","head-motion-js","head-js","eyes-js","thinking-gaze-js","blink-js","arms-js","left-fin-motion-js","left-fin-js","right-fin-motion-js","right-fin-js","tail-motion-js","tail-js","accessory-js","lens-motion-js","effect-js","shadow-js","shadow-pulse-js"],
+  "pointerTrackingLayers": ["pointer-body-js","eyes-js","shadow-js"],
+  "partMotion": {
+    "bodyMaxXUserUnits": 1.2,
+    "bodyMaxDownYUserUnits": 2,
+    "bodyMaxRotateDeg": 0.5,
+    "headMaxXUserUnits": 0.5,
+    "headMaxYUserUnits": 1,
+    "headMaxRotateDeg": 0.3,
+    "thinkingGazeMaxXUserUnits": 1.5,
+    "thinkingGazeMaxYUserUnits": 1.5,
+    "tailMaxXUserUnits": 1.5,
+    "tailMaxRotateDeg": 3,
+    "finMaxYUserUnits": 1.5,
+    "finMaxRotateDeg": 3,
+    "lensMaxXUserUnits": 1.5,
+    "lensMaxYUserUnits": 1.5,
+    "lensMaxRotateDeg": 5,
+    "lensHighlightMaxXUserUnits": 1.5,
+    "shadowScaleXMin": 0.98,
+    "shadowScaleXMax": 1.02,
+    "usesNewGeometry": false,
+    "usesBlur": false,
+    "usesBubbles": false
+  },
+  "pointerTracking": {
+    "normalization": {"origin":"rendered DeepSeek character center","fullScaleStageRatioX":0.3,"fullScaleStageRatioY":0.3,"clampMin":-1,"clampMax":1},
+    "body": {"maxXUserUnits":16,"maxYUserUnits":12,"maxTiltDeg":3,"layer":"pointer-body-js"},
+    "eyes": {"maxXUserUnits":3,"maxYUserUnits":3,"layer":"eyes-js"},
+    "shadow": {"maxReverseXUserUnits":12,"maxReverseYUserUnits":5,"maxPointerStretch":1.08,"layer":"shadow-js","thinkingScaleLayer":"shadow-pulse-js"},
+    "response": {"smoothingCoefficient":0.2,"returnDelayMs":650,"returnSettleThreshold":0.003,"expectedReturnDurationMs":500,"engine":"requestAnimationFrame"}
+  },
+  "seamStrategy": "第8帧将身体、头部、自动视线、眨眼、搜索镜、双鳍、尾部、搜索镜高光和阴影的全部参数逐项还原为第1帧；所有CSS动画共享同一3600ms时间轴。"
+}

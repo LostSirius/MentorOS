@@ -1,0 +1,150 @@
+{
+  "character": "grok",
+  "action": "idle",
+  "keyframeCount": 8,
+  "keyframes": [
+    {
+      "index": 1,
+      "percent": 0,
+      "bodyY": 0,
+      "helmetBalanceDeg": 0,
+      "eyeScaleY": 1,
+      "shadowScaleX": 1,
+      "boltOpacity": 0.82,
+      "description": "微重力待机基准；头盔居中、眼睛张开、白色闪电处于低亮呼吸起点。"
+    },
+    {
+      "index": 2,
+      "percent": 20,
+      "bodyY": -5,
+      "helmetBalanceDeg": 0.2,
+      "eyeScaleY": 1,
+      "shadowScaleX": 0.91,
+      "boltOpacity": 0.88,
+      "description": "宇航员稳定上浮 5 units；头盔极轻微向右调整，阴影收窄。"
+    },
+    {
+      "index": 3,
+      "percent": 40,
+      "bodyY": -10,
+      "helmetBalanceDeg": 0.38,
+      "eyeScaleY": 1,
+      "shadowScaleX": 0.82,
+      "boltOpacity": 1,
+      "description": "到达最高点；阴影最窄，头盔重心微偏，胸前闪电达到白色呼吸峰值。"
+    },
+    {
+      "index": 4,
+      "percent": 60,
+      "bodyY": -5,
+      "helmetBalanceDeg": 0.16,
+      "eyeScaleY": 1,
+      "shadowScaleX": 0.91,
+      "boltOpacity": 0.92,
+      "description": "以匀稳速度回落；头盔与闪电亮度同步回归。"
+    },
+    {
+      "index": 5,
+      "percent": 76,
+      "bodyY": 1,
+      "helmetBalanceDeg": -0.1,
+      "eyeScaleY": 0.62,
+      "shadowScaleX": 1.05,
+      "boltOpacity": 0.86,
+      "description": "越过基线 1 unit；开始一次自然眨眼，阴影稍微展开。"
+    },
+    {
+      "index": 6,
+      "percent": 79,
+      "bodyY": 3,
+      "helmetBalanceDeg": -0.24,
+      "eyeScaleY": 0.08,
+      "shadowScaleX": 1.1,
+      "boltOpacity": 0.82,
+      "description": "到达最低点；眼睛短暂闭合，阴影最宽，闪电回到低亮。"
+    },
+    {
+      "index": 7,
+      "percent": 82,
+      "bodyY": 1,
+      "helmetBalanceDeg": -0.08,
+      "eyeScaleY": 1,
+      "shadowScaleX": 1.05,
+      "boltOpacity": 0.84,
+      "description": "重新睁眼并回升；头盔恢复居中，阴影与闪电开始回到基准。"
+    },
+    {
+      "index": 8,
+      "percent": 100,
+      "bodyY": 0,
+      "helmetBalanceDeg": 0,
+      "eyeScaleY": 1,
+      "shadowScaleX": 1,
+      "boltOpacity": 0.82,
+      "description": "全部参数精确回到第 1 帧，形成无跳变循环。"
+    }
+  ],
+  "durationMs": 4000,
+  "loop": true,
+  "easing": "cubic-bezier(0.45, 0, 0.55, 1)",
+  "blinkEasing": "linear",
+  "layers": [
+    "pointer-body-js",
+    "float-js",
+    "body-js",
+    "head-js",
+    "eyes-js",
+    "arms-js",
+    "accessory-js",
+    "effect-js",
+    "shadow-js",
+    "shadow-pulse-js"
+  ],
+  "pointerTrackingLayers": [
+    "pointer-body-js",
+    "eyes-js",
+    "shadow-js"
+  ],
+  "boltBreathing": {
+    "opacityMin": 0.82,
+    "opacityMax": 1,
+    "baseFill": "#e7e7e7",
+    "peakFill": "#ffffff",
+    "usesBlur": false
+  },
+  "pointerTracking": {
+    "normalization": {
+      "origin": "rendered Grok character center",
+      "fullScaleStageRatioX": 0.3,
+      "fullScaleStageRatioY": 0.3,
+      "clampMin": -1,
+      "clampMax": 1
+    },
+    "body": {
+      "maxXUserUnits": 16,
+      "maxYUserUnits": 12,
+      "maxTiltDeg": 3,
+      "layer": "pointer-body-js"
+    },
+    "eyes": {
+      "maxXUserUnits": 3,
+      "maxYUserUnits": 3,
+      "layer": "eyes-js"
+    },
+    "shadow": {
+      "maxReverseXUserUnits": 12,
+      "maxReverseYUserUnits": 5,
+      "maxPointerStretch": 1.08,
+      "layer": "shadow-js",
+      "idleScaleLayer": "shadow-pulse-js"
+    },
+    "response": {
+      "smoothingCoefficient": 0.2,
+      "returnDelayMs": 650,
+      "returnSettleThreshold": 0.003,
+      "expectedReturnDurationMs": 500,
+      "engine": "requestAnimationFrame"
+    }
+  },
+  "seamStrategy": "第 8 帧将宇航员高度、头盔重心角、眼睛开合、闪电明暗与阴影缩放全部精确还原为第 1 帧；循环由同一 4000ms 动画连续衔接。"
+}

@@ -1,0 +1,178 @@
+{
+  "character": "qwen",
+  "action": "idleLook",
+  "keyframeCount": 8,
+  "keyframes": [
+    {
+      "index": 1,
+      "percent": 0,
+      "poseX": 0,
+      "poseY": 0,
+      "poseRotateDeg": 0,
+      "gazeX": 0,
+      "gazeY": 0,
+      "eyeScaleY": 1,
+      "shadowLookScaleX": 1,
+      "description": "完整基准待机姿态，视线与主体居中。"
+    },
+    {
+      "index": 2,
+      "percent": 20,
+      "poseX": 0,
+      "poseY": 0,
+      "poseRotateDeg": 0,
+      "gazeX": 1.2,
+      "gazeY": -0.7,
+      "eyeScaleY": 1,
+      "shadowLookScaleX": 0.998,
+      "description": "眼睛先注意右上方，主体暂时不跟随。"
+    },
+    {
+      "index": 3,
+      "percent": 32,
+      "poseX": 0.4,
+      "poseY": -0.2,
+      "poseRotateDeg": 0.2,
+      "gazeX": 2.4,
+      "gazeY": -1.5,
+      "eyeScaleY": 1,
+      "shadowLookScaleX": 0.995,
+      "description": "视线到达目标，圆球主体开始同向轻微跟随。"
+    },
+    {
+      "index": 4,
+      "percent": 46,
+      "poseX": 0.8,
+      "poseY": -0.4,
+      "poseRotateDeg": 0.4,
+      "gazeX": 2.4,
+      "gazeY": -1.5,
+      "eyeScaleY": 1,
+      "shadowLookScaleX": 0.99,
+      "description": "保持单一右上方向注视，不进行左右扫描。"
+    },
+    {
+      "index": 5,
+      "percent": 58,
+      "poseX": 0.8,
+      "poseY": -0.4,
+      "poseRotateDeg": 0.4,
+      "gazeX": 2.4,
+      "gazeY": -1.5,
+      "eyeScaleY": 0.08,
+      "shadowLookScaleX": 0.99,
+      "description": "保持方向并完成一次短促自然眨眼。"
+    },
+    {
+      "index": 6,
+      "percent": 70,
+      "poseX": 0.8,
+      "poseY": -0.4,
+      "poseRotateDeg": 0.4,
+      "gazeX": 0.9,
+      "gazeY": -0.5,
+      "eyeScaleY": 1,
+      "shadowLookScaleX": 0.994,
+      "description": "重新睁眼后眼睛先回中，主体仍短暂保持方向。"
+    },
+    {
+      "index": 7,
+      "percent": 84,
+      "poseX": 0.25,
+      "poseY": -0.12,
+      "poseRotateDeg": 0.12,
+      "gazeX": 0.2,
+      "gazeY": -0.1,
+      "eyeScaleY": 1,
+      "shadowLookScaleX": 0.998,
+      "description": "视线基本回中，主体随后平滑复位。"
+    },
+    {
+      "index": 8,
+      "percent": 100,
+      "poseX": 0,
+      "poseY": 0,
+      "poseRotateDeg": 0,
+      "gazeX": 0,
+      "gazeY": 0,
+      "eyeScaleY": 1,
+      "shadowLookScaleX": 1,
+      "description": "视线、主体、眼睛和阴影精确恢复首帧。"
+    }
+  ],
+  "durationMs": 4000,
+  "loop": true,
+  "easing": "cubic-bezier(0.45, 0, 0.55, 1)",
+  "blinkEasing": "linear",
+  "layers": [
+    "pointer-body-js",
+    "float-js",
+    "idle-look-pose-js",
+    "body-js",
+    "head-js",
+    "eyes-js",
+    "idle-look-gaze-js",
+    "blink-js",
+    "arms-js",
+    "feet-js",
+    "accessory-js",
+    "antenna-js",
+    "emblem-js",
+    "effect-js",
+    "shadow-js",
+    "shadow-pulse-js",
+    "shadow-idle-look-js"
+  ],
+  "pointerTrackingLayers": [
+    "pointer-body-js",
+    "eyes-js",
+    "shadow-js"
+  ],
+  "partMotion": {
+    "gazeMaxXUserUnits": 2.4,
+    "gazeMaxYUserUnits": 1.5,
+    "poseMaxXUserUnits": 0.8,
+    "poseMaxYUserUnits": 0.4,
+    "poseMaxRotateDeg": 0.4,
+    "shadowLookScaleMin": 0.99,
+    "shadowLookScaleMax": 1,
+    "usesWholeBodyScale": false,
+    "usesBlur": false,
+    "usesNewGeometry": false
+  },
+  "pointerTracking": {
+    "normalization": {
+      "origin": "rendered Qwen character center",
+      "fullScaleStageRatioX": 0.3,
+      "fullScaleStageRatioY": 0.3,
+      "clampMin": -1,
+      "clampMax": 1
+    },
+    "body": {
+      "maxXUserUnits": 16,
+      "maxYUserUnits": 12,
+      "maxTiltDeg": 3,
+      "layer": "pointer-body-js"
+    },
+    "eyes": {
+      "maxXUserUnits": 3,
+      "maxYUserUnits": 3,
+      "layer": "eyes-js"
+    },
+    "shadow": {
+      "maxReverseXUserUnits": 12,
+      "maxReverseYUserUnits": 5,
+      "maxPointerStretch": 1.08,
+      "layer": "shadow-js",
+      "idleLookScaleLayer": "shadow-pulse-js"
+    },
+    "response": {
+      "smoothingCoefficient": 0.2,
+      "returnDelayMs": 650,
+      "returnSettleThreshold": 0.003,
+      "expectedReturnDurationMs": 500,
+      "engine": "requestAnimationFrame"
+    }
+  },
+  "seamStrategy": "第8帧将自动视线、主体跟随、眨眼与idleLook附加阴影恢复为第1帧；基础idle与idleLook通过嵌套分组叠加。"
+}

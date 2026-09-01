@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GPT working Preview</title>
+  <style>
+    :root{color-scheme:dark;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#11151d;color:#e8edf5}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px}main{width:min(760px,100%)}
+    h1{margin:0 0 6px;font-size:24px}p{margin:0 0 16px;color:#aeb8c8}
+    .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}.label{margin-left:8px;color:#9aa6b8;font-size:13px}
+    button{border:1px solid #465166;border-radius:8px;background:#202735;color:#edf3ff;padding:7px 10px;cursor:pointer}
+    button[aria-pressed="true"]{border-color:#75deb1;background:#284238}.stage{position:relative;height:360px;overflow:hidden;display:grid;place-items:center;border:1px solid #303849;border-radius:14px}
+    .stage[data-background="transparent"]{background-color:#f4f5f7;background-image:linear-gradient(45deg,#d4d7dd 25%,transparent 25%),linear-gradient(-45deg,#d4d7dd 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#d4d7dd 75%),linear-gradient(-45deg,transparent 75%,#d4d7dd 75%);background-size:24px 24px;background-position:0 0,0 12px,12px -12px,-12px 0}
+    .stage[data-background="dark"]{background:#0d1220}.stage[data-background="light"]{background:#eef2f8}
+    #pet-object{position:relative;z-index:2;width:128px;height:128px;background:transparent;pointer-events:none}#pet-object>svg{display:block;width:100%;height:100%;overflow:visible}
+    #pointer-capture{position:absolute;inset:0;z-index:3}.tracking-hitbox{position:absolute;width:18px;height:18px;opacity:0;pointer-events:auto}
+    .tl{top:0;left:0}.tr{top:0;right:0}.bl{bottom:0;left:0}.br{bottom:0;right:0}.top{top:0;left:50%;transform:translateX(-50%)}.bottom{bottom:0;left:50%;transform:translateX(-50%)}.left{left:0;top:50%;transform:translateY(-50%)}.right{right:0;top:50%;transform:translateY(-50%)}.center{top:50%;left:50%;transform:translate(-50%,-50%)}
+    #status{min-height:22px;margin-top:12px;color:#aeb8c8;font-size:13px}
+  </style>
+</head>
+<body>
+  <main>
+      <h1>GPT · working</h1>
+    <p>Active execution cycle: engage, advance, confirm, then continue working.</p>
+    <div class="controls" aria-label="Preview controls">
+      <span class="label">Animation</span><button id="play-button" type="button">Play</button><button id="pause-button" type="button">Pause</button><button id="restart-button" type="button">Restart</button>
+      <span class="label">Size</span><button type="button" data-size="64">64px</button><button type="button" data-size="96">96px</button><button type="button" data-size="128" aria-pressed="true">128px</button>
+      <span class="label">Background</span><button type="button" data-background="transparent" aria-pressed="true">Transparent</button><button type="button" data-background="dark">Dark</button><button type="button" data-background="light">Light</button>
+    </div>
+    <div id="stage" class="stage" data-background="transparent" data-testid="preview-stage">
+      <div id="pet-object" role="img" aria-label="GPT working animation">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" preserveAspectRatio="xMidYMid meet" style="background-color:transparent;overflow:visible;--eye-x:0px;--eye-y:0px;--body-x:0px;--body-y:0px;--body-tilt:0deg;--shadow-x:0px;--shadow-y:0px;--shadow-stretch:1;--play-state:running">
+  <defs>
+    <path id="gpt-knot-segment-base" d="M128 168h14l9 9v12h-8v-9l-5-4h-10"/>
+    <g id="gpt-knot-shape-base">
+      <use href="#gpt-knot-segment-base"/>
+      <use href="#gpt-knot-segment-base" transform="rotate(60 128 188)"/>
+      <use href="#gpt-knot-segment-base" transform="rotate(120 128 188)"/>
+      <use href="#gpt-knot-segment-base" transform="rotate(180 128 188)"/>
+      <use href="#gpt-knot-segment-base" transform="rotate(240 128 188)"/>
+      <use href="#gpt-knot-segment-base" transform="rotate(300 128 188)"/>
+    </g>
+      <style>
+      #pointer-body-js{transform:translate(var(--body-x),var(--body-y)) rotate(var(--body-tilt));transform-box:view-box;transform-origin:128px 160px}
+      #working-pose-js{animation:gpt-working-pose 3200ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 160px}
+      #eyes-js{transform:translate(var(--eye-x),var(--eye-y))}
+      #working-gaze-js{animation:gpt-working-gaze 3200ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 160px}
+      #blink-js{animation:gpt-working-blink 3200ms linear infinite;animation-play-state:var(--play-state);transform-box:fill-box;transform-origin:center}
+      #head-work-js{animation:gpt-working-head 3200ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 140px}
+      #shadow-js{transform:translate(var(--shadow-x),var(--shadow-y)) scaleX(var(--shadow-stretch));transform-box:view-box;transform-origin:128px 235px}
+      #shadow-pulse-js{animation:gpt-working-shadow 3200ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:fill-box;transform-origin:center}
+      .is-restarting *{animation:none!important}
+      #left-arm-work-js{animation:gpt-working-left-arm 3200ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:64px 176px}
+      #right-arm-work-js{animation:gpt-working-right-arm 3200ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:192px 176px}
+      #knot-core-js{animation:gpt-working-core 3200ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 188px}
+      #knot-glow-js{animation:gpt-working-glow 3200ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 188px}
+      @keyframes gpt-working-pose{0%{transform:translateY(0) rotate(0)}12%{transform:translateY(-1px) rotate(-.2deg)}25%{transform:translateY(0) rotate(.2deg)}38%{transform:translateY(-2px) rotate(-.2deg)}50%{transform:translateY(0) rotate(.2deg)}63%{transform:translateY(-1px) rotate(-.2deg)}78%{transform:translateY(0) rotate(0)}100%{transform:translateY(0) rotate(0)}}
+      @keyframes gpt-working-head{0%{transform:translateY(0) rotate(0)}12%{transform:translateY(1px) rotate(.2deg)}25%{transform:translateY(0) rotate(-.2deg)}38%{transform:translateY(1px) rotate(.2deg)}50%{transform:translateY(0) rotate(-.2deg)}63%{transform:translateY(1px) rotate(.2deg)}78%{transform:translateY(0) rotate(0)}100%{transform:translateY(0) rotate(0)}}
+      @keyframes gpt-working-gaze{0%{transform:translate(0,0)}12%{transform:translate(0,1px)}25%{transform:translate(.4px,1.2px)}38%{transform:translate(-.4px,1.2px)}50%{transform:translate(.4px,1.2px)}63%{transform:translate(-.4px,1.2px)}78%{transform:translate(0,0)}100%{transform:translate(0,0)}}
+      @keyframes gpt-working-blink{0%{transform:scaleY(1)}12%{transform:scaleY(1)}25%{transform:scaleY(1)}38%{transform:scaleY(1)}50%{transform:scaleY(1)}63%{transform:scaleY(1)}78%{transform:scaleY(.3)}100%{transform:scaleY(1)}}
+      @keyframes gpt-working-left-arm{0%{transform:translateY(0) rotate(0)}12%{transform:translateY(3px) rotate(3deg)}25%{transform:translateY(-2px) rotate(-2deg)}38%{transform:translateY(3px) rotate(3deg)}50%{transform:translateY(-2px) rotate(-2deg)}63%{transform:translateY(3px) rotate(3deg)}78%{transform:translateY(0) rotate(0)}100%{transform:translateY(0) rotate(0)}}
+      @keyframes gpt-working-right-arm{0%{transform:translateY(0) rotate(0)}12%{transform:translateY(-2px) rotate(2deg)}25%{transform:translateY(3px) rotate(-3deg)}38%{transform:translateY(-2px) rotate(2deg)}50%{transform:translateY(3px) rotate(-3deg)}63%{transform:translateY(-2px) rotate(2deg)}78%{transform:translateY(0) rotate(0)}100%{transform:translateY(0) rotate(0)}}
+      @keyframes gpt-working-core{0%{transform:rotate(0);opacity:.84}12%{transform:rotate(8deg);opacity:.9}25%{transform:rotate(16deg);opacity:.96}38%{transform:rotate(24deg);opacity:1}50%{transform:rotate(30deg);opacity:1}63%{transform:rotate(22deg);opacity:.94}78%{transform:rotate(10deg);opacity:.88}100%{transform:rotate(0);opacity:.84}}
+      @keyframes gpt-working-glow{0%{transform:rotate(0);opacity:.08}12%{transform:rotate(-4deg);opacity:.14}25%{transform:rotate(-8deg);opacity:.2}38%{transform:rotate(-12deg);opacity:.26}50%{transform:rotate(-15deg);opacity:.3}63%{transform:rotate(-11deg);opacity:.18}78%{transform:rotate(-5deg);opacity:.12}100%{transform:rotate(0);opacity:.08}}
+      @keyframes gpt-working-shadow{0%{transform:scaleX(1);opacity:.22}12%{transform:scaleX(1.01);opacity:.23}25%{transform:scaleX(.99);opacity:.21}38%{transform:scaleX(1.02);opacity:.23}50%{transform:scaleX(.99);opacity:.21}63%{transform:scaleX(1.01);opacity:.23}78%{transform:scaleX(1);opacity:.22}100%{transform:scaleX(1);opacity:.22}}
+    </style>
+  </defs>
+
+  <g id="shadow-js" opacity="0.22">
+    <ellipse id="shadow-pulse-js" cx="128" cy="235" rx="48" ry="6" fill="#131721"/>
+  </g>
+
+  <g id="pointer-body-js" shape-rendering="crispEdges">
+    <g id="float-js">
+      <g id="working-pose-js">
+      <g id="arms-js">
+        
+        <g id="left-arm-work-js"><path d="M58 156h8v-8h10v48h-10v8H52v-28h4v-16h2z" fill="#323844"/>
+        <path d="M52 184h14v20H52z" fill="#a9ead0"/>
+        </g>
+        
+        <g id="right-arm-work-js"><path d="M198 156h-8v-8h-10v48h10v8h14v-28h-4v-16h-2z" fill="#323844"/>
+        <path d="M190 184h14v20h-14z" fill="#a9ead0"/>
+        </g>
+        <path d="M58 164h8v20h-8zM190 164h8v20h-8z" fill="#4a5260" opacity="0.7"/>
+      </g>
+
+      <g id="body-js">
+        <path d="M86 216h20v8H86zM150 216h20v8h-20z" fill="#a9ead0"/>
+        <path d="M84 100h88v4h8v8h8v92h-8v8h-8v4H84v-4h-8v-8h-8v-92h8v-8h8z" fill="#3c424e"/>
+        <path d="M84 104h88v4h8v12h-4v-4H80v88h4v8h-8v-8h-4v-92h8v-8z" fill="#59616f" opacity="0.38"/>
+        <path d="M80 204h8v8h84v-4h8v4h-8v4H84v-4h-8z" fill="#292f3a" opacity="0.55"/>
+      </g>
+
+      <g id="head-work-js">
+      <g id="head-js">
+        <rect x="124" y="90" width="8" height="12" fill="#303642"/>
+        <rect x="126" y="90" width="4" height="12" fill="#505866"/>
+        <path d="M120 72h16v4h6v12h-6v4h-16v-4h-6V76h6z" fill="#9fe5c8"/>
+        <path d="M120 88h16v4h-16z" fill="#7fd4b2"/>
+        <path d="M88 116h80v4h8v8h4v24h-4v8h-8v4H88v-4h-8v-8h-4v-24h4v-8h8z" fill="#c7f0de"/>
+        <path d="M88 120h80v4h8v8h-4v-4H84v28h4v4h-8v-8h-4v-24h4v-8h8z" fill="#ddf8ec" opacity="0.48"/>
+        <path id="mouth-js" d="M116 150h8v6h16v-6h8v8h-8v6h-16v-6h-8z" fill="#080b12"/>
+      </g>
+
+      <g id="eyes-js" fill="#080b12">
+      <g id="working-gaze-js">
+        <g id="blink-js">
+          <rect x="96" y="132" width="12" height="18"/>
+          <rect x="148" y="132" width="12" height="18"/>
+        </g>
+      
+      </g>
+    </g>
+      </g>
+
+      <g id="accessory-js">
+        <use id="knot-core-js" href="#gpt-knot-shape-base" fill="none" stroke="#75deb1" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter"/>
+      </g>
+
+      <g id="effect-js">
+        <use id="knot-glow-js" href="#gpt-knot-shape-base" fill="none" stroke="#96f0ca" stroke-width="9" stroke-linecap="square" stroke-linejoin="miter" opacity="0.08"/>
+        <path d="M124 20h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#8ce5bd"/>
+        <path d="M154 44h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#43c5e8"/>
+        <path d="M94 56h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#ffc847"/>
+      </g>
+    
+      </g>
+    </g>
+  </g>
+</svg>
+
+
+
+        
+        
+        
+      </div>
+      <div id="pointer-capture" aria-hidden="true">
+        <span id="tracking-top-left" class="tracking-hitbox tl"></span><span class="tracking-hitbox tr"></span><span class="tracking-hitbox bl"></span><span id="tracking-bottom-right" class="tracking-hitbox br"></span>
+        <span class="tracking-hitbox top"></span><span class="tracking-hitbox bottom"></span><span class="tracking-hitbox left"></span><span class="tracking-hitbox right"></span><span id="tracking-center" class="tracking-hitbox center"></span>
+      </div>
+    </div>
+    <div id="status" role="status"></div>
+  </main>
+  <script>
+    (() => {
+      const stage=document.getElementById('stage'),petObject=document.getElementById('pet-object'),pointerCapture=document.getElementById('pointer-capture'),status=document.getElementById('status'),svgRoot=petObject.querySelector('svg');
+      const state={loaded:false,playing:true,size:128,background:'transparent',loopCount:0,errors:[],warnings:[]};
+      const nativeConsoleError=console.error.bind(console),nativeConsoleWarn=console.warn.bind(console);console.error=(...args)=>{state.errors.push(args.map(String).join(' '));nativeConsoleError(...args);updateStatus();};console.warn=(...args)=>{state.warnings.push(args.map(String).join(' '));nativeConsoleWarn(...args);updateStatus();};
+      const C={fullScaleStageRatioX:.30,fullScaleStageRatioY:.30,bodyMaxX:16,bodyMaxY:12,bodyMaxTilt:3,eyeMax:3,shadowMaxX:12,shadowMaxY:5,shadowMaxStretch:1.08,smoothingCoefficient:.20,returnDelayMs:650,returnSettleThreshold:.001,expectedReturnDurationMs:500};
+      let currentX=0,currentY=0,targetX=0,targetY=0,lastFrameAt=performance.now(),lastInputAt=performance.now(),returnTimer=0,settleTimer=0,returnStartedAt=0,centeredAt=0,rafId=0;
+      const clamp=(v,min,max)=>Math.min(max,Math.max(min,v));
+      const shadowDistance=(x,y)=>Math.min(1,Math.hypot(x,y));
+      function updateStatus(){status.textContent=`SVG loaded · ${state.playing?'playing':'paused'} · ${state.size}px · ${state.loopCount} loops`;document.documentElement.dataset.qaState=JSON.stringify(state);}
+      function writePointerValues(x,y){
+        svgRoot.style.setProperty('--body-x',`${(x*C.bodyMaxX).toFixed(2)}px`);svgRoot.style.setProperty('--body-y',`${(y*C.bodyMaxY).toFixed(2)}px`);svgRoot.style.setProperty('--body-tilt',`${(x*C.bodyMaxTilt).toFixed(2)}deg`);
+        svgRoot.style.setProperty('--eye-x',`${(x*C.eyeMax).toFixed(2)}px`);svgRoot.style.setProperty('--eye-y',`${(y*C.eyeMax).toFixed(2)}px`);
+        svgRoot.style.setProperty('--shadow-x',`${(-x*C.shadowMaxX).toFixed(2)}px`);svgRoot.style.setProperty('--shadow-y',`${(-y*C.shadowMaxY).toFixed(2)}px`);svgRoot.style.setProperty('--shadow-stretch',(1+shadowDistance(x,y)*(C.shadowMaxStretch-1)).toFixed(3));
+        const s=state.size/256;petObject.dataset.pointerQa=JSON.stringify({normalizedX:+x.toFixed(4),normalizedY:+y.toFixed(4),targetX:+targetX.toFixed(4),targetY:+targetY.toFixed(4),bodyX:+(x*C.bodyMaxX).toFixed(2),bodyY:+(y*C.bodyMaxY).toFixed(2),bodyTilt:+(x*C.bodyMaxTilt).toFixed(2),eyeX:+(x*C.eyeMax).toFixed(2),eyeY:+(y*C.eyeMax).toFixed(2),shadowX:+(-x*C.shadowMaxX).toFixed(2),shadowY:+(-y*C.shadowMaxY).toFixed(2),shadowStretch:+(1+shadowDistance(x,y)*(C.shadowMaxStretch-1)).toFixed(3),visibleBodyX:+(x*C.bodyMaxX*s).toFixed(2),visibleBodyY:+(y*C.bodyMaxY*s).toFixed(2),visibleEyeX:+(x*C.eyeMax*s).toFixed(2),visibleEyeY:+(y*C.eyeMax*s).toFixed(2),visibleShadowX:+(-x*C.shadowMaxX*s).toFixed(2),visibleShadowY:+(-y*C.shadowMaxY*s).toFixed(2),lastInputAt,returnStartedAt,centeredAt,measuredWaitMs:returnStartedAt?Math.round(returnStartedAt-lastInputAt):null,measuredReturnMs:centeredAt&&returnStartedAt?Math.round(centeredAt-returnStartedAt):null});
+      }
+      function tick(now){
+        const ratio=clamp((now-lastFrameAt)/(1000/60),.5,6),alpha=1-Math.pow(1-C.smoothingCoefficient,ratio);currentX+=(targetX-currentX)*alpha;currentY+=(targetY-currentY)*alpha;
+        if(returnStartedAt&&!centeredAt&&Math.abs(currentX)<C.returnSettleThreshold&&Math.abs(currentY)<C.returnSettleThreshold){currentX=0;currentY=0;centeredAt=now;if(settleTimer){clearTimeout(settleTimer);settleTimer=0;}}
+        writePointerValues(currentX,currentY);lastFrameAt=now;
+        if(Math.abs(currentX-targetX)>C.returnSettleThreshold||Math.abs(currentY-targetY)>C.returnSettleThreshold||!centeredAt&&returnStartedAt)rafId=requestAnimationFrame(tick);else rafId=0;
+      }
+      function ensureTick(){if(!rafId){lastFrameAt=performance.now();rafId=requestAnimationFrame(tick);}}
+      function beginReturn(){returnTimer=0;returnStartedAt=performance.now();centeredAt=0;targetX=0;targetY=0;ensureTick();}
+      function scheduleReturn(){if(returnTimer)clearTimeout(returnTimer);returnTimer=setTimeout(beginReturn,C.returnDelayMs);}
+      function setPointerTarget(x,y){if(returnTimer){clearTimeout(returnTimer);returnTimer=0}if(settleTimer){clearTimeout(settleTimer);settleTimer=0}returnStartedAt=0;centeredAt=0;targetX=clamp(x,-1,1);targetY=clamp(y,-1,1);lastInputAt=performance.now();scheduleReturn();ensureTick();}
+      function handlePointerMove(e){const sr=stage.getBoundingClientRect(),pr=petObject.getBoundingClientRect(),ox=pr.left+pr.width/2,oy=pr.top+pr.height/2;setPointerTarget((e.clientX-ox)/(sr.width*C.fullScaleStageRatioX),(e.clientY-oy)/(sr.height*C.fullScaleStageRatioY));}
+      function setPlaying(v){state.playing=v;svgRoot.style.setProperty('--play-state',v?'running':'paused');updateStatus();}
+      function restart(){state.loopCount=0;state.playing=true;svgRoot.classList.add('is-restarting');void svgRoot.getBoundingClientRect();requestAnimationFrame(()=>{svgRoot.classList.remove('is-restarting');svgRoot.style.setProperty('--play-state','running');updateStatus();});}
+      function setSize(size){state.size=size;petObject.style.width=`${size}px`;petObject.style.height=`${size}px`;document.querySelectorAll('[data-size]').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.size===size)));writePointerValues(currentX,currentY);updateStatus();}
+      function setBackground(bg){state.background=bg;stage.dataset.background=bg;document.querySelectorAll('[data-background]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.background===bg)));updateStatus();}
+      const required=['pointer-body-js','float-js','working-pose-js','eyes-js','idle-look-gaze-js','blink-js','shadow-js','shadow-pulse-js','shadow-idle-look-js'];for(const id of required)if(!svgRoot.querySelector('#'+id))state.errors.push('Missing '+id);
+      const loopLayer=svgRoot.querySelector('#working-pose-js');if(loopLayer){loopLayer.addEventListener('animationiteration',e=>{if(e.target===loopLayer&&e.animationName==='gpt-working-pose'){state.loopCount++;updateStatus();}});state.loaded=true;}
+      pointerCapture.addEventListener('pointermove',handlePointerMove);pointerCapture.addEventListener('pointerdown',handlePointerMove);pointerCapture.addEventListener('pointerleave',scheduleReturn);
+      document.getElementById('play-button').addEventListener('click',()=>setPlaying(true));document.getElementById('pause-button').addEventListener('click',()=>setPlaying(false));document.getElementById('restart-button').addEventListener('click',restart);
+      document.querySelectorAll('[data-size]').forEach(b=>b.addEventListener('click',()=>setSize(+b.dataset.size)));document.querySelectorAll('[data-background]').forEach(b=>b.addEventListener('click',()=>setBackground(b.dataset.background)));
+      window.addEventListener('error',e=>{state.errors.push(e.message||'window error');updateStatus();});window.addEventListener('unhandledrejection',e=>{state.errors.push(String(e.reason));updateStatus();});
+      window.petQA={getState:()=>JSON.parse(JSON.stringify(state)),getPointer:()=>JSON.parse(petObject.dataset.pointerQa||'{}'),setSize,setBackground,pause:()=>setPlaying(false),play:()=>setPlaying(true),restart,simulatePointer:setPointerTarget,resetPointer:beginReturn};
+      writePointerValues(0,0);ensureTick();updateStatus();
+    })();
+  </script>
+</body>
+</html>

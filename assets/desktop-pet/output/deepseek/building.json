@@ -1,0 +1,24 @@
+{
+  "character":"deepseek",
+  "action":"building",
+  "keyframeCount":8,
+  "keyframes":[
+    {"index":1,"percent":0,"poseY":0,"poseRotateDeg":0,"headY":0,"headRotateDeg":0,"gazeY":0,"eyeScaleY":1,"leftFinX":0,"leftFinY":0,"leftFinRotateDeg":0,"rightFinX":0,"rightFinY":0,"rightFinRotateDeg":0,"tailX":0,"tailRotateDeg":0,"shadowScaleX":1,"buildingPhase":"base"},
+    {"index":2,"percent":14,"poseY":-1,"poseRotateDeg":-0.2,"headY":-0.5,"headRotateDeg":-0.15,"gazeY":0.5,"eyeScaleY":1,"leftFinX":2,"leftFinY":-1,"leftFinRotateDeg":-2,"rightFinX":0,"rightFinY":0,"rightFinRotateDeg":0,"tailX":-2,"tailRotateDeg":-1.5,"shadowScaleX":0.99,"buildingPhase":"enter"},
+    {"index":3,"percent":28,"poseY":-1,"poseRotateDeg":0.2,"headY":-1,"headRotateDeg":0.15,"gazeY":1,"eyeScaleY":1,"leftFinX":4,"leftFinY":-2,"leftFinRotateDeg":-4,"rightFinX":-2,"rightFinY":-1,"rightFinRotateDeg":2,"tailX":3,"tailRotateDeg":2.5,"shadowScaleX":0.99,"buildingPhase":"first-advance"},
+    {"index":4,"percent":44,"poseY":-2,"poseRotateDeg":-0.4,"headY":-1,"headRotateDeg":-0.25,"gazeY":1,"eyeScaleY":1,"leftFinX":4,"leftFinY":-3,"leftFinRotateDeg":-4,"rightFinX":-4,"rightFinY":-3,"rightFinRotateDeg":4,"tailX":-3,"tailRotateDeg":-2.5,"shadowScaleX":0.98,"buildingPhase":"cooperate"},
+    {"index":5,"percent":58,"poseY":-2,"poseRotateDeg":0.4,"headY":-0.5,"headRotateDeg":0.25,"gazeY":0.5,"eyeScaleY":1,"leftFinX":4,"leftFinY":-4,"leftFinRotateDeg":-4,"rightFinX":-4,"rightFinY":-4,"rightFinRotateDeg":4,"tailX":0,"tailRotateDeg":0,"shadowScaleX":0.98,"buildingPhase":"stable-peak"},
+    {"index":6,"percent":70,"poseY":-1,"poseRotateDeg":0,"headY":0,"headRotateDeg":0,"gazeY":0,"eyeScaleY":0.25,"leftFinX":4,"leftFinY":-4,"leftFinRotateDeg":-2,"rightFinX":-4,"rightFinY":-4,"rightFinRotateDeg":2,"tailX":0,"tailRotateDeg":0,"shadowScaleX":1.02,"buildingPhase":"lock-confirm"},
+    {"index":7,"percent":84,"poseY":-0.5,"poseRotateDeg":-0.2,"headY":-0.2,"headRotateDeg":-0.1,"gazeY":0.5,"eyeScaleY":1,"leftFinX":1,"leftFinY":0,"leftFinRotateDeg":-1,"rightFinX":-2,"rightFinY":-1,"rightFinRotateDeg":2,"tailX":1,"tailRotateDeg":1,"shadowScaleX":1,"buildingPhase":"staged-reset"},
+    {"index":8,"percent":100,"poseY":0,"poseRotateDeg":0,"headY":0,"headRotateDeg":0,"gazeY":0,"eyeScaleY":1,"leftFinX":0,"leftFinY":0,"leftFinRotateDeg":0,"rightFinX":0,"rightFinY":0,"rightFinRotateDeg":0,"tailX":0,"tailRotateDeg":0,"shadowScaleX":1,"buildingPhase":"base"}
+  ],
+  "durationMs":3600,
+  "loop":true,
+  "easing":"cubic-bezier(0.45, 0, 0.55, 1)",
+  "blinkEasing":"linear",
+  "layers":["pointer-body-js","float-js","building-pose-js","buoyancy-sway-js","body-js","head-build-js","head-js","eyes-js","building-gaze-js","blink-js","arms-js","left-fin-js","right-fin-js","tail-js","accessory-js","effect-js","shadow-js","shadow-pulse-js"],
+  "pointerTrackingLayers":["pointer-body-js","eyes-js","shadow-js"],
+  "partMotion":{"bodyMaxYUserUnits":2,"bodyMaxRotateDeg":0.4,"headMaxYUserUnits":1,"headMaxRotateDeg":0.25,"gazeMaxYUserUnits":1,"finMaxTranslateUserUnits":4,"finMaxRotateDeg":4,"tailMaxXUserUnits":3,"tailMaxRotateDeg":2.5,"searchLensAnimated":false,"usesNewGeometry":false,"usesWholeBodyScale":false,"usesColorChange":false,"usesScan":false,"usesBlur":false,"usesRaster":false},
+  "pointerTracking":{"normalization":{"origin":"rendered deepseek character center","fullScaleStageRatioX":0.3,"fullScaleStageRatioY":0.3,"clampMin":-1,"clampMax":1},"body":{"maxXUserUnits":16,"maxYUserUnits":12,"maxTiltDeg":3,"layer":"pointer-body-js"},"eyes":{"maxXUserUnits":3,"maxYUserUnits":3,"layer":"eyes-js"},"shadow":{"maxReverseXUserUnits":12,"maxReverseYUserUnits":5,"maxPointerStretch":1.08,"layer":"shadow-js","buildingScaleLayer":"shadow-pulse-js"},"response":{"smoothingCoefficient":0.2,"returnDelayMs":650,"returnSettleThreshold":0.003,"expectedReturnDurationMs":500,"engine":"requestAnimationFrame"}},
+  "seamStrategy":"Keyframe 8 restores every pose, fin, tail, gaze, blink and shadow value to keyframe 1; the search lens remains static throughout the shared 3600ms timeline."
+}

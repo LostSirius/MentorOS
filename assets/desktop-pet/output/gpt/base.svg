@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <path id="gpt-knot-segment-base" d="M128 168h14l9 9v12h-8v-9l-5-4h-10"/>
+    <g id="gpt-knot-shape-base">
+      <use href="#gpt-knot-segment-base"/>
+      <use href="#gpt-knot-segment-base" transform="rotate(60 128 188)"/>
+      <use href="#gpt-knot-segment-base" transform="rotate(120 128 188)"/>
+      <use href="#gpt-knot-segment-base" transform="rotate(180 128 188)"/>
+      <use href="#gpt-knot-segment-base" transform="rotate(240 128 188)"/>
+      <use href="#gpt-knot-segment-base" transform="rotate(300 128 188)"/>
+    </g>
+  </defs>
+
+  <g id="shadow-js" opacity="0.22">
+    <ellipse id="shadow-pulse-js" cx="128" cy="235" rx="48" ry="6" fill="#131721"/>
+  </g>
+
+  <g id="pointer-body-js" shape-rendering="crispEdges">
+    <g id="float-js">
+      <g id="arms-js">
+        <path d="M58 156h8v-8h10v48h-10v8H52v-28h4v-16h2z" fill="#323844"/>
+        <path d="M52 184h14v20H52z" fill="#a9ead0"/>
+        <path d="M198 156h-8v-8h-10v48h10v8h14v-28h-4v-16h-2z" fill="#323844"/>
+        <path d="M190 184h14v20h-14z" fill="#a9ead0"/>
+        <path d="M58 164h8v20h-8zM190 164h8v20h-8z" fill="#4a5260" opacity="0.7"/>
+      </g>
+
+      <g id="body-js">
+        <path d="M86 216h20v8H86zM150 216h20v8h-20z" fill="#a9ead0"/>
+        <path d="M84 100h88v4h8v8h8v92h-8v8h-8v4H84v-4h-8v-8h-8v-92h8v-8h8z" fill="#3c424e"/>
+        <path d="M84 104h88v4h8v12h-4v-4H80v88h4v8h-8v-8h-4v-92h8v-8z" fill="#59616f" opacity="0.38"/>
+        <path d="M80 204h8v8h84v-4h8v4h-8v4H84v-4h-8z" fill="#292f3a" opacity="0.55"/>
+      </g>
+
+      <g id="head-js">
+        <rect x="124" y="90" width="8" height="12" fill="#303642"/>
+        <rect x="126" y="90" width="4" height="12" fill="#505866"/>
+        <path d="M120 72h16v4h6v12h-6v4h-16v-4h-6V76h6z" fill="#9fe5c8"/>
+        <path d="M120 88h16v4h-16z" fill="#7fd4b2"/>
+        <path d="M88 116h80v4h8v8h4v24h-4v8h-8v4H88v-4h-8v-8h-4v-24h4v-8h8z" fill="#c7f0de"/>
+        <path d="M88 120h80v4h8v8h-4v-4H84v28h4v4h-8v-8h-4v-24h4v-8h8z" fill="#ddf8ec" opacity="0.48"/>
+        <path id="mouth-js" d="M116 150h8v6h16v-6h8v8h-8v6h-16v-6h-8z" fill="#080b12"/>
+      </g>
+
+      <g id="eyes-js" fill="#080b12">
+        <g id="blink-js">
+          <rect x="96" y="132" width="12" height="18"/>
+          <rect x="148" y="132" width="12" height="18"/>
+        </g>
+      </g>
+
+      <g id="accessory-js">
+        <use id="knot-core-js" href="#gpt-knot-shape-base" fill="none" stroke="#75deb1" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter"/>
+      </g>
+
+      <g id="effect-js">
+        <use id="knot-glow-js" href="#gpt-knot-shape-base" fill="none" stroke="#96f0ca" stroke-width="9" stroke-linecap="square" stroke-linejoin="miter" opacity="0.08"/>
+        <path d="M124 20h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#8ce5bd"/>
+        <path d="M154 44h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#43c5e8"/>
+        <path d="M94 56h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#ffc847"/>
+      </g>
+    </g>
+  </g>
+</svg>

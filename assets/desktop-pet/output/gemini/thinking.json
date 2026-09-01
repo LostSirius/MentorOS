@@ -1,0 +1,41 @@
+{
+  "character": "gemini",
+  "action": "thinking",
+  "keyframeCount": 8,
+  "keyframes": [
+    {"index":1,"percent":0,"bodyY":0,"bodyRotateDeg":0,"gazeX":0,"gazeY":0,"eyeScaleY":1,"greenStarY":0,"yellowStarY":0,"cyanStarY":0,"greenStarScale":1,"yellowStarScale":1,"cyanStarScale":1,"shadowScaleX":1,"description":"Baseline thinking pose; all three original stars remain at their native size and color."},
+    {"index":2,"percent":16,"bodyY":-1,"bodyRotateDeg":-0.5,"gazeX":-1,"gazeY":-1,"eyeScaleY":1,"greenStarY":-2,"yellowStarY":-1,"cyanStarY":0,"greenStarScale":1.06,"yellowStarScale":1.02,"cyanStarScale":1,"shadowScaleX":0.99,"description":"The gaze and body lean toward the green star as that existing star rises 2 units and expands to 1.06."},
+    {"index":3,"percent":32,"bodyY":-2,"bodyRotateDeg":0,"gazeX":0,"gazeY":-1.5,"eyeScaleY":1,"greenStarY":-1,"yellowStarY":-2,"cyanStarY":-1,"greenStarScale":1.02,"yellowStarScale":1.06,"cyanStarScale":1.02,"shadowScaleX":0.97,"description":"Attention shifts upward; the original yellow star becomes the second emphasized star."},
+    {"index":4,"percent":48,"bodyY":-1,"bodyRotateDeg":0.5,"gazeX":1,"gazeY":-1,"eyeScaleY":1,"greenStarY":0,"yellowStarY":-1,"cyanStarY":-2,"greenStarScale":1,"yellowStarScale":1.02,"cyanStarScale":1.06,"shadowScaleX":0.99,"description":"Attention reaches the cyan star, completing the sequential three-star thinking rhythm."},
+    {"index":5,"percent":64,"bodyY":-2,"bodyRotateDeg":0,"gazeX":0,"gazeY":-1,"eyeScaleY":1,"greenStarY":-1,"yellowStarY":-1,"cyanStarY":-1,"greenStarScale":1.02,"yellowStarScale":1.03,"cyanStarScale":1.02,"shadowScaleX":0.97,"description":"The gaze gathers at the upper center while the three original stars settle toward a shared small emphasis."},
+    {"index":6,"percent":76,"bodyY":0,"bodyRotateDeg":-0.4,"gazeX":-0.5,"gazeY":-0.5,"eyeScaleY":0.08,"greenStarY":0,"yellowStarY":0,"cyanStarY":0,"greenStarScale":1,"yellowStarScale":1,"cyanStarScale":1,"shadowScaleX":1.01,"description":"A brief blink and pause marks the decision point; the stars return to their base geometry."},
+    {"index":7,"percent":84,"bodyY":-1,"bodyRotateDeg":0,"gazeX":0,"gazeY":-0.5,"eyeScaleY":1,"greenStarY":0,"yellowStarY":0,"cyanStarY":0,"greenStarScale":1.01,"yellowStarScale":1.01,"cyanStarScale":1.01,"shadowScaleX":0.99,"description":"The eyes reopen and all original parts complete a restrained synchronized reset."},
+    {"index":8,"percent":100,"bodyY":0,"bodyRotateDeg":0,"gazeX":0,"gazeY":0,"eyeScaleY":1,"greenStarY":0,"yellowStarY":0,"cyanStarY":0,"greenStarScale":1,"yellowStarScale":1,"cyanStarScale":1,"shadowScaleX":1,"description":"Body, gaze, eyes, three stars and shadow exactly match the first frame."}
+  ],
+  "durationMs": 3600,
+  "loop": true,
+  "easing": "cubic-bezier(0.45, 0, 0.55, 1)",
+  "blinkEasing": "linear",
+  "layers": ["pointer-body-js","float-js","body-js","eyes-js","thinking-gaze-js","blink-js","accessory-js","effect-js","shadow-js","shadow-pulse-js"],
+  "pointerTrackingLayers": ["pointer-body-js","eyes-js","shadow-js"],
+  "partMotion": {
+    "bodyMaxYUserUnits": 2,
+    "bodyMaxRotateDeg": 0.5,
+    "gazeMaxXUserUnits": 1,
+    "gazeMaxYUserUnits": 1.5,
+    "starMaxYUserUnits": 2,
+    "starMaxScale": 1.06,
+    "shadowScaleMin": 0.97,
+    "shadowScaleMax": 1.01,
+    "usesWholeBodyScale": false,
+    "usesBlur": false
+  },
+  "pointerTracking": {
+    "normalization": {"origin":"rendered Gemini character center","fullScaleStageRatioX":0.3,"fullScaleStageRatioY":0.3,"clampMin":-1,"clampMax":1},
+    "body": {"maxXUserUnits":16,"maxYUserUnits":12,"maxTiltDeg":3,"layer":"pointer-body-js"},
+    "eyes": {"maxXUserUnits":3,"maxYUserUnits":3,"layer":"eyes-js"},
+    "shadow": {"maxReverseXUserUnits":12,"maxReverseYUserUnits":5,"maxPointerStretch":1.08,"layer":"shadow-js","thinkingScaleLayer":"shadow-pulse-js"},
+    "response": {"smoothingCoefficient":0.2,"returnDelayMs":650,"returnSettleThreshold":0.001,"expectedReturnDurationMs":500,"engine":"requestAnimationFrame"}
+  },
+  "seamStrategy": "Frame 8 restores the body pose, gaze, blink, original-star transforms and shadow to the exact values of frame 1 on the shared 3600ms timeline."
+}

@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Grok idleLook Preview</title>
+  <style>
+    :root{color-scheme:dark;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#11151d;color:#e8edf5}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px}main{width:min(760px,100%)}
+    h1{margin:0 0 6px;font-size:24px}p{margin:0 0 16px;color:#aeb8c8}
+    .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}.label{margin-left:8px;color:#9aa6b8;font-size:13px}
+    button{border:1px solid #465166;border-radius:8px;background:#202735;color:#edf3ff;padding:7px 10px;cursor:pointer}
+    button[aria-pressed="true"]{border-color:#75deb1;background:#284238}.stage{position:relative;height:360px;overflow:hidden;display:grid;place-items:center;border:1px solid #303849;border-radius:14px}
+    .stage[data-background="transparent"]{background-color:#f4f5f7;background-image:linear-gradient(45deg,#d4d7dd 25%,transparent 25%),linear-gradient(-45deg,#d4d7dd 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#d4d7dd 75%),linear-gradient(-45deg,transparent 75%,#d4d7dd 75%);background-size:24px 24px;background-position:0 0,0 12px,12px -12px,-12px 0}
+    .stage[data-background="dark"]{background:#0d1220}.stage[data-background="light"]{background:#eef2f8}
+    #pet-object{position:relative;z-index:2;width:128px;height:128px;background:transparent;pointer-events:none}#pet-object>svg{display:block;width:100%;height:100%;overflow:visible}
+    #pointer-capture{position:absolute;inset:0;z-index:3}.tracking-hitbox{position:absolute;width:18px;height:18px;opacity:0;pointer-events:auto}
+    .tl{top:0;left:0}.tr{top:0;right:0}.bl{bottom:0;left:0}.br{bottom:0;right:0}.top{top:0;left:50%;transform:translateX(-50%)}.bottom{bottom:0;left:50%;transform:translateX(-50%)}.left{left:0;top:50%;transform:translateY(-50%)}.right{right:0;top:50%;transform:translateY(-50%)}.center{top:50%;left:50%;transform:translate(-50%,-50%)}
+    #status{min-height:22px;margin-top:12px;color:#aeb8c8;font-size:13px}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Grok · idleLook</h1>
+    <p>Single-direction attention shift with preserved idle motion and pointer tracking.</p>
+    <div class="controls" aria-label="Preview controls">
+      <span class="label">Animation</span><button id="play-button" type="button">Play</button><button id="pause-button" type="button">Pause</button><button id="restart-button" type="button">Restart</button>
+      <span class="label">Size</span><button type="button" data-size="64">64px</button><button type="button" data-size="96">96px</button><button type="button" data-size="128" aria-pressed="true">128px</button>
+      <span class="label">Background</span><button type="button" data-background="transparent" aria-pressed="true">Transparent</button><button type="button" data-background="dark">Dark</button><button type="button" data-background="light">Light</button>
+    </div>
+    <div id="stage" class="stage" data-background="transparent" data-testid="preview-stage">
+      <div id="pet-object" role="img" aria-label="Grok idleLook animation">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" preserveAspectRatio="xMidYMid meet" style="background-color:transparent;overflow:visible;--eye-x:0px;--eye-y:0px;--body-x:0px;--body-y:0px;--body-tilt:0deg;--shadow-x:0px;--shadow-y:0px;--shadow-stretch:1;--play-state:running">
+          <defs>
+            <path id="grok-bolt-shape-base" d="M144 158h18l-18 18h14l-40 40h-20l18-18h-14z"/>
+              <style>
+              #pointer-body-js { transform:translate(var(--body-x),var(--body-y)) rotate(var(--body-tilt)); transform-box:view-box; transform-origin:128px 164px; }
+              #eyes-js { transform:translate(var(--eye-x),var(--eye-y)); }
+              #idle-look-gaze-js { animation:grok-idle-look-gaze 4000ms cubic-bezier(0.45,0,0.55,1) infinite; animation-play-state:var(--play-state); transform-box:view-box; transform-origin:128px 164px; }
+              #blink-js { animation:grok-idle-look-blink 4000ms linear infinite; animation-play-state:var(--play-state); transform-box:fill-box; transform-origin:center; }
+              #idle-look-pose-js { animation:grok-idle-look-pose 4000ms cubic-bezier(0.45,0,0.55,1) infinite; animation-play-state:var(--play-state); transform-box:view-box; transform-origin:128px 164px; }
+              #head-follow-js { animation:grok-idle-look-head 4000ms cubic-bezier(0.45,0,0.55,1) infinite; animation-play-state:var(--play-state); transform-box:view-box; transform-origin:128px 150px; }
+              #shadow-js { transform:translate(var(--shadow-x),var(--shadow-y)) scaleX(var(--shadow-stretch)); transform-box:view-box; transform-origin:128px 241px; }
+              #shadow-pulse-js { animation:grok-idle-shadow 4000ms cubic-bezier(0.45,0,0.55,1) infinite; animation-play-state:var(--play-state); transform-box:fill-box; transform-origin:center; }
+              #shadow-idle-look-js { animation:grok-idle-look-shadow 4000ms cubic-bezier(0.45,0,0.55,1) infinite; animation-play-state:var(--play-state); transform-box:fill-box; transform-origin:center; }
+              .is-restarting * { animation:none !important; }
+              #float-js { animation:grok-idle-float 4000ms cubic-bezier(0.45,0,0.55,1) infinite; animation-play-state:var(--play-state); transform-box:view-box; transform-origin:128px 164px; }
+              #helmet-idle-balance-js { animation:grok-idle-helmet-balance 4000ms cubic-bezier(0.45,0,0.55,1) infinite; animation-play-state:var(--play-state); transform-box:view-box; transform-origin:128px 140px; }
+              @keyframes grok-idle-float { 0%{transform:translateY(0)} 20%{transform:translateY(-5px)} 40%{transform:translateY(-10px)} 60%{transform:translateY(-5px)} 76%{transform:translateY(1px)} 79%{transform:translateY(3px)} 82%{transform:translateY(1px)} 100%{transform:translateY(0)} }
+              @keyframes grok-idle-helmet-balance { 0%{transform:rotate(0)} 20%{transform:rotate(.2deg)} 40%{transform:rotate(.38deg)} 60%{transform:rotate(.16deg)} 76%{transform:rotate(-.1deg)} 79%{transform:rotate(-.24deg)} 82%{transform:rotate(-.08deg)} 100%{transform:rotate(0)} }
+              @keyframes grok-idle-shadow { 0%{transform:scaleX(1);opacity:.22} 20%{transform:scaleX(.91);opacity:.20} 40%{transform:scaleX(.82);opacity:.17} 60%{transform:scaleX(.91);opacity:.20} 76%{transform:scaleX(1.05);opacity:.23} 79%{transform:scaleX(1.10);opacity:.24} 82%{transform:scaleX(1.05);opacity:.23} 100%{transform:scaleX(1);opacity:.22} }
+              @keyframes grok-idle-look-pose {
+                0%{transform:translate(0,0) rotate(0)} 20%{transform:translate(0,0) rotate(0)}
+                32%{transform:translate(-0.4px,-0.2px) rotate(-0.2deg)}
+                46%{transform:translate(-0.8px,-0.4px) rotate(-0.4deg)}
+                58%{transform:translate(-0.8px,-0.4px) rotate(-0.4deg)}
+                70%{transform:translate(-0.8px,-0.4px) rotate(-0.4deg)}
+                84%{transform:translate(-0.27999999999999997px,-0.1px) rotate(-0.15000000000000002deg)}
+                100%{transform:translate(0,0) rotate(0)}
+              }
+              @keyframes grok-idle-look-head {
+                0%{transform:translate(0,0) rotate(0)} 20%{transform:translate(0,0) rotate(0)}
+                32%{transform:translate(-0.5px,-0.3px) rotate(-0.25deg)}
+                46%{transform:translate(-1px,-0.6px) rotate(-0.5deg)}
+                58%{transform:translate(-1px,-0.6px) rotate(-0.5deg)}
+                70%{transform:translate(-1px,-0.6px) rotate(-0.5deg)}
+                84%{transform:translate(-0.3px,-0.19999999999999998px) rotate(-0.15deg)}
+                100%{transform:translate(0,0) rotate(0)}
+              }
+              @keyframes grok-idle-look-gaze {
+                0%{transform:translate(0,0)}
+                20%{transform:translate(-1.2px,-0.7999995px)}
+                32%{transform:translate(-2.4px,-1.5px)}
+                46%{transform:translate(-2.4px,-1.5px)}
+                58%{transform:translate(-2.4px,-1.5px)}
+                70%{transform:translate(-1.0000008px,-0.6000000000000001px)}
+                84%{transform:translate(-0.19999999999999998px,-0.1px)}
+                100%{transform:translate(0,0)}
+              }
+              @keyframes grok-idle-look-blink {
+                0%{transform:scaleY(1)} 20%{transform:scaleY(1)} 32%{transform:scaleY(1)} 46%{transform:scaleY(1)}
+                58%{transform:scaleY(.08)} 70%{transform:scaleY(1)} 84%{transform:scaleY(1)} 100%{transform:scaleY(1)}
+              }
+              @keyframes grok-idle-look-shadow {
+                0%{transform:scaleX(1)} 20%{transform:scaleX(.997)} 32%{transform:scaleX(.994)} 46%{transform:scaleX(.99)}
+                58%{transform:scaleX(.99)} 70%{transform:scaleX(.994)} 84%{transform:scaleX(.998)} 100%{transform:scaleX(1)}
+              }
+            </style>
+          </defs>
+        
+          <g id="shadow-js">
+            <g id="shadow-pulse-js" opacity="0.22">
+              <g id="shadow-idle-look-js">
+                <ellipse cx="128" cy="241" rx="48" ry="6" fill="#111217"/>
+              </g>
+            </g>
+          </g>
+        
+          <g id="pointer-body-js" shape-rendering="crispEdges">
+            <g id="float-js">
+              <g id="idle-look-pose-js">
+              <g id="body-js">
+                <path d="M80 152h96v4h12v8h8v40h-8v8h-12v8h-16v8H96v-8H80v-8H68v-8h-8v-40h8v-8h12z" fill="#090a0c"/>
+                <path d="M80 160h96v4h8v8h4v28h-8v8h-12v4h-16v8h-48v-8H88v-4H76v-8h-8v-28h4v-8h8z" fill="#1b1c20"/>
+                <path d="M76 168h16v8h-8v20h8v8H76v-8h-8v-20h8zM164 168h16v8h8v20h-8v8h-16v-8h8v-20h-8z" fill="#28292e" opacity="0.68"/>
+                <path d="M88 208h16v8h48v-8h16v8h-16v8h-48v-8H88z" fill="#25262b" opacity="0.68"/>
+                <path d="M88 216h24v12H88zM144 216h24v12h-24z" fill="#08090b"/>
+                <path d="M92 216h16v8H92zM148 216h16v8h-16z" fill="#d9d9d9"/>
+                <path d="M92 216h16v4H92zM148 216h16v4h-16z" fill="#ffffff" opacity="0.72"/>
+              </g>
+        
+              <g id="arms-js">
+                <path d="M60 164h12v8h4v28h-4v8H60v-8h-8v-28h8z" fill="#090a0c"/>
+                <path d="M56 176h12v8h4v16h-4v8H56v-8h-8v-16h8z" fill="#f4f4f4"/>
+                <path d="M52 184h12v16H52zM56 200h8v8h-8z" fill="#d5d5d5"/>
+                <path d="M196 164h-12v8h-4v28h4v8h12v-8h8v-28h-8z" fill="#090a0c"/>
+                <path d="M200 176h-12v8h-4v16h4v8h12v-8h8v-16h-8z" fill="#f4f4f4"/>
+                <path d="M192 184h12v16h-12zM192 200h8v8h-8z" fill="#d5d5d5"/>
+              </g>
+        
+              <g id="head-follow-js">
+              <g id="head-js">
+              <g id="helmet-idle-balance-js">
+                <path d="M84 100h88v4h8v8h8v12h4v28h-4v8h-8v4h-8v4H84v-4h-8v-4h-8v-8h-4v-28h4v-12h8v-8h8z" fill="#08090b"/>
+                <path d="M88 104h80v4h8v8h8v12h4v24h-4v8h-8v4h-8v4H88v-4h-8v-4h-8v-8h-4v-24h4v-12h8v-8h8z" fill="#f6f6f6"/>
+                <path d="M92 108h72v4h8v8h8v12h4v24h-4v8h-8v4h-8v4H92v-4h-8v-4h-8v-8h-4v-24h4v-12h8v-8h8z" fill="#d8d8d8" opacity="0.62"/>
+                <path d="M92 112h72v4h8v8h8v12h4v20h-4v8h-8v4H92v-4h-8v-8h-4v-20h4v-12h8z" fill="#0b0c0e"/>
+                <path d="M92 112h72v4h8v8h8v8h-8v-8h-8v-4H96v4h-8v8h-8v-8h4v-12h8z" fill="#ffffff" opacity="0.34"/>
+                <path d="M68 124h8v-8h8v44h-8v-8h-8zM180 124h8v-8h8v44h-8v-8h-8z" fill="#08090b"/>
+                <path d="M68 132h8v24h-8zM180 132h8v24h-8z" fill="#f4f4f4"/>
+                <path d="M68 136h4v20h-4zM184 136h4v20h-4z" fill="#d4d4d4"/>
+                <path id="mouth-js" d="M120 150h16v5h-16z" fill="#f6f6f6"/>
+              
+              </g>
+            </g>
+        
+              <g id="eyes-js" fill="#f8f8f8">
+              <g id="idle-look-gaze-js">
+                <g id="blink-js">
+                  <rect x="96" y="130" width="12" height="18"/>
+                  <rect x="148" y="130" width="12" height="18"/>
+                </g>
+              
+              </g>
+            </g>
+              </g>
+        
+              <g id="accessory-js">
+                <use id="bolt-js" href="#grok-bolt-shape-base" fill="#eeeeee"/>
+              </g>
+        
+              <g id="effect-js">
+                <path d="M116 28h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#f8f8f8"/>
+                <path d="M156 46h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#23bff0"/>
+                <path d="M124 68h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#ffe56a"/>
+              </g>
+            
+              </g>
+            </g>
+          </g>
+        </svg>
+        
+        
+        
+      </div>
+      <div id="pointer-capture" aria-hidden="true">
+        <span id="tracking-top-left" class="tracking-hitbox tl"></span><span class="tracking-hitbox tr"></span><span class="tracking-hitbox bl"></span><span id="tracking-bottom-right" class="tracking-hitbox br"></span>
+        <span class="tracking-hitbox top"></span><span class="tracking-hitbox bottom"></span><span class="tracking-hitbox left"></span><span class="tracking-hitbox right"></span><span id="tracking-center" class="tracking-hitbox center"></span>
+      </div>
+    </div>
+    <div id="status" role="status"></div>
+  </main>
+  <script>
+    (() => {
+      const stage=document.getElementById('stage'),petObject=document.getElementById('pet-object'),pointerCapture=document.getElementById('pointer-capture'),status=document.getElementById('status'),svgRoot=petObject.querySelector('svg');
+      const state={loaded:false,playing:true,size:128,background:'transparent',loopCount:0,errors:[],warnings:[]};
+      const nativeConsoleError=console.error.bind(console),nativeConsoleWarn=console.warn.bind(console);console.error=(...args)=>{state.errors.push(args.map(String).join(' '));nativeConsoleError(...args);updateStatus();};console.warn=(...args)=>{state.warnings.push(args.map(String).join(' '));nativeConsoleWarn(...args);updateStatus();};
+      const C={fullScaleStageRatioX:.30,fullScaleStageRatioY:.30,bodyMaxX:16,bodyMaxY:12,bodyMaxTilt:3,eyeMax:3,shadowMaxX:12,shadowMaxY:5,shadowMaxStretch:1.08,smoothingCoefficient:.20,returnDelayMs:650,returnSettleThreshold:.003,expectedReturnDurationMs:500};
+      let currentX=0,currentY=0,targetX=0,targetY=0,lastFrameAt=performance.now(),lastInputAt=performance.now(),returnTimer=0,settleTimer=0,returnStartedAt=0,centeredAt=0,rafId=0;
+      const clamp=(v,min,max)=>Math.min(max,Math.max(min,v));
+      const shadowDistance=(x,y)=>Math.abs(x);
+      function updateStatus(){status.textContent=`SVG loaded · ${state.playing?'playing':'paused'} · ${state.size}px · ${state.loopCount} loops`;document.documentElement.dataset.qaState=JSON.stringify(state);}
+      function writePointerValues(x,y){
+        svgRoot.style.setProperty('--body-x',`${(x*C.bodyMaxX).toFixed(2)}px`);svgRoot.style.setProperty('--body-y',`${(y*C.bodyMaxY).toFixed(2)}px`);svgRoot.style.setProperty('--body-tilt',`${(x*C.bodyMaxTilt).toFixed(2)}deg`);
+        svgRoot.style.setProperty('--eye-x',`${(x*C.eyeMax).toFixed(2)}px`);svgRoot.style.setProperty('--eye-y',`${(y*C.eyeMax).toFixed(2)}px`);
+        svgRoot.style.setProperty('--shadow-x',`${(-x*C.shadowMaxX).toFixed(2)}px`);svgRoot.style.setProperty('--shadow-y',`${(-y*C.shadowMaxY).toFixed(2)}px`);svgRoot.style.setProperty('--shadow-stretch',(1+shadowDistance(x,y)*(C.shadowMaxStretch-1)).toFixed(3));
+        const s=state.size/256;petObject.dataset.pointerQa=JSON.stringify({normalizedX:+x.toFixed(4),normalizedY:+y.toFixed(4),targetX:+targetX.toFixed(4),targetY:+targetY.toFixed(4),bodyX:+(x*C.bodyMaxX).toFixed(2),bodyY:+(y*C.bodyMaxY).toFixed(2),bodyTilt:+(x*C.bodyMaxTilt).toFixed(2),eyeX:+(x*C.eyeMax).toFixed(2),eyeY:+(y*C.eyeMax).toFixed(2),shadowX:+(-x*C.shadowMaxX).toFixed(2),shadowY:+(-y*C.shadowMaxY).toFixed(2),shadowStretch:+(1+shadowDistance(x,y)*(C.shadowMaxStretch-1)).toFixed(3),visibleBodyX:+(x*C.bodyMaxX*s).toFixed(2),visibleBodyY:+(y*C.bodyMaxY*s).toFixed(2),visibleEyeX:+(x*C.eyeMax*s).toFixed(2),visibleEyeY:+(y*C.eyeMax*s).toFixed(2),visibleShadowX:+(-x*C.shadowMaxX*s).toFixed(2),visibleShadowY:+(-y*C.shadowMaxY*s).toFixed(2),lastInputAt,returnStartedAt,centeredAt,measuredWaitMs:returnStartedAt?Math.round(returnStartedAt-lastInputAt):null,measuredReturnMs:centeredAt&&returnStartedAt?Math.round(centeredAt-returnStartedAt):null});
+      }
+      function tick(now){
+        const ratio=clamp((now-lastFrameAt)/(1000/60),.5,6),alpha=1-Math.pow(1-C.smoothingCoefficient,ratio);currentX+=(targetX-currentX)*alpha;currentY+=(targetY-currentY)*alpha;
+        if(returnStartedAt&&!centeredAt&&Math.abs(currentX)<C.returnSettleThreshold&&Math.abs(currentY)<C.returnSettleThreshold){currentX=0;currentY=0;centeredAt=now;if(settleTimer){clearTimeout(settleTimer);settleTimer=0;}}
+        writePointerValues(currentX,currentY);lastFrameAt=now;
+        rafId=requestAnimationFrame(tick);
+      }
+      function ensureTick(){if(!rafId){lastFrameAt=performance.now();rafId=requestAnimationFrame(tick);}}
+      function beginReturn(){returnTimer=0;returnStartedAt=performance.now();centeredAt=0;targetX=0;targetY=0;if(settleTimer)clearTimeout(settleTimer);settleTimer=setTimeout(()=>{if(returnStartedAt&&targetX===0&&targetY===0&&!centeredAt){currentX=0;currentY=0;centeredAt=performance.now();writePointerValues(0,0);}settleTimer=0;},C.expectedReturnDurationMs);ensureTick();}
+      function scheduleReturn(){if(returnTimer)clearTimeout(returnTimer);returnTimer=setTimeout(beginReturn,C.returnDelayMs);}
+      function setPointerTarget(x,y){if(returnTimer){clearTimeout(returnTimer);returnTimer=0}if(settleTimer){clearTimeout(settleTimer);settleTimer=0}returnStartedAt=0;centeredAt=0;targetX=clamp(x,-1,1);targetY=clamp(y,-1,1);lastInputAt=performance.now();scheduleReturn();ensureTick();}
+      function handlePointerMove(e){const sr=stage.getBoundingClientRect(),pr=petObject.getBoundingClientRect(),ox=pr.left+pr.width/2,oy=pr.top+pr.height/2;setPointerTarget((e.clientX-ox)/(sr.width*C.fullScaleStageRatioX),(e.clientY-oy)/(sr.height*C.fullScaleStageRatioY));}
+      function setPlaying(v){state.playing=v;svgRoot.style.setProperty('--play-state',v?'running':'paused');updateStatus();}
+      function restart(){state.loopCount=0;svgRoot.classList.add('is-restarting');void svgRoot.getBoundingClientRect();requestAnimationFrame(()=>{svgRoot.classList.remove('is-restarting');svgRoot.style.setProperty('--play-state',state.playing?'running':'paused');});updateStatus();}
+      function setSize(size){state.size=size;petObject.style.width=`${size}px`;petObject.style.height=`${size}px`;document.querySelectorAll('[data-size]').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.size===size)));writePointerValues(currentX,currentY);updateStatus();}
+      function setBackground(bg){state.background=bg;stage.dataset.background=bg;document.querySelectorAll('[data-background]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.background===bg)));updateStatus();}
+      const required=['pointer-body-js','float-js','idle-look-pose-js','eyes-js','idle-look-gaze-js','blink-js','shadow-js','shadow-pulse-js','shadow-idle-look-js'];for(const id of required)if(!svgRoot.querySelector('#'+id))state.errors.push('Missing '+id);
+      const loopLayer=svgRoot.querySelector('#idle-look-pose-js');if(loopLayer){loopLayer.addEventListener('animationiteration',e=>{if(e.target===loopLayer&&e.animationName==='grok-idle-look-pose'){state.loopCount++;updateStatus();}});state.loaded=true;}
+      pointerCapture.addEventListener('pointermove',handlePointerMove);pointerCapture.addEventListener('pointerdown',handlePointerMove);pointerCapture.addEventListener('pointerleave',scheduleReturn);
+      document.getElementById('play-button').addEventListener('click',()=>setPlaying(true));document.getElementById('pause-button').addEventListener('click',()=>setPlaying(false));document.getElementById('restart-button').addEventListener('click',restart);
+      document.querySelectorAll('[data-size]').forEach(b=>b.addEventListener('click',()=>setSize(+b.dataset.size)));document.querySelectorAll('[data-background]').forEach(b=>b.addEventListener('click',()=>setBackground(b.dataset.background)));
+      window.addEventListener('error',e=>{state.errors.push(e.message||'window error');updateStatus();});window.addEventListener('unhandledrejection',e=>{state.errors.push(String(e.reason));updateStatus();});
+      window.petQA={getState:()=>JSON.parse(JSON.stringify(state)),getPointer:()=>JSON.parse(petObject.dataset.pointerQa||'{}'),setSize,setBackground,pause:()=>setPlaying(false),play:()=>setPlaying(true),restart,simulatePointer:setPointerTarget,resetPointer:beginReturn};
+      writePointerValues(0,0);rafId=requestAnimationFrame(tick);updateStatus();
+    })();
+  </script>
+</body>
+</html>

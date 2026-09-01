@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Qwen notification Preview</title>
+  <style>
+    :root{color-scheme:dark;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#11151d;color:#e8edf5}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px}main{width:min(760px,100%)}
+    h1{margin:0 0 6px;font-size:24px}p{margin:0 0 16px;color:#aeb8c8}
+    .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}.label{margin-left:8px;color:#9aa6b8;font-size:13px}
+    button{border:1px solid #465166;border-radius:8px;background:#202735;color:#edf3ff;padding:7px 10px;cursor:pointer}
+    button[aria-pressed="true"]{border-color:#a878ef;background:#3c2855}.stage{position:relative;height:360px;overflow:hidden;display:grid;place-items:center;border:1px solid #303849;border-radius:14px}
+    .stage[data-background="transparent"]{background-color:#f4f5f7;background-image:linear-gradient(45deg,#d4d7dd 25%,transparent 25%),linear-gradient(-45deg,#d4d7dd 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#d4d7dd 75%),linear-gradient(-45deg,transparent 75%,#d4d7dd 75%);background-size:24px 24px;background-position:0 0,0 12px,12px -12px,-12px 0}
+    .stage[data-background="dark"]{background:#0d1220}.stage[data-background="light"]{background:#eef2f8}
+    #pet-object{position:relative;z-index:2;width:128px;height:128px;background:transparent;pointer-events:none}#pet-object>svg{display:block;width:100%;height:100%;overflow:visible}
+    #pointer-capture{position:absolute;inset:0;z-index:3}.tracking-hitbox{position:absolute;width:18px;height:18px;opacity:0;pointer-events:auto}
+    .tl{top:0;left:0}.tr{top:0;right:0}.bl{bottom:0;left:0}.br{bottom:0;right:0}.top{top:0;left:50%;transform:translateX(-50%)}.bottom{bottom:0;left:50%;transform:translateX(-50%)}.left{left:0;top:50%;transform:translateY(-50%)}.right{right:0;top:50%;transform:translateY(-50%)}.center{top:50%;left:50%;transform:translate(-50%,-50%)}
+    #status{min-height:22px;margin-top:12px;color:#aeb8c8;font-size:13px}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Qwen · notification</h1>
+    <p>A strong pulse and weaker follow-up in the first 36%, followed by a long quiet hold.</p>
+    <div class="controls" aria-label="Preview controls">
+      <span class="label">Animation</span><button id="play-button" type="button">Play</button><button id="pause-button" type="button">Pause</button><button id="restart-button" type="button">Restart</button>
+      <span class="label">Size</span><button type="button" data-size="64">64px</button><button type="button" data-size="96">96px</button><button type="button" data-size="128" aria-pressed="true">128px</button>
+      <span class="label">Background</span><button type="button" data-background="transparent" aria-pressed="true">Transparent</button><button type="button" data-background="dark">Dark</button><button type="button" data-background="light">Light</button>
+    </div>
+    <div id="stage" class="stage" data-background="transparent" data-testid="preview-stage">
+      <div id="pet-object" role="img" aria-label="Qwen notification animation">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" preserveAspectRatio="xMidYMid meet" style="background-color:transparent;overflow:visible;--eye-x:0px;--eye-y:0px;--body-x:0px;--body-y:0px;--body-tilt:0deg;--shadow-x:0px;--shadow-y:0px;--shadow-stretch:1;--play-state:running">
+          <defs>
+            <style>
+              #pointer-body-js{transform:translate(var(--body-x),var(--body-y)) rotate(var(--body-tilt));transform-box:view-box;transform-origin:128px 158px}
+              #eyes-js{transform:translate(var(--eye-x),var(--eye-y))}
+              #shadow-js{transform:translate(var(--shadow-x),var(--shadow-y)) scaleX(var(--shadow-stretch));transform-box:view-box;transform-origin:128px 232px}
+              .is-restarting *{animation:none!important}
+              #notification-pose-js{animation:qwen-notification-pose 2400ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 158px}
+              #antenna-js{animation:qwen-notification-antenna 2400ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:126px 96px}
+              #notification-gaze-js{animation:qwen-notification-gaze 2400ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 152px}
+              #left-arm-motion-js{animation:qwen-notification-left-arm 2400ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:52px 166px}
+              #right-arm-motion-js{animation:qwen-notification-right-arm 2400ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:204px 166px}
+              #blink-js{animation:qwen-notification-blink 2400ms linear infinite;animation-play-state:var(--play-state);transform-box:fill-box;transform-origin:center}
+              #shadow-pulse-js{animation:qwen-notification-shadow 2400ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:fill-box;transform-origin:center}
+              @keyframes qwen-notification-pose{0%{transform:translate(0px,0px) rotate(0deg)}8%{transform:translate(0px,-3px) rotate(0.8deg)}16%{transform:translate(0px,0px) rotate(0deg)}26%{transform:translate(0px,-1.5px) rotate(-0.4deg)}36%{transform:translate(0px,0px) rotate(0deg)}40%{transform:translate(0px,0px) rotate(0deg)}70%{transform:translate(0px,0px) rotate(0deg)}100%{transform:translate(0px,0px) rotate(0deg)}}
+              @keyframes qwen-notification-antenna{0%{transform:translate(0px,0px) rotate(0deg)}8%{transform:translate(0px,-3px) rotate(5deg)}16%{transform:translate(0px,0px) rotate(0deg)}26%{transform:translate(0px,-1.5px) rotate(-3deg)}36%{transform:translate(0px,0px) rotate(0deg)}40%{transform:translate(0px,0px) rotate(0deg)}70%{transform:translate(0px,0px) rotate(0deg)}100%{transform:translate(0px,0px) rotate(0deg)}}
+              @keyframes qwen-notification-gaze{0%{transform:translate(0px,0px)}8%{transform:translate(0px,-1px)}16%{transform:translate(0px,0px)}26%{transform:translate(0px,-0.5px)}36%{transform:translate(0px,0px)}40%{transform:translate(0px,0px)}70%{transform:translate(0px,0px)}100%{transform:translate(0px,0px)}}
+              @keyframes qwen-notification-left-arm{0%{transform:translate(0px,0px) rotate(0deg)}8%{transform:translate(-1px,-4px) rotate(-5deg)}16%{transform:translate(0px,0px) rotate(0deg)}26%{transform:translate(-0.5px,-2px) rotate(-3deg)}36%{transform:translate(0px,0px) rotate(0deg)}40%{transform:translate(0px,0px) rotate(0deg)}70%{transform:translate(0px,0px) rotate(0deg)}100%{transform:translate(0px,0px) rotate(0deg)}}
+              @keyframes qwen-notification-right-arm{0%{transform:translate(0px,0px) rotate(0deg)}8%{transform:translate(1px,-4px) rotate(5deg)}16%{transform:translate(0px,0px) rotate(0deg)}26%{transform:translate(0.5px,-2px) rotate(3deg)}36%{transform:translate(0px,0px) rotate(0deg)}40%{transform:translate(0px,0px) rotate(0deg)}70%{transform:translate(0px,0px) rotate(0deg)}100%{transform:translate(0px,0px) rotate(0deg)}}
+              @keyframes qwen-notification-blink{0%{transform:scaleY(1)}8%{transform:scaleY(1)}16%{transform:scaleY(1)}26%{transform:scaleY(1)}36%{transform:scaleY(1)}40%{transform:scaleY(1)}70%{transform:scaleY(1)}100%{transform:scaleY(1)}}
+              @keyframes qwen-notification-shadow{0%{transform:scaleX(1)}8%{transform:scaleX(0.97)}16%{transform:scaleX(1)}26%{transform:scaleX(0.985)}36%{transform:scaleX(1)}40%{transform:scaleX(1)}70%{transform:scaleX(1)}100%{transform:scaleX(1)}}
+            </style>
+          </defs>
+          <g id="shadow-js">
+            <g id="shadow-pulse-js" opacity="0.22">
+              <ellipse cx="128" cy="232" rx="50" ry="6" fill="#24124f"/>
+            </g>
+          </g>
+          <g id="pointer-body-js" shape-rendering="crispEdges">
+            <g id="float-js">
+              <g id="notification-pose-js">
+              <g id="effect-js">
+                <g id="star-purple-motion-js">
+                  <path id="star-purple-js" d="M106 18h12v6h6v12h-6v8h-12v-8h-8V24h8z" fill="#8a55ed"/>
+                <rect x="108" y="25" width="5" height="8" fill="#f1e8ff"/>
+                </g>
+                <g id="star-pink-motion-js">
+                  <path id="star-pink-js" d="M166 34h12v8h8v12h-8v10h-12V54h-10V42h10z" fill="#dd43d9"/>
+                <rect x="168" y="43" width="6" height="8" fill="#ffe4ff"/>
+                </g>
+                <g id="star-yellow-motion-js">
+                  <path id="star-yellow-js" d="M86 48h12v8h8v12h-8v12H86V68h-8V56h8z" fill="#ffc75a"/>
+                <rect x="87" y="57" width="7" height="8" fill="#fff8dc"/>
+                </g>
+              </g>
+              <g id="accessory-js">
+                <g id="antenna-js">
+                  <path d="M110 98h22V86h-8V68h4V56h8V48h28v4h12v8h8v22h-8v8h-12v6h-24V84h18v-6h8V66h-8v-4h-12v4h-8v12h8v16h-10v8h-26z" fill="#5730b6"/>
+                  <path d="M116 92h10V82h-4V68h6V56h10v-4h24v4h10v6h-20v4h-10v16h6v8h-10v8h-22z" fill="#8d5bea"/>
+                  <path d="M146 62h14v4h8v12h-8v6h-12V74h8v-4h-10z" fill="#17102f"/>
+                </g>
+              </g>
+              <g id="body-js">
+                <path d="M96 88h64v4h16v8h12v10h8v12h8v16h4v44h-4v16h-8v10h-12v8h-20v6H92v-6H72v-8H60v-10h-8v-16h-4v-44h4v-16h8v-12h8v-10h12v-8h16z" fill="#4d2ca4"/>
+                <path d="M100 92h56v4h16v8h12v10h8v12h8v52h-8v16h-12v8h-20v8H96v-8H76v-8H64v-16h-8v-52h8v-12h8v-10h12v-8h16z" fill="#7246d5"/>
+                <path d="M100 96h52v4h16v8h12v10h8v16h-8v-8h-8v-8h-12v-6H96v4H84v8H72v12h-8v22h-8v-22h4v-16h8v-12h12v-8h20z" fill="#9668ed"/>
+                <path d="M56 174h8v16h8v8h12v8h20v8h56v-8h20v-8h12v-8h8v-16h8v8h-4v16h-8v10h-12v8h-20v6H92v-6H72v-8H60v-10h-8v-16h4z" fill="#5b32bb" opacity="0.84"/>
+                <path d="M80 116h16v8H84v8H72v12H64v-16h8v-8h8z" fill="#b18af4" opacity="0.72"/>
+                <g id="arms-js">
+                  <g id="left-arm-motion-js">
+                    <path id="left-arm-js" d="M48 150h12v8h8v16h-8v8H44v-8h-8v-16h8v-8z" fill="#5b33b9"/>
+                    <rect x="40" y="158" width="12" height="16" fill="#8050df"/>
+                  </g>
+                  <g id="right-arm-motion-js">
+                    <path id="right-arm-js" d="M196 150h12v8h8v16h-8v8h-16v-8h-8v-16h8v-8z" fill="#5b33b9"/>
+                    <rect x="204" y="158" width="8" height="16" fill="#8050df"/>
+                  </g>
+                </g>
+                <g id="feet-js">
+                  <path d="M92 214h28v12H88v-8h4z" fill="#5a32b7"/>
+                  <rect x="96" y="214" width="24" height="8" fill="#8453e3"/>
+                  <path d="M140 214h28v4h4v8h-32z" fill="#5a32b7"/>
+                  <rect x="140" y="214" width="24" height="8" fill="#8453e3"/>
+                </g>
+              </g>
+              <g id="head-js">
+                <g id="eyes-js">
+                  <g id="notification-gaze-js">
+                    <g id="blink-js" fill="#fffdfd">
+                      <rect id="left-eye-js" x="98" y="142" width="11" height="19"/>
+                      <rect id="right-eye-js" x="147" y="142" width="11" height="19"/>
+                    </g>
+                  </g>
+                </g>
+                <path id="mouth-js" d="M118 157h9v5h10v-5h9v9h-9v5h-10v-5h-9z" fill="#fffdfd"/>
+                <g id="cheeks-js" fill="#c75bdc">
+                  <path d="M78 156h8v-8h8v8h8v8h-8v8h-8v-8h-8z"/>
+                  <path d="M164 156h8v-8h8v8h8v8h-8v8h-8v-8h-8z"/>
+                </g>
+              </g>
+              <g id="emblem-js" fill="#da43d8">
+                <path fill-rule="evenodd" d="M106 176h24v6h8v8h6v20h-6v8h-8v6h-24v-6h-8v-8h-6v-20h6v-8h8zm6 8v6h-8v20h8v6h12v-6h8v-20h-8v-6z"/>
+                <path d="M128 176h18v6h8v8h6v14h-8v-10h-6v-6h-10v14h-8z"/>
+              </g>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div id="pointer-capture" aria-hidden="true">
+        <span id="tracking-top-left" class="tracking-hitbox tl"></span><span class="tracking-hitbox tr"></span><span class="tracking-hitbox bl"></span><span id="tracking-bottom-right" class="tracking-hitbox br"></span>
+        <span class="tracking-hitbox top"></span><span class="tracking-hitbox bottom"></span><span class="tracking-hitbox left"></span><span class="tracking-hitbox right"></span><span id="tracking-center" class="tracking-hitbox center"></span>
+      </div>
+    </div>
+    <div id="status" role="status"></div>
+  </main>
+  <script>
+    (() => {
+      const stage=document.getElementById('stage'),petObject=document.getElementById('pet-object'),pointerCapture=document.getElementById('pointer-capture'),status=document.getElementById('status'),svgRoot=petObject.querySelector('svg');
+      const state={loaded:false,playing:true,size:128,background:'transparent',loopCount:0,errors:[],warnings:[]};
+      const nativeConsoleError=console.error.bind(console),nativeConsoleWarn=console.warn.bind(console);console.error=(...args)=>{state.errors.push(args.map(String).join(' '));nativeConsoleError(...args);updateStatus();};console.warn=(...args)=>{state.warnings.push(args.map(String).join(' '));nativeConsoleWarn(...args);updateStatus();};
+      const C={fullScaleStageRatioX:.30,fullScaleStageRatioY:.30,bodyMaxX:16,bodyMaxY:12,bodyMaxTilt:3,eyeMax:3,shadowMaxX:12,shadowMaxY:5,shadowMaxStretch:1.08,smoothingCoefficient:.20,returnDelayMs:650,returnSettleThreshold:.003,expectedReturnDurationMs:500};
+      let currentX=0,currentY=0,targetX=0,targetY=0,lastFrameAt=performance.now(),lastInputAt=performance.now(),returnTimer=0,settleTimer=0,returnStartedAt=0,centeredAt=0,rafId=0;
+      const clamp=(v,min,max)=>Math.min(max,Math.max(min,v));
+      const shadowDistance=x=>Math.abs(x);
+      function updateStatus(){status.textContent=`SVG loaded · ${state.playing?'playing':'paused'} · ${state.size}px · ${state.loopCount} loops`;document.documentElement.dataset.qaState=JSON.stringify(state);}
+      function writePointerValues(x,y){
+        svgRoot.style.setProperty('--body-x',`${(x*C.bodyMaxX).toFixed(2)}px`);svgRoot.style.setProperty('--body-y',`${(y*C.bodyMaxY).toFixed(2)}px`);svgRoot.style.setProperty('--body-tilt',`${(x*C.bodyMaxTilt).toFixed(2)}deg`);
+        svgRoot.style.setProperty('--eye-x',`${(x*C.eyeMax).toFixed(2)}px`);svgRoot.style.setProperty('--eye-y',`${(y*C.eyeMax).toFixed(2)}px`);
+        svgRoot.style.setProperty('--shadow-x',`${(-x*C.shadowMaxX).toFixed(2)}px`);svgRoot.style.setProperty('--shadow-y',`${(-y*C.shadowMaxY).toFixed(2)}px`);svgRoot.style.setProperty('--shadow-stretch',(1+shadowDistance(x)*(C.shadowMaxStretch-1)).toFixed(3));
+        const s=state.size/256;petObject.dataset.pointerQa=JSON.stringify({normalizedX:+x.toFixed(4),normalizedY:+y.toFixed(4),targetX:+targetX.toFixed(4),targetY:+targetY.toFixed(4),bodyX:+(x*C.bodyMaxX).toFixed(2),bodyY:+(y*C.bodyMaxY).toFixed(2),bodyTilt:+(x*C.bodyMaxTilt).toFixed(2),eyeX:+(x*C.eyeMax).toFixed(2),eyeY:+(y*C.eyeMax).toFixed(2),shadowX:+(-x*C.shadowMaxX).toFixed(2),shadowY:+(-y*C.shadowMaxY).toFixed(2),shadowStretch:+(1+shadowDistance(x)*(C.shadowMaxStretch-1)).toFixed(3),visibleBodyX:+(x*C.bodyMaxX*s).toFixed(2),visibleBodyY:+(y*C.bodyMaxY*s).toFixed(2),visibleEyeX:+(x*C.eyeMax*s).toFixed(2),visibleEyeY:+(y*C.eyeMax*s).toFixed(2),visibleShadowX:+(-x*C.shadowMaxX*s).toFixed(2),visibleShadowY:+(-y*C.shadowMaxY*s).toFixed(2),lastInputAt,returnStartedAt,centeredAt,measuredWaitMs:returnStartedAt?Math.round(returnStartedAt-lastInputAt):null,measuredReturnMs:centeredAt&&returnStartedAt?Math.round(centeredAt-returnStartedAt):null});
+      }
+      function tick(now){const ratio=clamp((now-lastFrameAt)/(1000/60),.5,6),alpha=1-Math.pow(1-C.smoothingCoefficient,ratio);currentX+=(targetX-currentX)*alpha;currentY+=(targetY-currentY)*alpha;if(returnStartedAt&&!centeredAt&&Math.abs(currentX)<C.returnSettleThreshold&&Math.abs(currentY)<C.returnSettleThreshold){currentX=0;currentY=0;centeredAt=now;if(settleTimer){clearTimeout(settleTimer);settleTimer=0}}writePointerValues(currentX,currentY);lastFrameAt=now;rafId=requestAnimationFrame(tick);}
+      function ensureTick(){if(!rafId){lastFrameAt=performance.now();rafId=requestAnimationFrame(tick)}}
+      function beginReturn(){returnTimer=0;returnStartedAt=performance.now();centeredAt=0;targetX=0;targetY=0;if(settleTimer)clearTimeout(settleTimer);settleTimer=setTimeout(()=>{if(returnStartedAt&&targetX===0&&targetY===0&&!centeredAt){currentX=0;currentY=0;centeredAt=performance.now();writePointerValues(0,0)}settleTimer=0},C.expectedReturnDurationMs);ensureTick();}
+      function scheduleReturn(){if(returnTimer)clearTimeout(returnTimer);returnTimer=setTimeout(beginReturn,C.returnDelayMs);}
+      function setPointerTarget(x,y){if(returnTimer){clearTimeout(returnTimer);returnTimer=0}if(settleTimer){clearTimeout(settleTimer);settleTimer=0}returnStartedAt=0;centeredAt=0;targetX=clamp(x,-1,1);targetY=clamp(y,-1,1);lastInputAt=performance.now();scheduleReturn();ensureTick();}
+      function handlePointerMove(e){const sr=stage.getBoundingClientRect(),pr=petObject.getBoundingClientRect(),ox=pr.left+pr.width/2,oy=pr.top+pr.height/2;setPointerTarget((e.clientX-ox)/(sr.width*C.fullScaleStageRatioX),(e.clientY-oy)/(sr.height*C.fullScaleStageRatioY));}
+      function setPlaying(v){state.playing=v;svgRoot.style.setProperty('--play-state',v?'running':'paused');updateStatus();}
+      function restart(){state.loopCount=0;svgRoot.classList.add('is-restarting');void svgRoot.getBoundingClientRect();requestAnimationFrame(()=>{svgRoot.classList.remove('is-restarting');svgRoot.style.setProperty('--play-state',state.playing?'running':'paused')});updateStatus();}
+      function setSize(size){state.size=size;petObject.style.width=`${size}px`;petObject.style.height=`${size}px`;document.querySelectorAll('[data-size]').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.size===size)));writePointerValues(currentX,currentY);updateStatus();}
+      function setBackground(bg){state.background=bg;stage.dataset.background=bg;document.querySelectorAll('[data-background]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.background===bg)));updateStatus();}
+      const required=["pointer-body-js","float-js","notification-pose-js","eyes-js","notification-gaze-js","left-eye-js","right-eye-js","blink-js","antenna-js","shadow-js","shadow-pulse-js"];for(const id of required)if(!svgRoot.querySelector('#'+id))state.errors.push('Missing '+id);
+      const loopLayer=svgRoot.querySelector('#notification-pose-js');if(loopLayer){loopLayer.addEventListener('animationiteration',e=>{if(e.target===loopLayer&&e.animationName==='qwen-notification-pose'){state.loopCount++;updateStatus()}});state.loaded=true;}
+      pointerCapture.addEventListener('pointermove',handlePointerMove);pointerCapture.addEventListener('pointerdown',handlePointerMove);pointerCapture.addEventListener('pointerleave',scheduleReturn);
+      document.getElementById('play-button').addEventListener('click',()=>setPlaying(true));document.getElementById('pause-button').addEventListener('click',()=>setPlaying(false));document.getElementById('restart-button').addEventListener('click',restart);
+      document.querySelectorAll('[data-size]').forEach(b=>b.addEventListener('click',()=>setSize(+b.dataset.size)));document.querySelectorAll('[data-background]').forEach(b=>b.addEventListener('click',()=>setBackground(b.dataset.background)));
+      window.addEventListener('error',e=>{state.errors.push(e.message||'window error');updateStatus()});window.addEventListener('unhandledrejection',e=>{state.errors.push(String(e.reason));updateStatus()});
+      window.petQA={getState:()=>JSON.parse(JSON.stringify(state)),getPointer:()=>JSON.parse(petObject.dataset.pointerQa||'{}'),setSize,setBackground,pause:()=>setPlaying(false),play:()=>setPlaying(true),restart,simulatePointer:setPointerTarget,resetPointer:beginReturn};
+      writePointerValues(0,0);rafId=requestAnimationFrame(tick);updateStatus();
+    })();
+  </script>
+</body>
+</html>
+
+

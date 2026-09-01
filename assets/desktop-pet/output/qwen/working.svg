@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" preserveAspectRatio="xMidYMid meet" style="background-color:transparent;overflow:visible;--eye-x:0px;--eye-y:0px;--body-x:0px;--body-y:0px;--body-tilt:0deg;--shadow-x:0px;--shadow-y:0px;--shadow-stretch:1;--play-state:running">
+  <defs>
+    <style>
+      #pointer-body-js{transform:translate(var(--body-x),var(--body-y)) rotate(var(--body-tilt));transform-box:view-box;transform-origin:128px 158px}
+      #eyes-js{transform:translate(var(--eye-x),var(--eye-y))}
+      #shadow-js{transform:translate(var(--shadow-x),var(--shadow-y)) scaleX(var(--shadow-stretch));transform-box:view-box;transform-origin:128px 232px}
+      .is-restarting *{animation:none!important}
+      #working-pose-js{animation:qwen-working-pose 3200ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 158px}
+      #antenna-js{animation:qwen-working-antenna 3200ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:126px 96px}
+      #working-gaze-js{animation:qwen-working-gaze 3200ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 152px}
+      #left-arm-motion-js{animation:qwen-working-left-arm 3200ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:52px 166px}
+      #right-arm-motion-js{animation:qwen-working-right-arm 3200ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:204px 166px}
+      #blink-js{animation:qwen-working-blink 3200ms linear infinite;animation-play-state:var(--play-state);transform-box:fill-box;transform-origin:center}
+      #shadow-pulse-js{animation:qwen-working-shadow 3200ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:fill-box;transform-origin:center}
+      @keyframes qwen-working-pose{0%{transform:translate(0px,0px) rotate(0deg)}12%{transform:translate(0px,-1px) rotate(-0.3deg)}25%{transform:translate(0.5px,0px) rotate(0.3deg)}38%{transform:translate(0px,-1px) rotate(-0.3deg)}50%{transform:translate(-0.5px,0px) rotate(0.3deg)}63%{transform:translate(0px,-1px) rotate(-0.3deg)}78%{transform:translate(0px,0px) rotate(0.1deg)}100%{transform:translate(0px,0px) rotate(0deg)}}
+      @keyframes qwen-working-antenna{0%{transform:translate(0px,0px) rotate(0deg)}12%{transform:translate(0px,-2px) rotate(-5deg)}25%{transform:translate(0px,-1px) rotate(3deg)}38%{transform:translate(0px,-2px) rotate(-5deg)}50%{transform:translate(0px,-1px) rotate(3deg)}63%{transform:translate(0px,-2px) rotate(-5deg)}78%{transform:translate(0px,-1px) rotate(2deg)}100%{transform:translate(0px,0px) rotate(0deg)}}
+      @keyframes qwen-working-gaze{0%{transform:translate(0px,0px)}12%{transform:translate(0px,0.6px)}25%{transform:translate(0px,1px)}38%{transform:translate(0px,0.6px)}50%{transform:translate(0px,1px)}63%{transform:translate(0px,0.6px)}78%{transform:translate(0px,0.3px)}100%{transform:translate(0px,0px)}}
+      @keyframes qwen-working-left-arm{0%{transform:translate(0px,0px) rotate(0deg)}12%{transform:translate(2px,-3px) rotate(4deg)}25%{transform:translate(1px,-1px) rotate(2deg)}38%{transform:translate(2px,-3px) rotate(4deg)}50%{transform:translate(0px,1px) rotate(-1deg)}63%{transform:translate(2px,-3px) rotate(4deg)}78%{transform:translate(1px,-1px) rotate(2deg)}100%{transform:translate(0px,0px) rotate(0deg)}}
+      @keyframes qwen-working-right-arm{0%{transform:translate(0px,0px) rotate(0deg)}12%{transform:translate(0px,1px) rotate(1deg)}25%{transform:translate(-2px,-3px) rotate(-4deg)}38%{transform:translate(-1px,-1px) rotate(-2deg)}50%{transform:translate(-2px,-3px) rotate(-4deg)}63%{transform:translate(-1px,-1px) rotate(-2deg)}78%{transform:translate(-2px,-2px) rotate(-3deg)}100%{transform:translate(0px,0px) rotate(0deg)}}
+      @keyframes qwen-working-blink{0%{transform:scaleY(1)}12%{transform:scaleY(1)}25%{transform:scaleY(1)}38%{transform:scaleY(1)}50%{transform:scaleY(1)}63%{transform:scaleY(1)}78%{transform:scaleY(0.25)}100%{transform:scaleY(1)}}
+      @keyframes qwen-working-shadow{0%{transform:scaleX(1)}12%{transform:scaleX(0.99)}25%{transform:scaleX(1)}38%{transform:scaleX(0.99)}50%{transform:scaleX(1)}63%{transform:scaleX(0.99)}78%{transform:scaleX(1)}100%{transform:scaleX(1)}}
+    </style>
+  </defs>
+  <g id="shadow-js">
+    <g id="shadow-pulse-js" opacity="0.22">
+      <ellipse cx="128" cy="232" rx="50" ry="6" fill="#24124f"/>
+    </g>
+  </g>
+  <g id="pointer-body-js" shape-rendering="crispEdges">
+    <g id="float-js">
+      <g id="working-pose-js">
+      <g id="effect-js">
+        <g id="star-purple-motion-js">
+          <path id="star-purple-js" d="M106 18h12v6h6v12h-6v8h-12v-8h-8V24h8z" fill="#8a55ed"/>
+        <rect x="108" y="25" width="5" height="8" fill="#f1e8ff"/>
+        </g>
+        <g id="star-pink-motion-js">
+          <path id="star-pink-js" d="M166 34h12v8h8v12h-8v10h-12V54h-10V42h10z" fill="#dd43d9"/>
+        <rect x="168" y="43" width="6" height="8" fill="#ffe4ff"/>
+        </g>
+        <g id="star-yellow-motion-js">
+          <path id="star-yellow-js" d="M86 48h12v8h8v12h-8v12H86V68h-8V56h8z" fill="#ffc75a"/>
+        <rect x="87" y="57" width="7" height="8" fill="#fff8dc"/>
+        </g>
+      </g>
+      <g id="accessory-js">
+        <g id="antenna-js">
+          <path d="M110 98h22V86h-8V68h4V56h8V48h28v4h12v8h8v22h-8v8h-12v6h-24V84h18v-6h8V66h-8v-4h-12v4h-8v12h8v16h-10v8h-26z" fill="#5730b6"/>
+          <path d="M116 92h10V82h-4V68h6V56h10v-4h24v4h10v6h-20v4h-10v16h6v8h-10v8h-22z" fill="#8d5bea"/>
+          <path d="M146 62h14v4h8v12h-8v6h-12V74h8v-4h-10z" fill="#17102f"/>
+        </g>
+      </g>
+      <g id="body-js">
+        <path d="M96 88h64v4h16v8h12v10h8v12h8v16h4v44h-4v16h-8v10h-12v8h-20v6H92v-6H72v-8H60v-10h-8v-16h-4v-44h4v-16h8v-12h8v-10h12v-8h16z" fill="#4d2ca4"/>
+        <path d="M100 92h56v4h16v8h12v10h8v12h8v52h-8v16h-12v8h-20v8H96v-8H76v-8H64v-16h-8v-52h8v-12h8v-10h12v-8h16z" fill="#7246d5"/>
+        <path d="M100 96h52v4h16v8h12v10h8v16h-8v-8h-8v-8h-12v-6H96v4H84v8H72v12h-8v22h-8v-22h4v-16h8v-12h12v-8h20z" fill="#9668ed"/>
+        <path d="M56 174h8v16h8v8h12v8h20v8h56v-8h20v-8h12v-8h8v-16h8v8h-4v16h-8v10h-12v8h-20v6H92v-6H72v-8H60v-10h-8v-16h4z" fill="#5b32bb" opacity="0.84"/>
+        <path d="M80 116h16v8H84v8H72v12H64v-16h8v-8h8z" fill="#b18af4" opacity="0.72"/>
+        <g id="arms-js">
+          <g id="left-arm-motion-js">
+            <path id="left-arm-js" d="M48 150h12v8h8v16h-8v8H44v-8h-8v-16h8v-8z" fill="#5b33b9"/>
+            <rect x="40" y="158" width="12" height="16" fill="#8050df"/>
+          </g>
+          <g id="right-arm-motion-js">
+            <path id="right-arm-js" d="M196 150h12v8h8v16h-8v8h-16v-8h-8v-16h8v-8z" fill="#5b33b9"/>
+            <rect x="204" y="158" width="8" height="16" fill="#8050df"/>
+          </g>
+        </g>
+        <g id="feet-js">
+          <path d="M92 214h28v12H88v-8h4z" fill="#5a32b7"/>
+          <rect x="96" y="214" width="24" height="8" fill="#8453e3"/>
+          <path d="M140 214h28v4h4v8h-32z" fill="#5a32b7"/>
+          <rect x="140" y="214" width="24" height="8" fill="#8453e3"/>
+        </g>
+      </g>
+      <g id="head-js">
+        <g id="eyes-js">
+          <g id="working-gaze-js">
+            <g id="blink-js" fill="#fffdfd">
+              <rect id="left-eye-js" x="98" y="142" width="11" height="19"/>
+              <rect id="right-eye-js" x="147" y="142" width="11" height="19"/>
+            </g>
+          </g>
+        </g>
+        <path id="mouth-js" d="M118 157h9v5h10v-5h9v9h-9v5h-10v-5h-9z" fill="#fffdfd"/>
+        <g id="cheeks-js" fill="#c75bdc">
+          <path d="M78 156h8v-8h8v8h8v8h-8v8h-8v-8h-8z"/>
+          <path d="M164 156h8v-8h8v8h8v8h-8v8h-8v-8h-8z"/>
+        </g>
+      </g>
+      <g id="emblem-js" fill="#da43d8">
+        <path fill-rule="evenodd" d="M106 176h24v6h8v8h6v20h-6v8h-8v6h-24v-6h-8v-8h-6v-20h6v-8h8zm6 8v6h-8v20h8v6h12v-6h8v-20h-8v-6z"/>
+        <path d="M128 176h18v6h8v8h6v14h-8v-10h-6v-6h-10v14h-8z"/>
+      </g>
+      </g>
+    </g>
+  </g>
+</svg>
+
+

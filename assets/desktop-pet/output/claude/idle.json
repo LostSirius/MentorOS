@@ -1,0 +1,167 @@
+{
+  "character": "claude",
+  "action": "idle",
+  "keyframeCount": 8,
+  "keyframes": [
+    {
+      "index": 1,
+      "percent": 0,
+      "bodyY": 0,
+      "topTuftRotateDeg": 0,
+      "armsY": 0,
+      "eyeScaleY": 1,
+      "shadowScaleX": 1,
+      "description": "基准待机姿态。"
+    },
+    {
+      "index": 2,
+      "percent": 20,
+      "bodyY": -2,
+      "topTuftRotateDeg": -1.5,
+      "armsY": -0.5,
+      "eyeScaleY": 1,
+      "shadowScaleX": 0.97,
+      "description": "主体轻微上浮，顶部部件向左响应。"
+    },
+    {
+      "index": 3,
+      "percent": 40,
+      "bodyY": -5,
+      "topTuftRotateDeg": -3,
+      "armsY": -1,
+      "eyeScaleY": 1,
+      "shadowScaleX": 0.92,
+      "description": "到达平稳悬浮高点。"
+    },
+    {
+      "index": 4,
+      "percent": 60,
+      "bodyY": -3,
+      "topTuftRotateDeg": 2,
+      "armsY": 0.5,
+      "eyeScaleY": 1,
+      "shadowScaleX": 0.96,
+      "description": "缓慢回落并让顶部部件转向另一侧。"
+    },
+    {
+      "index": 5,
+      "percent": 76,
+      "bodyY": 0,
+      "topTuftRotateDeg": -1,
+      "armsY": 0.5,
+      "eyeScaleY": 1,
+      "shadowScaleX": 1.01,
+      "description": "接近基准，侧部件保持自然惯性。"
+    },
+    {
+      "index": 6,
+      "percent": 79,
+      "bodyY": 1,
+      "topTuftRotateDeg": 0,
+      "armsY": 1,
+      "eyeScaleY": 0.12,
+      "shadowScaleX": 1.04,
+      "description": "最低点短促眨眼。"
+    },
+    {
+      "index": 7,
+      "percent": 82,
+      "bodyY": 0.5,
+      "topTuftRotateDeg": 0.8,
+      "armsY": 0.5,
+      "eyeScaleY": 1,
+      "shadowScaleX": 1.02,
+      "description": "重新睁眼并平滑回升。"
+    },
+    {
+      "index": 8,
+      "percent": 100,
+      "bodyY": 0,
+      "topTuftRotateDeg": 0,
+      "armsY": 0,
+      "eyeScaleY": 1,
+      "shadowScaleX": 1,
+      "description": "全部参数恢复首帧。"
+    }
+  ],
+  "durationMs": 4000,
+  "loop": true,
+  "easing": "cubic-bezier(0.45, 0, 0.55, 1)",
+  "blinkEasing": "linear",
+  "layers": [
+    "pointer-body-js",
+    "float-js",
+    "body-js",
+    "head-js",
+    "face-js",
+    "eyes-js",
+    "blink-js",
+    "left-eye-js",
+    "right-eye-js",
+    "mouth-js",
+    "arms-js",
+    "left-arm-js",
+    "right-arm-js",
+    "feet-js",
+    "left-foot-js",
+    "right-foot-js",
+    "accessory-js",
+    "top-tuft-js",
+    "emblem-js",
+    "shadow-js",
+    "shadow-pulse-js",
+    "gaze-js"
+  ],
+  "pointerTrackingLayers": [
+    "pointer-body-js",
+    "eyes-js",
+    "shadow-js"
+  ],
+  "partMotion": {
+    "bodyMinYUserUnits": -5,
+    "bodyMaxYUserUnits": 1,
+    "topTuftMaxRotateDeg": 3,
+    "armsMaxYUserUnits": 1,
+    "shadowScaleMin": 0.92,
+    "shadowScaleMax": 1.04,
+    "usesWholeBodyScale": false,
+    "usesBlur": false,
+    "usesNewGeometry": false
+  },
+  "pointerTracking": {
+    "normalization": {
+      "origin": "rendered Claude character center",
+      "fullScaleStageRatioX": 0.3,
+      "fullScaleStageRatioY": 0.3,
+      "clampMin": -1,
+      "clampMax": 1
+    },
+    "body": {
+      "maxXUserUnits": 16,
+      "maxYUserUnits": 12,
+      "maxTiltDeg": 3,
+      "layer": "pointer-body-js"
+    },
+    "eyes": {
+      "maxXUserUnits": 3,
+      "maxYUserUnits": 3,
+      "layer": "eyes-js"
+    },
+    "shadow": {
+      "maxReverseXUserUnits": 12,
+      "maxReverseYUserUnits": 5,
+      "maxPointerStretch": 1.08,
+      "layer": "shadow-js",
+      "stateScaleLayer": "shadow-pulse-js"
+    },
+    "response": {
+      "smoothingCoefficient": 0.2,
+      "returnDelayMs": 650,
+      "returnSettleThreshold": 0.003,
+      "expectedReturnDurationMs": 500,
+      "engine": "requestAnimationFrame"
+    }
+  },
+  "seamStrategy": "第8帧将悬浮位置、顶部部件、侧部件、眨眼和阴影精确恢复为第1帧；全部idle层共享4000ms时间轴。"
+}
+

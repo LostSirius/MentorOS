@@ -1,0 +1,210 @@
+{
+  "character": "gpt",
+  "action": "error",
+  "keyframeCount": 8,
+  "keyframes": [
+    {
+      "index": 1,
+      "percent": 0,
+      "phase": "base",
+      "transforms": {
+        "#error-pose-js": "translate(0px,0px) rotate(0deg)",
+        "#error-gaze-js": "translate(0px,0px)",
+        "#blink-js": "scaleY(1)",
+        "#shadow-pulse-js": "scaleX(1)",
+        "#head-build-js": "translate(0px,0px) rotate(0deg)",
+        "#left-arm-build-js": "translate(0px,0px) rotate(0deg)",
+        "#right-arm-build-js": "translate(0px,0px) rotate(0deg)",
+        "#knot-core-js": "rotate(0deg)",
+        "#knot-glow-js": "rotate(0deg)"
+      }
+    },
+    {
+      "index": 2,
+      "percent": 10,
+      "phase": "interrupted",
+      "transforms": {
+        "#error-pose-js": "translate(0px,1px) rotate(0.2deg)",
+        "#error-gaze-js": "translate(0px,1px)",
+        "#blink-js": "scaleY(1)",
+        "#shadow-pulse-js": "scaleX(1.01)",
+        "#head-build-js": "translate(0px,1px) rotate(0.2deg)",
+        "#left-arm-build-js": "translate(-1px,2px) rotate(2deg)",
+        "#right-arm-build-js": "translate(1px,2px) rotate(-2deg)",
+        "#knot-core-js": "rotate(2deg)",
+        "#knot-glow-js": "rotate(-2deg)"
+      }
+    },
+    {
+      "index": 3,
+      "percent": 22,
+      "phase": "recoil",
+      "transforms": {
+        "#error-pose-js": "translate(-2px,2px) rotate(-0.7deg)",
+        "#error-gaze-js": "translate(-1px,1px)",
+        "#blink-js": "scaleY(1)",
+        "#shadow-pulse-js": "scaleX(1.02)",
+        "#head-build-js": "translate(-1px,1px) rotate(-0.4deg)",
+        "#left-arm-build-js": "translate(3px,3px) rotate(-4deg)",
+        "#right-arm-build-js": "translate(-3px,3px) rotate(4deg)",
+        "#knot-core-js": "rotate(-5deg)",
+        "#knot-glow-js": "rotate(5deg)"
+      }
+    },
+    {
+      "index": 4,
+      "percent": 38,
+      "phase": "imbalance",
+      "transforms": {
+        "#error-pose-js": "translate(3px,3px) rotate(1deg)",
+        "#error-gaze-js": "translate(1px,1.5px)",
+        "#blink-js": "scaleY(0.25)",
+        "#shadow-pulse-js": "scaleX(1.03)",
+        "#head-build-js": "translate(1px,2px) rotate(0.8deg)",
+        "#left-arm-build-js": "translate(-4px,5px) rotate(6deg)",
+        "#right-arm-build-js": "translate(4px,5px) rotate(-6deg)",
+        "#knot-core-js": "rotate(6deg)",
+        "#knot-glow-js": "rotate(-6deg)"
+      }
+    },
+    {
+      "index": 5,
+      "percent": 56,
+      "phase": "halt-confirm",
+      "transforms": {
+        "#error-pose-js": "translate(-1px,2px) rotate(-0.5deg)",
+        "#error-gaze-js": "translate(0px,1.5px)",
+        "#blink-js": "scaleY(0.35)",
+        "#shadow-pulse-js": "scaleX(1.02)",
+        "#head-build-js": "translate(-1px,1px) rotate(-0.5deg)",
+        "#left-arm-build-js": "translate(3px,3px) rotate(-5deg)",
+        "#right-arm-build-js": "translate(-3px,3px) rotate(5deg)",
+        "#knot-core-js": "rotate(-6deg)",
+        "#knot-glow-js": "rotate(6deg)"
+      }
+    },
+    {
+      "index": 6,
+      "percent": 70,
+      "phase": "recover",
+      "transforms": {
+        "#error-pose-js": "translate(1px,1px) rotate(0.3deg)",
+        "#error-gaze-js": "translate(-0.5px,0.5px)",
+        "#blink-js": "scaleY(1)",
+        "#shadow-pulse-js": "scaleX(1.01)",
+        "#head-build-js": "translate(0px,0.5px) rotate(0.2deg)",
+        "#left-arm-build-js": "translate(-1px,1px) rotate(2deg)",
+        "#right-arm-build-js": "translate(1px,1px) rotate(-2deg)",
+        "#knot-core-js": "rotate(3deg)",
+        "#knot-glow-js": "rotate(-3deg)"
+      }
+    },
+    {
+      "index": 7,
+      "percent": 86,
+      "phase": "recheck",
+      "transforms": {
+        "#error-pose-js": "translate(0px,-0.5px) rotate(-0.1deg)",
+        "#error-gaze-js": "translate(0px,0px)",
+        "#blink-js": "scaleY(1)",
+        "#shadow-pulse-js": "scaleX(1)",
+        "#head-build-js": "translate(0px,0px) rotate(0deg)",
+        "#left-arm-build-js": "translate(0px,0px) rotate(0deg)",
+        "#right-arm-build-js": "translate(0px,0px) rotate(0deg)",
+        "#knot-core-js": "rotate(1deg)",
+        "#knot-glow-js": "rotate(-1deg)"
+      }
+    },
+    {
+      "index": 8,
+      "percent": 100,
+      "phase": "base",
+      "transforms": {
+        "#error-pose-js": "translate(0px,0px) rotate(0deg)",
+        "#error-gaze-js": "translate(0px,0px)",
+        "#blink-js": "scaleY(1)",
+        "#shadow-pulse-js": "scaleX(1)",
+        "#head-build-js": "translate(0px,0px) rotate(0deg)",
+        "#left-arm-build-js": "translate(0px,0px) rotate(0deg)",
+        "#right-arm-build-js": "translate(0px,0px) rotate(0deg)",
+        "#knot-core-js": "rotate(0deg)",
+        "#knot-glow-js": "rotate(0deg)"
+      }
+    }
+  ],
+  "durationMs": 3200,
+  "loop": true,
+  "easing": "cubic-bezier(0.45, 0, 0.55, 1)",
+  "blinkEasing": "linear",
+  "layers": [
+    "pointer-body-js",
+    "float-js",
+    "error-pose-js",
+    "body-js",
+    "head-js",
+    "eyes-js",
+    "error-gaze-js",
+    "blink-js",
+    "arms-js",
+    "accessory-js",
+    "effect-js",
+    "shadow-js",
+    "shadow-pulse-js",
+    "head-build-js",
+    "left-arm-build-js",
+    "right-arm-build-js",
+    "knot-core-js",
+    "knot-glow-js"
+  ],
+  "pointerTrackingLayers": [
+    "pointer-body-js",
+    "eyes-js",
+    "shadow-js"
+  ],
+  "partMotion": {
+    "bodyMaxTranslateUserUnits": 3,
+    "bodyMaxRotateDeg": 1,
+    "partMaxTranslateUserUnits": 5,
+    "partMaxRotateDeg": 6,
+    "usesNewGeometry": false,
+    "usesWholeBodyScale": false,
+    "usesColorChange": false,
+    "usesBlur": false,
+    "usesRaster": false
+  },
+  "pointerTracking": {
+    "normalization": {
+      "origin": "rendered gpt character center",
+      "fullScaleStageRatioX": 0.3,
+      "fullScaleStageRatioY": 0.3,
+      "clampMin": -1,
+      "clampMax": 1
+    },
+    "body": {
+      "maxXUserUnits": 16,
+      "maxYUserUnits": 12,
+      "maxTiltDeg": 3,
+      "layer": "pointer-body-js"
+    },
+    "eyes": {
+      "maxXUserUnits": 3,
+      "maxYUserUnits": 3,
+      "layer": "eyes-js"
+    },
+    "shadow": {
+      "maxReverseXUserUnits": 12,
+      "maxReverseYUserUnits": 5,
+      "maxPointerStretch": 1.08,
+      "layer": "shadow-js",
+      "stateScaleLayer": "shadow-pulse-js"
+    },
+    "response": {
+      "smoothingCoefficient": 0.2,
+      "returnDelayMs": 650,
+      "returnSettleThreshold": 0.001,
+      "expectedReturnDurationMs": 500,
+      "engine": "requestAnimationFrame"
+    }
+  },
+  "seamStrategy": "Keyframe 8 restores every transform, gaze, blink and shadow value to keyframe 1; all error layers share one 3200ms timeline."
+}

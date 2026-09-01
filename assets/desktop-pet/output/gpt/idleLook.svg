@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" preserveAspectRatio="xMidYMid meet" style="background-color:transparent;overflow:visible;--eye-x:0px;--eye-y:0px;--body-x:0px;--body-y:0px;--body-tilt:0deg;--shadow-x:0px;--shadow-y:0px;--shadow-stretch:1;--play-state:running">
+  <defs>
+    <path id="gpt-knot-segment-base" d="M128 168h14l9 9v12h-8v-9l-5-4h-10"/>
+    <g id="gpt-knot-shape-base">
+      <use href="#gpt-knot-segment-base"/>
+      <use href="#gpt-knot-segment-base" transform="rotate(60 128 188)"/>
+      <use href="#gpt-knot-segment-base" transform="rotate(120 128 188)"/>
+      <use href="#gpt-knot-segment-base" transform="rotate(180 128 188)"/>
+      <use href="#gpt-knot-segment-base" transform="rotate(240 128 188)"/>
+      <use href="#gpt-knot-segment-base" transform="rotate(300 128 188)"/>
+    </g>
+      <style>
+      #pointer-body-js { transform:translate(var(--body-x),var(--body-y)) rotate(var(--body-tilt)); transform-box:view-box; transform-origin:128px 160px; }
+      #eyes-js { transform:translate(var(--eye-x),var(--eye-y)); }
+      #idle-look-gaze-js { animation:gpt-idle-look-gaze 4000ms cubic-bezier(0.45,0,0.55,1) infinite; animation-play-state:var(--play-state); transform-box:view-box; transform-origin:128px 160px; }
+      #blink-js { animation:gpt-idle-look-blink 4000ms linear infinite; animation-play-state:var(--play-state); transform-box:fill-box; transform-origin:center; }
+      #idle-look-pose-js { animation:gpt-idle-look-pose 4000ms cubic-bezier(0.45,0,0.55,1) infinite; animation-play-state:var(--play-state); transform-box:view-box; transform-origin:128px 160px; }
+      #head-follow-js { animation:gpt-idle-look-head 4000ms cubic-bezier(0.45,0,0.55,1) infinite; animation-play-state:var(--play-state); transform-box:view-box; transform-origin:128px 146px; }
+      #shadow-js { transform:translate(var(--shadow-x),var(--shadow-y)) scaleX(var(--shadow-stretch)); transform-box:view-box; transform-origin:128px 235px; }
+      #shadow-pulse-js { animation:gpt-idle-shadow 4000ms cubic-bezier(0.45,0,0.55,1) infinite; animation-play-state:var(--play-state); transform-box:fill-box; transform-origin:center; }
+      #shadow-idle-look-js { animation:gpt-idle-look-shadow 4000ms cubic-bezier(0.45,0,0.55,1) infinite; animation-play-state:var(--play-state); transform-box:fill-box; transform-origin:center; }
+      .is-restarting * { animation:none !important; }
+      #float-js { animation:gpt-idle-float 4000ms cubic-bezier(0.45,0,0.55,1) infinite; animation-play-state:var(--play-state); transform-box:view-box; transform-origin:128px 160px; }
+      @keyframes gpt-idle-float { 0%{transform:translateY(0)} 20%{transform:translateY(-4px)} 40%{transform:translateY(-8px)} 60%{transform:translateY(-4px)} 76%{transform:translateY(1px)} 79%{transform:translateY(2px)} 82%{transform:translateY(1px)} 100%{transform:translateY(0)} }
+      @keyframes gpt-idle-shadow { 0%{transform:scaleX(1);opacity:.22} 20%{transform:scaleX(.92);opacity:.20} 40%{transform:scaleX(.84);opacity:.17} 60%{transform:scaleX(.92);opacity:.20} 76%{transform:scaleX(1.05);opacity:.23} 79%{transform:scaleX(1.08);opacity:.24} 82%{transform:scaleX(1.05);opacity:.23} 100%{transform:scaleX(1);opacity:.22} }
+      @keyframes gpt-idle-look-pose {
+        0%{transform:translate(0,0) rotate(0)} 20%{transform:translate(0,0) rotate(0)}
+        32%{transform:translate(0.4px,-0.2px) rotate(0.2deg)}
+        46%{transform:translate(0.8px,-0.4px) rotate(0.4deg)}
+        58%{transform:translate(0.8px,-0.4px) rotate(0.4deg)}
+        70%{transform:translate(0.8px,-0.4px) rotate(0.4deg)}
+        84%{transform:translate(0.27999999999999997px,-0.1px) rotate(0.15000000000000002deg)}
+        100%{transform:translate(0,0) rotate(0)}
+      }
+      @keyframes gpt-idle-look-head {
+        0%{transform:translate(0,0) rotate(0)} 20%{transform:translate(0,0) rotate(0)}
+        32%{transform:translate(0.5px,-0.3px) rotate(0.25deg)}
+        46%{transform:translate(1px,-0.6px) rotate(0.5deg)}
+        58%{transform:translate(1px,-0.6px) rotate(0.5deg)}
+        70%{transform:translate(1px,-0.6px) rotate(0.5deg)}
+        84%{transform:translate(0.3px,-0.19999999999999998px) rotate(0.15deg)}
+        100%{transform:translate(0,0) rotate(0)}
+      }
+      @keyframes gpt-idle-look-gaze {
+        0%{transform:translate(0,0)}
+        20%{transform:translate(1.2px,-0.7999995px)}
+        32%{transform:translate(2.4px,-1.5px)}
+        46%{transform:translate(2.4px,-1.5px)}
+        58%{transform:translate(2.4px,-1.5px)}
+        70%{transform:translate(1.0000008px,-0.6000000000000001px)}
+        84%{transform:translate(0.19999999999999998px,-0.1px)}
+        100%{transform:translate(0,0)}
+      }
+      @keyframes gpt-idle-look-blink {
+        0%{transform:scaleY(1)} 20%{transform:scaleY(1)} 32%{transform:scaleY(1)} 46%{transform:scaleY(1)}
+        58%{transform:scaleY(.08)} 70%{transform:scaleY(1)} 84%{transform:scaleY(1)} 100%{transform:scaleY(1)}
+      }
+      @keyframes gpt-idle-look-shadow {
+        0%{transform:scaleX(1)} 20%{transform:scaleX(.997)} 32%{transform:scaleX(.994)} 46%{transform:scaleX(.99)}
+        58%{transform:scaleX(.99)} 70%{transform:scaleX(.994)} 84%{transform:scaleX(.998)} 100%{transform:scaleX(1)}
+      }
+    </style>
+  </defs>
+
+  <g id="shadow-js">
+    <g id="shadow-pulse-js" opacity="0.22">
+      <g id="shadow-idle-look-js">
+        <ellipse cx="128" cy="235" rx="48" ry="6" fill="#131721"/>
+      </g>
+    </g>
+  </g>
+
+  <g id="pointer-body-js" shape-rendering="crispEdges">
+    <g id="float-js">
+      <g id="idle-look-pose-js">
+      <g id="arms-js">
+        <path d="M58 156h8v-8h10v48h-10v8H52v-28h4v-16h2z" fill="#323844"/>
+        <path d="M52 184h14v20H52z" fill="#a9ead0"/>
+        <path d="M198 156h-8v-8h-10v48h10v8h14v-28h-4v-16h-2z" fill="#323844"/>
+        <path d="M190 184h14v20h-14z" fill="#a9ead0"/>
+        <path d="M58 164h8v20h-8zM190 164h8v20h-8z" fill="#4a5260" opacity="0.7"/>
+      </g>
+
+      <g id="body-js">
+        <path d="M86 216h20v8H86zM150 216h20v8h-20z" fill="#a9ead0"/>
+        <path d="M84 100h88v4h8v8h8v92h-8v8h-8v4H84v-4h-8v-8h-8v-92h8v-8h8z" fill="#3c424e"/>
+        <path d="M84 104h88v4h8v12h-4v-4H80v88h4v8h-8v-8h-4v-92h8v-8z" fill="#59616f" opacity="0.38"/>
+        <path d="M80 204h8v8h84v-4h8v4h-8v4H84v-4h-8z" fill="#292f3a" opacity="0.55"/>
+      </g>
+
+      <g id="head-follow-js">
+      <g id="head-js">
+        <rect x="124" y="90" width="8" height="12" fill="#303642"/>
+        <rect x="126" y="90" width="4" height="12" fill="#505866"/>
+        <path d="M120 72h16v4h6v12h-6v4h-16v-4h-6V76h6z" fill="#9fe5c8"/>
+        <path d="M120 88h16v4h-16z" fill="#7fd4b2"/>
+        <path d="M88 116h80v4h8v8h4v24h-4v8h-8v4H88v-4h-8v-8h-4v-24h4v-8h8z" fill="#c7f0de"/>
+        <path d="M88 120h80v4h8v8h-4v-4H84v28h4v4h-8v-8h-4v-24h4v-8h8z" fill="#ddf8ec" opacity="0.48"/>
+        <path id="mouth-js" d="M116 150h8v6h16v-6h8v8h-8v6h-16v-6h-8z" fill="#080b12"/>
+      </g>
+
+      <g id="eyes-js" fill="#080b12">
+      <g id="idle-look-gaze-js">
+        <g id="blink-js">
+          <rect x="96" y="132" width="12" height="18"/>
+          <rect x="148" y="132" width="12" height="18"/>
+        </g>
+      
+      </g>
+    </g>
+      </g>
+
+      <g id="accessory-js">
+        <use id="knot-core-js" href="#gpt-knot-shape-base" fill="none" stroke="#75deb1" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter"/>
+      </g>
+
+      <g id="effect-js">
+        <use id="knot-glow-js" href="#gpt-knot-shape-base" fill="none" stroke="#96f0ca" stroke-width="9" stroke-linecap="square" stroke-linejoin="miter" opacity="0.08"/>
+        <path d="M124 20h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#8ce5bd"/>
+        <path d="M154 44h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#43c5e8"/>
+        <path d="M94 56h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#ffc847"/>
+      </g>
+    
+      </g>
+    </g>
+  </g>
+</svg>
+
+

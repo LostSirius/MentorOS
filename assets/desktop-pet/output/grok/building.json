@@ -1,0 +1,24 @@
+{
+  "character":"grok",
+  "action":"building",
+  "keyframeCount":8,
+  "keyframes":[
+    {"index":1,"percent":0,"poseY":0,"poseRotateDeg":0,"headY":0,"headRotateDeg":0,"gazeY":0,"eyeScaleY":1,"leftArmX":0,"leftArmY":0,"leftArmRotateDeg":0,"rightArmX":0,"rightArmY":0,"rightArmRotateDeg":0,"boltY":0,"shadowScaleX":1,"buildingPhase":"base"},
+    {"index":2,"percent":12,"poseY":-1,"poseRotateDeg":-0.3,"headY":-0.5,"headRotateDeg":-0.2,"gazeY":0.5,"eyeScaleY":1,"leftArmX":2,"leftArmY":-1,"leftArmRotateDeg":-2,"rightArmX":0,"rightArmY":0,"rightArmRotateDeg":0,"boltY":0,"shadowScaleX":0.99,"buildingPhase":"left-arm-start"},
+    {"index":3,"percent":26,"poseY":-1,"poseRotateDeg":0.3,"headY":-1,"headRotateDeg":0.2,"gazeY":1,"eyeScaleY":1,"leftArmX":4,"leftArmY":-2,"leftArmRotateDeg":-4,"rightArmX":-2,"rightArmY":-1,"rightArmRotateDeg":2,"boltY":0,"shadowScaleX":0.99,"buildingPhase":"right-arm-join"},
+    {"index":4,"percent":36,"poseY":-2,"poseRotateDeg":-0.5,"headY":-1,"headRotateDeg":-0.4,"gazeY":1,"eyeScaleY":1,"leftArmX":4,"leftArmY":-3,"leftArmRotateDeg":-5,"rightArmX":-3,"rightArmY":-2,"rightArmRotateDeg":4,"boltY":-1,"shadowScaleX":0.98,"buildingPhase":"press-and-confirm"},
+    {"index":5,"percent":44,"poseY":-2,"poseRotateDeg":0,"headY":-1,"headRotateDeg":0,"gazeY":1,"eyeScaleY":1,"leftArmX":4,"leftArmY":-3,"leftArmRotateDeg":-5,"rightArmX":-4,"rightArmY":-3,"rightArmRotateDeg":5,"boltY":0,"shadowScaleX":0.98,"buildingPhase":"lock-hold-start"},
+    {"index":6,"percent":64,"poseY":-2,"poseRotateDeg":0,"headY":-1,"headRotateDeg":0,"gazeY":1,"eyeScaleY":1,"leftArmX":4,"leftArmY":-3,"leftArmRotateDeg":-5,"rightArmX":-4,"rightArmY":-3,"rightArmRotateDeg":5,"boltY":0,"shadowScaleX":0.98,"buildingPhase":"lock-hold-end"},
+    {"index":7,"percent":80,"poseY":-0.5,"poseRotateDeg":-0.2,"headY":-0.2,"headRotateDeg":-0.1,"gazeY":0.5,"eyeScaleY":1,"leftArmX":0,"leftArmY":0,"leftArmRotateDeg":0,"rightArmX":-2,"rightArmY":-1,"rightArmRotateDeg":2,"boltY":0,"shadowScaleX":1,"buildingPhase":"left-then-right-reset"},
+    {"index":8,"percent":100,"poseY":0,"poseRotateDeg":0,"headY":0,"headRotateDeg":0,"gazeY":0,"eyeScaleY":1,"leftArmX":0,"leftArmY":0,"leftArmRotateDeg":0,"rightArmX":0,"rightArmY":0,"rightArmRotateDeg":0,"boltY":0,"shadowScaleX":1,"buildingPhase":"base"}
+  ],
+  "durationMs":3600,
+  "loop":true,
+  "easing":"cubic-bezier(0.45, 0, 0.55, 1)",
+  "blinkEasing":"linear",
+  "layers":["pointer-body-js","float-js","building-pose-js","body-js","head-build-js","head-js","eyes-js","building-gaze-js","blink-js","arms-js","left-arm-build-js","right-arm-build-js","accessory-js","bolt-js","effect-js","shadow-js","shadow-pulse-js"],
+  "pointerTrackingLayers":["pointer-body-js","eyes-js","shadow-js"],
+  "partMotion":{"bodyMaxYUserUnits":2,"bodyMaxRotateDeg":0.6,"headMaxYUserUnits":1,"headMaxRotateDeg":0.4,"gazeMaxYUserUnits":1,"armMaxTranslateUserUnits":4,"armMaxRotateDeg":5,"boltMaxYUserUnits":1,"usesNewGeometry":false,"usesWholeBodyScale":false,"usesColorChange":false,"usesScan":false,"usesBlur":false,"usesRaster":false},
+  "pointerTracking":{"normalization":{"origin":"rendered grok character center","fullScaleStageRatioX":0.3,"fullScaleStageRatioY":0.3,"clampMin":-1,"clampMax":1},"body":{"maxXUserUnits":16,"maxYUserUnits":12,"maxTiltDeg":3,"layer":"pointer-body-js"},"eyes":{"maxXUserUnits":3,"maxYUserUnits":3,"layer":"eyes-js"},"shadow":{"maxReverseXUserUnits":12,"maxReverseYUserUnits":5,"maxPointerStretch":1.08,"layer":"shadow-js","buildingScaleLayer":"shadow-pulse-js"},"response":{"smoothingCoefficient":0.2,"returnDelayMs":650,"returnSettleThreshold":0.003,"expectedReturnDurationMs":500,"engine":"requestAnimationFrame"}},
+  "seamStrategy":"Keyframes 5 and 6 hold the completed lock unchanged for 20% of the 3600ms loop; the left arm resets before the right, and keyframe 8 exactly restores keyframe 1."
+}

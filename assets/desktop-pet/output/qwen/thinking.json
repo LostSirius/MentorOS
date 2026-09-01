@@ -1,0 +1,196 @@
+{
+  "character": "qwen",
+  "action": "thinking",
+  "keyframeCount": 8,
+  "keyframes": [
+    {
+      "index": 1,
+      "percent": 0,
+      "bodyY": 0,
+      "bodyRotateDeg": 0,
+      "gazeY": 0,
+      "leftEyeX": 0,
+      "rightEyeX": 0,
+      "antennaY": 0,
+      "antennaRotateDeg": 0,
+      "eyeScaleY": 1,
+      "shadowScaleX": 1,
+      "description": "基准专注姿态，视线、触角和主体均处于中央。"
+    },
+    {
+      "index": 2,
+      "percent": 16,
+      "bodyY": 1,
+      "bodyRotateDeg": -0.2,
+      "gazeY": 0.8,
+      "leftEyeX": 0.2,
+      "rightEyeX": -0.2,
+      "antennaY": 1,
+      "antennaRotateDeg": -3,
+      "eyeScaleY": 1,
+      "shadowScaleX": 1.01,
+      "description": "主体轻微下沉，眼睛向中央下方收拢，触角开始内倾。"
+    },
+    {
+      "index": 3,
+      "percent": 32,
+      "bodyY": 2,
+      "bodyRotateDeg": -0.4,
+      "gazeY": 1.2,
+      "leftEyeX": 0.5,
+      "rightEyeX": -0.5,
+      "antennaY": 2,
+      "antennaRotateDeg": -5,
+      "eyeScaleY": 1,
+      "shadowScaleX": 1.02,
+      "description": "保持低位聚焦，双眼进一步收拢，卷曲触角达到左侧思考峰值。"
+    },
+    {
+      "index": 4,
+      "percent": 48,
+      "bodyY": 2,
+      "bodyRotateDeg": 0.4,
+      "gazeY": 1.3,
+      "leftEyeX": 0.75,
+      "rightEyeX": -0.75,
+      "antennaY": 2,
+      "antennaRotateDeg": 4,
+      "eyeScaleY": 1,
+      "shadowScaleX": 1.02,
+      "description": "身体保持低位，触角克制回摆，视线仍居中专注而不扫描。"
+    },
+    {
+      "index": 5,
+      "percent": 64,
+      "bodyY": 0.5,
+      "bodyRotateDeg": 0,
+      "gazeY": 0.5,
+      "leftEyeX": 0.3,
+      "rightEyeX": -0.3,
+      "antennaY": 0.5,
+      "antennaRotateDeg": 1,
+      "eyeScaleY": 1,
+      "shadowScaleX": 0.99,
+      "description": "主体开始回升，视线和触角逐渐收敛。"
+    },
+    {
+      "index": 6,
+      "percent": 76,
+      "bodyY": 0,
+      "bodyRotateDeg": 0,
+      "gazeY": 0,
+      "leftEyeX": 0,
+      "rightEyeX": 0,
+      "antennaY": 0,
+      "antennaRotateDeg": 0,
+      "eyeScaleY": 0.08,
+      "shadowScaleX": 1,
+      "description": "中央短暂停顿并短促眨眼，形成思考确认节拍。"
+    },
+    {
+      "index": 7,
+      "percent": 84,
+      "bodyY": 0.2,
+      "bodyRotateDeg": -0.1,
+      "gazeY": 0.2,
+      "leftEyeX": 0.1,
+      "rightEyeX": -0.1,
+      "antennaY": 0.2,
+      "antennaRotateDeg": -0.8,
+      "eyeScaleY": 1,
+      "shadowScaleX": 1,
+      "description": "重新睁眼，主体、视线和触角平滑复位。"
+    },
+    {
+      "index": 8,
+      "percent": 100,
+      "bodyY": 0,
+      "bodyRotateDeg": 0,
+      "gazeY": 0,
+      "leftEyeX": 0,
+      "rightEyeX": 0,
+      "antennaY": 0,
+      "antennaRotateDeg": 0,
+      "eyeScaleY": 1,
+      "shadowScaleX": 1,
+      "description": "全部参数精确恢复首帧，准备下一轮专注思考。"
+    }
+  ],
+  "durationMs": 3600,
+  "loop": true,
+  "easing": "cubic-bezier(0.45, 0, 0.55, 1)",
+  "blinkEasing": "linear",
+  "layers": [
+    "pointer-body-js",
+    "float-js",
+    "thinking-pose-js",
+    "body-js",
+    "head-js",
+    "eyes-js",
+    "thinking-gaze-js",
+    "left-eye-js",
+    "right-eye-js",
+    "blink-js",
+    "arms-js",
+    "feet-js",
+    "accessory-js",
+    "antenna-js",
+    "emblem-js",
+    "effect-js",
+    "shadow-js",
+    "shadow-pulse-js"
+  ],
+  "pointerTrackingLayers": [
+    "pointer-body-js",
+    "eyes-js",
+    "shadow-js"
+  ],
+  "partMotion": {
+    "bodyMaxYUserUnits": 2,
+    "bodyMaxRotateDeg": 0.4,
+    "gazeMaxYUserUnits": 1.3,
+    "eyeInwardMaxUserUnits": 0.75,
+    "antennaMaxYUserUnits": 2,
+    "antennaMaxRotateDeg": 5,
+    "shadowScaleMin": 0.99,
+    "shadowScaleMax": 1.02,
+    "usesWholeBodyScale": false,
+    "usesBlur": false,
+    "usesNewGeometry": false
+  },
+  "pointerTracking": {
+    "normalization": {
+      "origin": "rendered Qwen character center",
+      "fullScaleStageRatioX": 0.3,
+      "fullScaleStageRatioY": 0.3,
+      "clampMin": -1,
+      "clampMax": 1
+    },
+    "body": {
+      "maxXUserUnits": 16,
+      "maxYUserUnits": 12,
+      "maxTiltDeg": 3,
+      "layer": "pointer-body-js"
+    },
+    "eyes": {
+      "maxXUserUnits": 3,
+      "maxYUserUnits": 3,
+      "layer": "eyes-js"
+    },
+    "shadow": {
+      "maxReverseXUserUnits": 12,
+      "maxReverseYUserUnits": 5,
+      "maxPointerStretch": 1.08,
+      "layer": "shadow-js",
+      "thinkingScaleLayer": "shadow-pulse-js"
+    },
+    "response": {
+      "smoothingCoefficient": 0.2,
+      "returnDelayMs": 650,
+      "returnSettleThreshold": 0.003,
+      "expectedReturnDurationMs": 500,
+      "engine": "requestAnimationFrame"
+    }
+  },
+  "seamStrategy": "第8帧将主体位置、姿态、集中视线、双眼内收、触角角度、眨眼与阴影精确恢复为第1帧；全部thinking层共享3600ms时间轴。"
+}

@@ -1,0 +1,158 @@
+{
+  "character": "qwen",
+  "action": "idle",
+  "keyframeCount": 8,
+  "keyframes": [
+    {
+      "index": 1,
+      "percent": 0,
+      "bodyY": 0,
+      "antennaRotateDeg": 0,
+      "armsY": 0,
+      "eyeScaleY": 1,
+      "shadowScaleX": 1,
+      "description": "基准待机姿态，圆球主体、触角、眼睛和阴影均位于初始状态。"
+    },
+    {
+      "index": 2,
+      "percent": 20,
+      "bodyY": -2,
+      "antennaRotateDeg": -1,
+      "armsY": -0.5,
+      "eyeScaleY": 1,
+      "shadowScaleX": 0.97,
+      "description": "主体缓慢上浮，触角向左轻摆，双手随身体轻抬。"
+    },
+    {
+      "index": 3,
+      "percent": 40,
+      "bodyY": -5,
+      "antennaRotateDeg": -3,
+      "armsY": -1,
+      "eyeScaleY": 1,
+      "shadowScaleX": 0.92,
+      "description": "到达稳定最高点，触角摆幅达到峰值，阴影适度收窄。"
+    },
+    {
+      "index": 4,
+      "percent": 60,
+      "bodyY": -3,
+      "antennaRotateDeg": 2,
+      "armsY": 0.5,
+      "eyeScaleY": 1,
+      "shadowScaleX": 0.96,
+      "description": "主体平缓回落，触角向右回摆，保持轻松待机节奏。"
+    },
+    {
+      "index": 5,
+      "percent": 76,
+      "bodyY": 0,
+      "antennaRotateDeg": -1.5,
+      "armsY": 0.5,
+      "eyeScaleY": 1,
+      "shadowScaleX": 1.01,
+      "description": "主体回到基线，触角轻微反向缓冲。"
+    },
+    {
+      "index": 6,
+      "percent": 79,
+      "bodyY": 1,
+      "antennaRotateDeg": 0,
+      "armsY": 1,
+      "eyeScaleY": 0.08,
+      "shadowScaleX": 1.04,
+      "description": "短促自然眨眼并到达最低点，阴影轻微展开。"
+    },
+    {
+      "index": 7,
+      "percent": 82,
+      "bodyY": 0.5,
+      "antennaRotateDeg": 0.8,
+      "armsY": 0.5,
+      "eyeScaleY": 1,
+      "shadowScaleX": 1.02,
+      "description": "重新睁眼并回升，触角和双手开始复位。"
+    },
+    {
+      "index": 8,
+      "percent": 100,
+      "bodyY": 0,
+      "antennaRotateDeg": 0,
+      "armsY": 0,
+      "eyeScaleY": 1,
+      "shadowScaleX": 1,
+      "description": "全部参数精确恢复首帧，形成无缝循环。"
+    }
+  ],
+  "durationMs": 4000,
+  "loop": true,
+  "easing": "cubic-bezier(0.45, 0, 0.55, 1)",
+  "blinkEasing": "linear",
+  "layers": [
+    "pointer-body-js",
+    "float-js",
+    "body-js",
+    "head-js",
+    "eyes-js",
+    "gaze-js",
+    "blink-js",
+    "arms-js",
+    "feet-js",
+    "accessory-js",
+    "antenna-js",
+    "emblem-js",
+    "effect-js",
+    "shadow-js",
+    "shadow-pulse-js"
+  ],
+  "pointerTrackingLayers": [
+    "pointer-body-js",
+    "eyes-js",
+    "shadow-js"
+  ],
+  "partMotion": {
+    "bodyMaxYUserUnits": 5,
+    "antennaMaxRotateDeg": 3,
+    "armsMaxYUserUnits": 1,
+    "shadowScaleMin": 0.92,
+    "shadowScaleMax": 1.04,
+    "usesWholeBodyScale": false,
+    "usesBlur": false,
+    "usesNewGeometry": false
+  },
+  "pointerTracking": {
+    "normalization": {
+      "origin": "rendered Qwen character center",
+      "fullScaleStageRatioX": 0.3,
+      "fullScaleStageRatioY": 0.3,
+      "clampMin": -1,
+      "clampMax": 1
+    },
+    "body": {
+      "maxXUserUnits": 16,
+      "maxYUserUnits": 12,
+      "maxTiltDeg": 3,
+      "layer": "pointer-body-js"
+    },
+    "eyes": {
+      "maxXUserUnits": 3,
+      "maxYUserUnits": 3,
+      "layer": "eyes-js"
+    },
+    "shadow": {
+      "maxReverseXUserUnits": 12,
+      "maxReverseYUserUnits": 5,
+      "maxPointerStretch": 1.08,
+      "layer": "shadow-js",
+      "idleScaleLayer": "shadow-pulse-js"
+    },
+    "response": {
+      "smoothingCoefficient": 0.2,
+      "returnDelayMs": 650,
+      "returnSettleThreshold": 0.003,
+      "expectedReturnDurationMs": 500,
+      "engine": "requestAnimationFrame"
+    }
+  },
+  "seamStrategy": "第8帧将主体高度、触角角度、双手位置、眼睛开合和阴影缩放精确恢复为第1帧；全部idle层共享4000ms时间轴。"
+}

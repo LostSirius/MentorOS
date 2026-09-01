@@ -1,0 +1,24 @@
+{
+  "character":"grok",
+  "action":"thinking",
+  "keyframeCount":8,
+  "keyframes":[
+    {"index":1,"percent":0,"bodyX":0,"bodyY":0,"bodyRotateDeg":0,"headX":0,"headY":0,"headRotateDeg":0,"gazeX":0,"gazeY":0,"eyeScaleY":1,"visorScanY":0,"visorScanOpacity":0.34,"boltY":0,"boltFill":"#eeeeee","shadowScaleX":1,"description":"完整基准姿态；视线、头盔高光和胸前闪电均处于原始状态。"},
+    {"index":2,"percent":16,"bodyX":-1,"bodyY":-0.5,"bodyRotateDeg":-0.4,"headX":-0.8,"headY":0,"headRotateDeg":-0.3,"gazeX":-1.5,"gazeY":-0.8,"eyeScaleY":1,"visorScanY":0.5,"visorScanOpacity":0.42,"boltY":-0.5,"boltFill":"#f1f1f1","shadowScaleX":0.99,"description":"视线与头盔转向左上，检查第一种可能；原有头盔高光开始扫描。"},
+    {"index":3,"percent":32,"bodyX":1.5,"bodyY":-1,"bodyRotateDeg":0.5,"headX":1,"headY":0,"headRotateDeg":0.4,"gazeX":1.5,"gazeY":-0.8,"eyeScaleY":1,"visorScanY":1.2,"visorScanOpacity":0.55,"boltY":-1,"boltFill":"#f6f6f6","shadowScaleX":0.98,"description":"视线平滑扫向右上，比较另一种可能；扫描高光继续下移，闪电开始蓄能。"},
+    {"index":4,"percent":48,"bodyX":0,"bodyY":-1.5,"bodyRotateDeg":0,"headX":0,"headY":-1,"headRotateDeg":0,"gazeX":0,"gazeY":0,"eyeScaleY":1,"visorScanY":2,"visorScanOpacity":0.62,"boltY":-2,"boltFill":"#ffffff","shadowScaleX":0.98,"description":"视线回到中央并短暂停顿；既有头盔高光扫描达到最明显位置，白色闪电蓄能峰值。"},
+    {"index":5,"percent":64,"bodyX":0,"bodyY":-2,"bodyRotateDeg":0.2,"headX":0,"headY":-1,"headRotateDeg":0.1,"gazeX":0,"gazeY":-1.2,"eyeScaleY":1,"visorScanY":1,"visorScanOpacity":0.48,"boltY":-1,"boltFill":"#f7f7f7","shadowScaleX":0.97,"description":"头盔与视线上抬，表示信息汇合并形成判断；扫描与闪电开始回落。"},
+    {"index":6,"percent":76,"bodyX":-0.5,"bodyY":0,"bodyRotateDeg":-0.2,"headX":-0.3,"headY":0,"headRotateDeg":-0.2,"gazeX":-0.3,"gazeY":-0.4,"eyeScaleY":0.08,"visorScanY":0,"visorScanOpacity":0.34,"boltY":0,"boltFill":"#eeeeee","shadowScaleX":1.02,"description":"进行一次短促自然眨眼；头盔高光和闪电恢复原始状态。"},
+    {"index":7,"percent":84,"bodyX":0,"bodyY":-0.5,"bodyRotateDeg":0,"headX":0,"headY":0,"headRotateDeg":0,"gazeX":0,"gazeY":-0.4,"eyeScaleY":1,"visorScanY":0,"visorScanOpacity":0.34,"boltY":-0.5,"boltFill":"#f1f1f1","shadowScaleX":0.99,"description":"重新睁眼，身体、视线和胸前闪电逐渐复位。"},
+    {"index":8,"percent":100,"bodyX":0,"bodyY":0,"bodyRotateDeg":0,"headX":0,"headY":0,"headRotateDeg":0,"gazeX":0,"gazeY":0,"eyeScaleY":1,"visorScanY":0,"visorScanOpacity":0.34,"boltY":0,"boltFill":"#eeeeee","shadowScaleX":1,"description":"全部位置、角度、眼睛、头盔高光、闪电和阴影精确恢复第1帧。"}
+  ],
+  "durationMs":3600,
+  "loop":true,
+  "easing":"cubic-bezier(0.45, 0, 0.55, 1)",
+  "blinkEasing":"linear",
+  "layers":["pointer-body-js","float-js","thinking-pose-js","body-js","arms-js","head-motion-js","head-js","visor-scan-js","eyes-js","thinking-gaze-js","blink-js","accessory-js","bolt-charge-js","bolt-js","effect-js","shadow-js","shadow-pulse-js"],
+  "pointerTrackingLayers":["pointer-body-js","eyes-js","shadow-js"],
+  "partMotion":{"bodyMaxXUserUnits":1.5,"bodyMaxYUserUnits":2,"bodyMaxRotateDeg":0.5,"headMaxXUserUnits":1,"headMaxYUserUnits":1,"headMaxRotateDeg":0.4,"gazeMaxXUserUnits":1.5,"gazeMaxYUserUnits":1.2,"armIndependentMotionUserUnits":0,"visorHighlightMaxYUserUnits":2,"visorHighlightOpacityMin":0.34,"visorHighlightOpacityMax":0.62,"boltMaxYUserUnits":2,"boltMaxRotateDeg":0,"usesExistingVisorHighlight":true,"usesExistingBolt":true,"usesNewEffects":false,"shadowScaleMin":0.97,"shadowScaleMax":1.02,"usesWholeBodyScale":false,"usesBlur":false},
+  "pointerTracking":{"normalization":{"origin":"rendered Grok character center","fullScaleStageRatioX":0.3,"fullScaleStageRatioY":0.3,"clampMin":-1,"clampMax":1},"body":{"maxXUserUnits":16,"maxYUserUnits":12,"maxTiltDeg":3,"layer":"pointer-body-js"},"eyes":{"maxXUserUnits":3,"maxYUserUnits":3,"layer":"eyes-js"},"shadow":{"maxReverseXUserUnits":12,"maxReverseYUserUnits":5,"maxPointerStretch":1.08,"layer":"shadow-js","thinkingScaleLayer":"shadow-pulse-js"},"response":{"smoothingCoefficient":0.2,"returnDelayMs":650,"returnSettleThreshold":0.003,"expectedReturnDurationMs":500,"engine":"requestAnimationFrame"}},
+  "seamStrategy":"第8帧将身体、头盔、自动视线、眨眼、原有头盔高光、白色闪电和阴影全部恢复为第1帧；全部thinking动画共享同一3600ms时间轴。"
+}

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="gemini-body-gradient-base" x1="128" y1="72" x2="128" y2="216" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4388f5"/>
+      <stop offset="0.38" stop-color="#696fee"/>
+      <stop offset="0.68" stop-color="#a45ee7"/>
+      <stop offset="1" stop-color="#fb6aac"/>
+    </linearGradient>
+    <clipPath id="gemini-body-clip-base">
+      <path d="M114 72h20v8h8v8h8v8h8v8h8v8h8v8h8v8h16v8h16v16h-16v8h-8v8h-8v8h-8v8h-8v16h-16v16h-16v-16h-16v16h-16v-16H86v-16h-8v-8h-8v-8h-8v-8H46v-8h-8v-16h16v-8h8v-8h8v-8h8v-8h8v-8h8v-8h8v-8h12z"/>
+    </clipPath>
+  </defs>
+
+  <g id="shadow-js" opacity="0.22">
+    <ellipse cx="128" cy="224" rx="48" ry="6" fill="#120d2b"/>
+  </g>
+
+  <g id="pointer-body-js" shape-rendering="crispEdges">
+    <g id="float-js">
+      <g id="accessory-js">
+        <path d="M122 18h12v9h9v12h-9v9h-12v-9h-9V27h9z" fill="#ffd81a"/>
+        <path d="M92 45h10v8h8v10h-8v8H92v-8h-8V53h8z" fill="#55b94a"/>
+        <path d="M158 49h10v9h9v10h-9v9h-10v-9h-9V58h9z" fill="#3bb9e9"/>
+      </g>
+
+      <g id="body-js">
+        <path d="M114 72h20v8h8v8h8v8h8v8h8v8h8v8h8v8h16v8h16v16h-16v8h-8v8h-8v8h-8v8h-8v16h-16v16h-16v-16h-16v16h-16v-16H86v-16h-8v-8h-8v-8h-8v-8H46v-8h-8v-16h16v-8h8v-8h8v-8h8v-8h8v-8h8v-8h8v-8h12z" fill="url(#gemini-body-gradient-base)"/>
+        <g clip-path="url(#gemini-body-clip-base)">
+          <path d="M94 88h68v16h16v16h-40v8h-36v-8H78v-16h16z" fill="#4d83f5" opacity="0.36"/>
+          <path d="M62 128h40v-8h36v8h40v-8h20v24h-36v8h-36v-8H86v8H62z" fill="#bd65ea" opacity="0.34"/>
+          <path d="M54 160h32v-8h32v8h44v-8h32v32h-28v16H86v-16H62z" fill="#ff70ae" opacity="0.34"/>
+        </g>
+      </g>
+
+      <g id="effect-js" clip-path="url(#gemini-body-clip-base)" opacity="0.42">
+        <path d="M70 112h36v-8h28v8h32v8h-40v8H94v-8H70z" fill="#77a1ff"/>
+        <path d="M62 144h28v-8h36v8h32v-8h36v16h-36v8h-36v-8H86v8H62z" fill="#d77aec" opacity="0.58"/>
+      </g>
+
+      <g id="eyes-js" fill="#080b16">
+        <g id="blink-js">
+          <rect x="96" y="140" width="14" height="24"/>
+          <rect x="146" y="140" width="14" height="24"/>
+        </g>
+      </g>
+      <path id="mouth-js" d="M116 164h8v6h12v-6h8v6h-4v7h-20v-7h-4z" fill="#080b16"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" preserveAspectRatio="xMidYMid meet" style="background-color:transparent;--eye-x:0px;--eye-y:0px;--body-x:0px;--body-y:0px;--body-tilt:0deg;--shadow-x:0px;--shadow-y:0px;--shadow-stretch:1;--play-state:running">
+  <defs>
+    <path id="grok-bolt-shape-thinking" d="M144 158h18l-18 18h14l-40 40h-20l18-18h-14z"/>
+    <style>
+      #pointer-body-js{transform:translate(var(--body-x),var(--body-y)) rotate(var(--body-tilt));transform-box:view-box;transform-origin:128px 164px}
+      #thinking-pose-js{animation:grok-thinking-pose 3600ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 164px}
+      #head-motion-js{animation:grok-thinking-head 3600ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 140px}
+      #visor-scan-js{animation:grok-thinking-scan 3600ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 122px}
+      #eyes-js{transform:translate(var(--eye-x),var(--eye-y))}
+      #thinking-gaze-js{animation:grok-thinking-gaze 3600ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 139px}
+      #blink-js{animation:grok-thinking-blink 3600ms linear infinite;animation-play-state:var(--play-state);transform-box:fill-box;transform-origin:center}
+      #bolt-charge-js{animation:grok-thinking-bolt-position 3600ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 188px}
+      #bolt-js{animation:grok-thinking-bolt-charge 3600ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state)}
+      #shadow-js{transform:translate(var(--shadow-x),var(--shadow-y)) scaleX(var(--shadow-stretch));transform-box:view-box;transform-origin:128px 241px}
+      #shadow-pulse-js{animation:grok-thinking-shadow 3600ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:fill-box;transform-origin:center}
+      .is-paused *{animation-play-state:paused!important}.is-restarting *{animation:none!important}
+
+      @keyframes grok-thinking-pose{
+        0%{transform:translate(0,0) rotate(0)}
+        16%{transform:translate(-1px,-0.5px) rotate(-0.4deg)}
+        32%{transform:translate(1.5px,-1px) rotate(0.5deg)}
+        48%{transform:translate(0,-1.5px) rotate(0)}
+        64%{transform:translate(0,-2px) rotate(0.2deg)}
+        76%{transform:translate(-0.5px,0) rotate(-0.2deg)}
+        84%{transform:translate(0,-0.5px) rotate(0)}
+        100%{transform:translate(0,0) rotate(0)}
+      }
+      @keyframes grok-thinking-head{
+        0%{transform:translate(0,0) rotate(0)}
+        16%{transform:translate(-0.8px,0) rotate(-0.3deg)}
+        32%{transform:translate(1px,0) rotate(0.4deg)}
+        48%{transform:translate(0,-1px) rotate(0)}
+        64%{transform:translate(0,-1px) rotate(0.1deg)}
+        76%{transform:translate(-0.3px,0) rotate(-0.2deg)}
+        84%{transform:translate(0,0) rotate(0)}
+        100%{transform:translate(0,0) rotate(0)}
+      }
+      @keyframes grok-thinking-gaze{
+        0%{transform:translate(0,0)}
+        16%{transform:translate(-1.5px,-0.8px)}
+        32%{transform:translate(1.5px,-0.8px)}
+        48%{transform:translate(0,0)}
+        64%{transform:translate(0,-1.2px)}
+        76%{transform:translate(-0.3px,-0.4px)}
+        84%{transform:translate(0,-0.4px)}
+        100%{transform:translate(0,0)}
+      }
+      @keyframes grok-thinking-blink{
+        0%{transform:scaleY(1)}16%{transform:scaleY(1)}32%{transform:scaleY(1)}48%{transform:scaleY(1)}64%{transform:scaleY(1)}76%{transform:scaleY(0.08)}84%{transform:scaleY(1)}100%{transform:scaleY(1)}
+      }
+      @keyframes grok-thinking-scan{
+        0%{transform:translateY(0);opacity:0.34}
+        16%{transform:translateY(0.5px);opacity:0.42}
+        32%{transform:translateY(1.2px);opacity:0.55}
+        48%{transform:translateY(2px);opacity:0.62}
+        64%{transform:translateY(1px);opacity:0.48}
+        76%{transform:translateY(0);opacity:0.34}
+        84%{transform:translateY(0);opacity:0.34}
+        100%{transform:translateY(0);opacity:0.34}
+      }
+      @keyframes grok-thinking-bolt-position{
+        0%{transform:translateY(0)}16%{transform:translateY(-0.5px)}32%{transform:translateY(-1px)}48%{transform:translateY(-2px)}64%{transform:translateY(-1px)}76%{transform:translateY(0)}84%{transform:translateY(-0.5px)}100%{transform:translateY(0)}
+      }
+      @keyframes grok-thinking-bolt-charge{
+        0%{fill:#eeeeee}16%{fill:#f1f1f1}32%{fill:#f6f6f6}48%{fill:#ffffff}64%{fill:#f7f7f7}76%{fill:#eeeeee}84%{fill:#f1f1f1}100%{fill:#eeeeee}
+      }
+      @keyframes grok-thinking-shadow{
+        0%{transform:scaleX(1);opacity:0.22}16%{transform:scaleX(0.99);opacity:0.21}32%{transform:scaleX(0.98);opacity:0.20}48%{transform:scaleX(0.98);opacity:0.20}64%{transform:scaleX(0.97);opacity:0.19}76%{transform:scaleX(1.02);opacity:0.23}84%{transform:scaleX(0.99);opacity:0.21}100%{transform:scaleX(1);opacity:0.22}
+      }
+    </style>
+  </defs>
+
+  <g id="shadow-js" opacity="0.22"><ellipse id="shadow-pulse-js" cx="128" cy="241" rx="48" ry="6" fill="#111217"/></g>
+
+  <g id="pointer-body-js" shape-rendering="crispEdges">
+    <g id="float-js">
+      <g id="thinking-pose-js">
+        <g id="body-js">
+          <path d="M80 152h96v4h12v8h8v40h-8v8h-12v8h-16v8H96v-8H80v-8H68v-8h-8v-40h8v-8h12z" fill="#090a0c"/>
+          <path d="M80 160h96v4h8v8h4v28h-8v8h-12v4h-16v8h-48v-8H88v-4H76v-8h-8v-28h4v-8h8z" fill="#1b1c20"/>
+          <path d="M76 168h16v8h-8v20h8v8H76v-8h-8v-20h8zM164 168h16v8h8v20h-8v8h-16v-8h8v-20h-8z" fill="#28292e" opacity="0.68"/>
+          <path d="M88 208h16v8h48v-8h16v8h-16v8h-48v-8H88z" fill="#25262b" opacity="0.68"/>
+          <path d="M88 216h24v12H88zM144 216h24v12h-24z" fill="#08090b"/>
+          <path d="M92 216h16v8H92zM148 216h16v8h-16z" fill="#d9d9d9"/>
+          <path d="M92 216h16v4H92zM148 216h16v4h-16z" fill="#ffffff" opacity="0.72"/>
+        </g>
+
+        <g id="arms-js">
+          <path d="M60 164h12v8h4v28h-4v8H60v-8h-8v-28h8z" fill="#090a0c"/>
+          <path d="M56 176h12v8h4v16h-4v8H56v-8h-8v-16h8z" fill="#f4f4f4"/>
+          <path d="M52 184h12v16H52zM56 200h8v8h-8z" fill="#d5d5d5"/>
+          <path d="M196 164h-12v8h-4v28h4v8h12v-8h8v-28h-8z" fill="#090a0c"/>
+          <path d="M200 176h-12v8h-4v16h4v8h12v-8h8v-16h-8z" fill="#f4f4f4"/>
+          <path d="M192 184h12v16h-12zM192 200h8v8h-8z" fill="#d5d5d5"/>
+        </g>
+
+        <g id="head-motion-js">
+          <g id="head-js">
+            <path d="M84 100h88v4h8v8h8v12h4v28h-4v8h-8v4h-8v4H84v-4h-8v-4h-8v-8h-4v-28h4v-12h8v-8h8z" fill="#08090b"/>
+            <path d="M88 104h80v4h8v8h8v12h4v24h-4v8h-8v4h-8v4H88v-4h-8v-4h-8v-8h-4v-24h4v-12h8v-8h8z" fill="#f6f6f6"/>
+            <path d="M92 108h72v4h8v8h8v12h4v24h-4v8h-8v4h-8v4H92v-4h-8v-4h-8v-8h-4v-24h4v-12h8v-8h8z" fill="#d8d8d8" opacity="0.62"/>
+            <path d="M92 112h72v4h8v8h8v12h4v20h-4v8h-8v4H92v-4h-8v-8h-4v-20h4v-12h8z" fill="#0b0c0e"/>
+            <g id="visor-scan-js"><path d="M92 112h72v4h8v8h8v8h-8v-8h-8v-4H96v4h-8v8h-8v-8h4v-12h8z" fill="#ffffff"/></g>
+            <path d="M68 124h8v-8h8v44h-8v-8h-8zM180 124h8v-8h8v44h-8v-8h-8z" fill="#08090b"/>
+            <path d="M68 132h8v24h-8zM180 132h8v24h-8z" fill="#f4f4f4"/>
+            <path d="M68 136h4v20h-4zM184 136h4v20h-4z" fill="#d4d4d4"/>
+            <path id="mouth-js" d="M120 150h16v5h-16z" fill="#f6f6f6"/>
+          </g>
+          <g id="eyes-js" fill="#f8f8f8"><g id="thinking-gaze-js"><g id="blink-js"><rect x="96" y="130" width="12" height="18"/><rect x="148" y="130" width="12" height="18"/></g></g></g>
+        </g>
+
+        <g id="accessory-js"><g id="bolt-charge-js"><use id="bolt-js" href="#grok-bolt-shape-thinking" fill="#eeeeee"/></g></g>
+
+        <g id="effect-js">
+          <path d="M116 28h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#f8f8f8"/>
+          <path d="M156 46h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#23bff0"/>
+          <path d="M124 68h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#ffe56a"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

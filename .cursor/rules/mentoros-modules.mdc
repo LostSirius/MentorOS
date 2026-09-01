@@ -1,0 +1,39 @@
+---
+description: MentorOS 模块实现必须遵循 docs/distill 可执行蒸馏包
+alwaysApply: true
+---
+
+# MentorOS · Module Implementation Mandate
+
+Before implementing or changing any research module / related API / skill injection:
+
+1. Open `docs/distill/README.md`
+2. Open the matching `docs/distill/modules/<module>.md`
+3. Obey `docs/distill/shared/*` (evidence, gates, fatal flaws, five dimensions, HITL)
+4. Align I/O with `docs/distill/schemas/handoff.ts`
+5. Wire silent prompts from `docs/distill/injectable/*` plus existing skills under `src/backend/plugins/phd-research/skills/`
+6. Use `docs/distill/sources/*` only for provenance / absorption boundaries — do not vendor entire upstream repos
+
+## Non-negotiables
+
+- Human-in-the-loop; no default unattended auto-publish
+- Evidence discipline (no model-memory citations/numbers)
+- Integrity gates BLOCK/WARN before submission readiness
+- Silent skill injection (no skill marketplace UI)
+- Locale en/zh for UI and generated narrative
+- Module handoff via structured packets in `handoff.ts`
+
+## Module map
+
+| Module | Spec |
+|--------|------|
+| literature | `docs/distill/modules/literature.md` |
+| idea | `docs/distill/modules/idea.md` |
+| experiment | `docs/distill/modules/experiment.md` |
+| writing | `docs/distill/modules/writing.md`（从零撰写） |
+| figures | `docs/distill/modules/figures.md` |
+| review | `docs/distill/modules/review.md` |
+| polish | `docs/distill/modules/polish.md`（初稿润色/改稿；蒸馏 `paper-polish`；置于审稿之后） |
+| overview | `docs/distill/modules/overview.md` |
+
+Entry index: `docs/research-skills-distillation.md`

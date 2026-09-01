@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GPT Idle SVG Preview</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: #111522;
+      color: #f5f7ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+    main {
+      width: min(760px, 100%);
+      display: grid;
+      gap: 16px;
+    }
+    h1 { margin: 0; font-size: 20px; }
+    p { margin: 0; color: #b9c0d7; font-size: 13px; }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      align-items: center;
+    }
+    .control-group { display: flex; gap: 6px; align-items: center; }
+    .label { color: #b9c0d7; font-size: 12px; }
+    button {
+      border: 1px solid #47506a;
+      border-radius: 7px;
+      background: #20263a;
+      color: #f5f7ff;
+      padding: 7px 10px;
+      cursor: pointer;
+      font: inherit;
+      font-size: 12px;
+    }
+    button:hover { border-color: #8190b9; }
+    button[aria-pressed="true"] {
+      background: #3a8f71;
+      border-color: #73dcb3;
+    }
+    .stage {
+      --pet-size: 128px;
+      position: relative;
+      width: 100%;
+      min-height: 360px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid #3b4359;
+      border-radius: 14px;
+      background-color: transparent;
+      background-image:
+        linear-gradient(45deg, #dfe4ef 25%, transparent 25%),
+        linear-gradient(-45deg, #dfe4ef 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #dfe4ef 75%),
+        linear-gradient(-45deg, transparent 75%, #dfe4ef 75%);
+      background-size: 24px 24px;
+      background-position: 0 0, 0 12px, 12px -12px, -12px 0;
+    }
+    .stage[data-background="dark"] { background: #0d1220; }
+    .stage[data-background="light"] { background: #eef2f8; }
+    #pet-object {
+      width: var(--pet-size);
+      height: var(--pet-size);
+      display: block;
+      pointer-events: none;
+    }
+    #pet-object > svg { display: block; width: 100%; height: 100%; overflow: visible; }
+    .pointer-capture {
+      position: absolute;
+      inset: 0;
+      cursor: crosshair;
+      touch-action: none;
+    }
+    .tracking-hitbox {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+    }
+    .tracking-hitbox--top-left { top: 0; left: 0; }
+    .tracking-hitbox--top-right { top: 0; right: 0; }
+    .tracking-hitbox--bottom-left { bottom: 0; left: 0; }
+    .tracking-hitbox--bottom-right { bottom: 0; right: 0; }
+    .tracking-hitbox--top { top: 0; left: 50%; transform: translateX(-50%); }
+    .tracking-hitbox--bottom { bottom: 0; left: 50%; transform: translateX(-50%); }
+    .tracking-hitbox--center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    .status {
+      min-height: 20px;
+      color: #b9c0d7;
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div>
+      <h1>GPT · idle</h1>
+      <p>机械待机、绿色结呼吸灯与鼠标追踪验证。</p>
+    </div>
+
+    <div class="toolbar" aria-label="预览控制">
+      <div class="control-group">
+        <span class="label">播放</span>
+        <button id="play-button" type="button">播放</button>
+        <button id="pause-button" type="button">暂停</button>
+        <button id="restart-button" type="button">重新开始</button>
+      </div>
+      <div class="control-group">
+        <span class="label">尺寸</span>
+        <button type="button" data-size="64">64px</button>
+        <button type="button" data-size="96">96px</button>
+        <button type="button" data-size="128" aria-pressed="true">128px</button>
+      </div>
+      <div class="control-group">
+        <span class="label">背景</span>
+        <button type="button" data-background="transparent" aria-pressed="true">透明</button>
+        <button type="button" data-background="dark">深色</button>
+        <button type="button" data-background="light">浅色</button>
+      </div>
+    </div>
+
+    <div id="stage" class="stage" data-background="transparent" data-testid="preview-stage">
+      <div id="pet-object" role="img" aria-label="GPT idle 动画">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" preserveAspectRatio="xMidYMid meet" style="--eye-x:0px;--eye-y:0px;--body-x:0px;--body-y:0px;--body-tilt:0deg;--shadow-x:0px;--shadow-y:0px;--shadow-stretch:1;--play-state:running">
+          <defs>
+            <path id="gpt-knot-segment-idle" d="M128 168h14l9 9v12h-8v-9l-5-4h-10"/>
+            <g id="gpt-knot-shape-idle">
+              <use href="#gpt-knot-segment-idle"/>
+              <use href="#gpt-knot-segment-idle" transform="rotate(60 128 188)"/>
+              <use href="#gpt-knot-segment-idle" transform="rotate(120 128 188)"/>
+              <use href="#gpt-knot-segment-idle" transform="rotate(180 128 188)"/>
+              <use href="#gpt-knot-segment-idle" transform="rotate(240 128 188)"/>
+              <use href="#gpt-knot-segment-idle" transform="rotate(300 128 188)"/>
+            </g>
+            <style>
+              #pointer-body-js {
+                transform: translate(var(--body-x), var(--body-y)) rotate(var(--body-tilt));
+                transform-box: view-box;
+                transform-origin: 128px 160px;
+              }
+              #float-js {
+                animation: gpt-idle-float 4000ms cubic-bezier(0.45, 0, 0.55, 1) infinite;
+                animation-play-state: var(--play-state);
+                transform-box: view-box;
+                transform-origin: 128px 160px;
+              }
+              #eyes-js {
+                transform: translate(var(--eye-x), var(--eye-y));
+              }
+              #blink-js {
+                animation: gpt-idle-blink 4000ms linear infinite;
+                animation-play-state: var(--play-state);
+                transform-box: fill-box;
+                transform-origin: center;
+              }
+              #shadow-js {
+                transform: translate(var(--shadow-x), var(--shadow-y)) scaleX(var(--shadow-stretch));
+                transform-box: view-box;
+                transform-origin: 128px 235px;
+              }
+              #shadow-pulse-js {
+                animation: gpt-idle-shadow 4000ms cubic-bezier(0.45, 0, 0.55, 1) infinite;
+                animation-play-state: var(--play-state);
+                transform-box: fill-box;
+                transform-origin: center;
+              }
+              #knot-core-js {
+                animation: gpt-knot-core 4000ms cubic-bezier(0.45, 0, 0.55, 1) infinite;
+                animation-play-state: var(--play-state);
+              }
+              #knot-glow-js {
+                animation: gpt-knot-glow 4000ms cubic-bezier(0.45, 0, 0.55, 1) infinite;
+                animation-play-state: var(--play-state);
+              }
+              .is-paused * { animation-play-state: paused !important; }
+              .is-restarting * { animation: none !important; }
+        
+              @keyframes gpt-idle-float {
+                0% { transform: translateY(0px); }
+                20% { transform: translateY(-4px); }
+                40% { transform: translateY(-8px); }
+                60% { transform: translateY(-4px); }
+                76% { transform: translateY(1px); }
+                79% { transform: translateY(2px); }
+                82% { transform: translateY(1px); }
+                100% { transform: translateY(0px); }
+              }
+              @keyframes gpt-idle-shadow {
+                0% { transform: scaleX(1); opacity: 0.22; }
+                20% { transform: scaleX(0.92); opacity: 0.20; }
+                40% { transform: scaleX(0.84); opacity: 0.17; }
+                60% { transform: scaleX(0.92); opacity: 0.20; }
+                76% { transform: scaleX(1.05); opacity: 0.23; }
+                79% { transform: scaleX(1.08); opacity: 0.24; }
+                82% { transform: scaleX(1.05); opacity: 0.23; }
+                100% { transform: scaleX(1); opacity: 0.22; }
+              }
+              @keyframes gpt-idle-blink {
+                0% { transform: scaleY(1); }
+                20% { transform: scaleY(1); }
+                40% { transform: scaleY(1); }
+                60% { transform: scaleY(1); }
+                76% { transform: scaleY(0.62); }
+                79% { transform: scaleY(0.08); }
+                82% { transform: scaleY(1); }
+                100% { transform: scaleY(1); }
+              }
+              @keyframes gpt-knot-core {
+                0% { opacity: 0.82; stroke: #75deb1; }
+                20% { opacity: 0.90; stroke: #7fe6b9; }
+                40% { opacity: 1; stroke: #98f2cd; }
+                60% { opacity: 0.92; stroke: #84e8bd; }
+                76% { opacity: 0.86; stroke: #79dfb2; }
+                79% { opacity: 0.82; stroke: #75deb1; }
+                82% { opacity: 0.84; stroke: #77dcae; }
+                100% { opacity: 0.82; stroke: #75deb1; }
+              }
+              @keyframes gpt-knot-glow {
+                0% { opacity: 0.08; }
+                20% { opacity: 0.14; }
+                40% { opacity: 0.28; }
+                60% { opacity: 0.18; }
+                76% { opacity: 0.12; }
+                79% { opacity: 0.08; }
+                82% { opacity: 0.10; }
+                100% { opacity: 0.08; }
+              }
+            </style>
+          </defs>
+        
+          <g id="shadow-js">
+            <ellipse id="shadow-pulse-js" cx="128" cy="235" rx="48" ry="6" fill="#131721"/>
+          </g>
+        
+          <g id="pointer-body-js" shape-rendering="crispEdges">
+            <g id="float-js">
+              <g id="arms-js">
+                <path d="M58 156h8v-8h10v48h-10v8H52v-28h4v-16h2z" fill="#323844"/>
+                <path d="M52 184h14v20H52z" fill="#a9ead0"/>
+                <path d="M198 156h-8v-8h-10v48h10v8h14v-28h-4v-16h-2z" fill="#323844"/>
+                <path d="M190 184h14v20h-14z" fill="#a9ead0"/>
+                <path d="M58 164h8v20h-8zM190 164h8v20h-8z" fill="#4a5260" opacity="0.7"/>
+              </g>
+        
+              <g id="body-js">
+                <path d="M86 216h20v8H86zM150 216h20v8h-20z" fill="#a9ead0"/>
+                <path d="M84 100h88v4h8v8h8v92h-8v8h-8v4H84v-4h-8v-8h-8v-92h8v-8h8z" fill="#3c424e"/>
+                <path d="M84 104h88v4h8v12h-4v-4H80v88h4v8h-8v-8h-4v-92h8v-8z" fill="#59616f" opacity="0.38"/>
+                <path d="M80 204h8v8h84v-4h8v4h-8v4H84v-4h-8z" fill="#292f3a" opacity="0.55"/>
+              </g>
+        
+              <g id="head-js">
+                <rect x="124" y="90" width="8" height="12" fill="#303642"/>
+                <rect x="126" y="90" width="4" height="12" fill="#505866"/>
+                <path d="M120 72h16v4h6v12h-6v4h-16v-4h-6V76h6z" fill="#9fe5c8"/>
+                <path d="M120 88h16v4h-16z" fill="#7fd4b2"/>
+                <path d="M88 116h80v4h8v8h4v24h-4v8h-8v4H88v-4h-8v-8h-4v-24h4v-8h8z" fill="#c7f0de"/>
+                <path d="M88 120h80v4h8v8h-4v-4H84v28h4v4h-8v-8h-4v-24h4v-8h8z" fill="#ddf8ec" opacity="0.48"/>
+                <path id="mouth-js" d="M116 150h8v6h16v-6h8v8h-8v6h-16v-6h-8z" fill="#080b12"/>
+              </g>
+        
+              <g id="eyes-js" fill="#080b12">
+                <g id="blink-js">
+                  <rect x="96" y="132" width="12" height="18"/>
+                  <rect x="148" y="132" width="12" height="18"/>
+                </g>
+              </g>
+        
+              <g id="accessory-js">
+                <use id="knot-core-js" href="#gpt-knot-shape-idle" fill="none" stroke="#75deb1" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter"/>
+              </g>
+        
+              <g id="effect-js">
+                <use id="knot-glow-js" href="#gpt-knot-shape-idle" fill="none" stroke="#96f0ca" stroke-width="9" stroke-linecap="square" stroke-linejoin="miter" opacity="0.08"/>
+                <path d="M124 20h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#8ce5bd"/>
+                <path d="M154 44h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#43c5e8"/>
+                <path d="M94 56h8v6h6v8h-6v6h-8v-6h-6v-8h6z" fill="#ffc847"/>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div id="pointer-capture" class="pointer-capture" aria-hidden="true">
+        <span id="tracking-top-left" class="tracking-hitbox tracking-hitbox--top-left"></span>
+        <span id="tracking-top-right" class="tracking-hitbox tracking-hitbox--top-right"></span>
+        <span id="tracking-bottom-left" class="tracking-hitbox tracking-hitbox--bottom-left"></span>
+        <span id="tracking-bottom-right" class="tracking-hitbox tracking-hitbox--bottom-right"></span>
+        <span id="tracking-top" class="tracking-hitbox tracking-hitbox--top"></span>
+        <span id="tracking-bottom" class="tracking-hitbox tracking-hitbox--bottom"></span>
+        <span id="tracking-center" class="tracking-hitbox tracking-hitbox--center"></span>
+      </div>
+    </div>
+    <div id="status" class="status" role="status">正在载入 SVG…</div>
+  </main>
+
+  <script>
+    (() => {
+      const stage = document.getElementById('stage');
+      const pointerCapture = document.getElementById('pointer-capture');
+      const petObject = document.getElementById('pet-object');
+      const status = document.getElementById('status');
+      const state = {
+        loaded: false,
+        playing: true,
+        size: 128,
+        background: 'transparent',
+        loopCount: 0,
+        errors: [],
+        pointer: { x: 0, y: 0, targetX: 0, targetY: 0, returnDurationMs: null }
+      };
+      const POINTER_CONFIG = Object.freeze({
+        fullScaleStageRatioX: 0.30,
+        fullScaleStageRatioY: 0.30,
+        bodyX: 16,
+        bodyY: 12,
+        bodyTilt: 3,
+        eyeX: 3,
+        eyeY: 3,
+        shadowX: 12,
+        shadowY: 5,
+        shadowStretch: 0.08,
+        smoothingCoefficient: 0.20,
+        returnDelayMs: 650,
+        settleThreshold: 0.001
+      });
+      const tracking = {
+        currentX: 0,
+        currentY: 0,
+        targetX: 0,
+        targetY: 0,
+        lastFrameAt: 0,
+        lastInputAt: 0,
+        returnStartedAt: 0,
+        centeredAt: 0
+      };
+      let svgRoot = petObject.querySelector('svg');
+      let returnTimer = 0;
+      let trackingFrame = 0;
+
+      const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+      function updateStatus() {
+        const playback = state.playing ? '播放中' : '已暂停';
+        const loadState = state.loaded ? 'SVG 已载入' : 'SVG 载入中';
+        status.textContent = `${loadState} · ${playback} · ${state.size}px · 已完成 ${state.loopCount} 个循环`;
+      }
+
+      function setRootVariable(name, value) {
+        if (svgRoot) svgRoot.style.setProperty(name, value);
+      }
+
+      function writePointerValues(nx, ny) {
+        const x = clamp(nx, -1, 1);
+        const y = clamp(ny, -1, 1);
+        const distance = Math.min(1, Math.hypot(x, y));
+        const eyeX = (x * POINTER_CONFIG.eyeX).toFixed(2);
+        const eyeY = (y * POINTER_CONFIG.eyeY).toFixed(2);
+        const bodyX = (x * POINTER_CONFIG.bodyX).toFixed(2);
+        const bodyY = (y * POINTER_CONFIG.bodyY).toFixed(2);
+        const bodyTilt = (x * POINTER_CONFIG.bodyTilt).toFixed(2);
+        const shadowX = (-x * POINTER_CONFIG.shadowX).toFixed(2);
+        const shadowY = (-y * POINTER_CONFIG.shadowY).toFixed(2);
+        const shadowStretch = (1 + distance * POINTER_CONFIG.shadowStretch).toFixed(3);
+        const renderScale = state.size / 256;
+        state.pointer.x = Number(x.toFixed(4));
+        state.pointer.y = Number(y.toFixed(4));
+        state.pointer.targetX = Number(tracking.targetX.toFixed(4));
+        state.pointer.targetY = Number(tracking.targetY.toFixed(4));
+        setRootVariable('--eye-x', `${eyeX}px`);
+        setRootVariable('--eye-y', `${eyeY}px`);
+        setRootVariable('--body-x', `${bodyX}px`);
+        setRootVariable('--body-y', `${bodyY}px`);
+        setRootVariable('--body-tilt', `${bodyTilt}deg`);
+        setRootVariable('--shadow-x', `${shadowX}px`);
+        setRootVariable('--shadow-y', `${shadowY}px`);
+        setRootVariable('--shadow-stretch', shadowStretch);
+        petObject.dataset.pointerQa = JSON.stringify({
+          normalizedX: Number(x.toFixed(4)),
+          normalizedY: Number(y.toFixed(4)),
+          targetX: Number(tracking.targetX.toFixed(4)),
+          targetY: Number(tracking.targetY.toFixed(4)),
+          bodyX,
+          bodyY,
+          bodyTilt,
+          eyeX,
+          eyeY,
+          shadowX,
+          shadowY,
+          shadowStretch,
+          visibleBodyX: (Number(bodyX) * renderScale).toFixed(2),
+          visibleBodyY: (Number(bodyY) * renderScale).toFixed(2),
+          visibleEyeX: (Number(eyeX) * renderScale).toFixed(2),
+          visibleEyeY: (Number(eyeY) * renderScale).toFixed(2),
+          visibleShadowX: (Number(shadowX) * renderScale).toFixed(2),
+          visibleShadowY: (Number(shadowY) * renderScale).toFixed(2),
+          lastInputAt: Math.round(tracking.lastInputAt),
+          returnStartedAt: Math.round(tracking.returnStartedAt),
+          centeredAt: Math.round(tracking.centeredAt),
+          measuredWaitMs: tracking.returnStartedAt && tracking.lastInputAt
+            ? Math.round(tracking.returnStartedAt - tracking.lastInputAt)
+            : null,
+          measuredReturnMs: tracking.centeredAt && tracking.returnStartedAt
+            ? Math.round(tracking.centeredAt - tracking.returnStartedAt)
+            : null
+        });
+      }
+
+      function ensureTrackingFrame() {
+        if (!trackingFrame) trackingFrame = requestAnimationFrame(updateTracking);
+      }
+
+      function updateTracking(timestamp) {
+        trackingFrame = 0;
+        const elapsed = tracking.lastFrameAt
+          ? Math.min(50, Math.max(1, timestamp - tracking.lastFrameAt))
+          : 1000 / 60;
+        tracking.lastFrameAt = timestamp;
+        const frameRatio = elapsed / (1000 / 60);
+        const alpha = 1 - Math.pow(1 - POINTER_CONFIG.smoothingCoefficient, frameRatio);
+        tracking.currentX += (tracking.targetX - tracking.currentX) * alpha;
+        tracking.currentY += (tracking.targetY - tracking.currentY) * alpha;
+        const settled = Math.abs(tracking.targetX - tracking.currentX) <= POINTER_CONFIG.settleThreshold
+          && Math.abs(tracking.targetY - tracking.currentY) <= POINTER_CONFIG.settleThreshold;
+        if (settled) {
+          tracking.currentX = tracking.targetX;
+          tracking.currentY = tracking.targetY;
+          tracking.lastFrameAt = 0;
+          if (tracking.targetX === 0 && tracking.targetY === 0 && tracking.returnStartedAt && !tracking.centeredAt) {
+            tracking.centeredAt = performance.now();
+            state.pointer.returnDurationMs = Math.round(tracking.centeredAt - tracking.returnStartedAt);
+          }
+        }
+        writePointerValues(tracking.currentX, tracking.currentY);
+        if (!settled) ensureTrackingFrame();
+      }
+
+      function beginReturnToCenter() {
+        returnTimer = 0;
+        tracking.returnStartedAt = performance.now();
+        tracking.centeredAt = 0;
+        tracking.targetX = 0;
+        tracking.targetY = 0;
+        ensureTrackingFrame();
+      }
+
+      function scheduleReturnToCenter() {
+        window.clearTimeout(returnTimer);
+        returnTimer = window.setTimeout(beginReturnToCenter, POINTER_CONFIG.returnDelayMs);
+      }
+
+      function setPointerTarget(nx, ny, scheduleReturn = true) {
+        tracking.targetX = clamp(nx, -1, 1);
+        tracking.targetY = clamp(ny, -1, 1);
+        tracking.lastInputAt = performance.now();
+        tracking.returnStartedAt = 0;
+        tracking.centeredAt = 0;
+        state.pointer.returnDurationMs = null;
+        window.clearTimeout(returnTimer);
+        ensureTrackingFrame();
+        if (scheduleReturn) scheduleReturnToCenter();
+      }
+
+      function returnToCenter() {
+        window.clearTimeout(returnTimer);
+        beginReturnToCenter();
+      }
+
+      function handlePointerMove(event) {
+        const stageRect = stage.getBoundingClientRect();
+        const petRect = petObject.getBoundingClientRect();
+        const centerX = petRect.left + petRect.width / 2;
+        const centerY = petRect.top + petRect.height / 2;
+        const fullScaleDistanceX = stageRect.width * POINTER_CONFIG.fullScaleStageRatioX;
+        const fullScaleDistanceY = stageRect.height * POINTER_CONFIG.fullScaleStageRatioY;
+        setPointerTarget(
+          (event.clientX - centerX) / fullScaleDistanceX,
+          (event.clientY - centerY) / fullScaleDistanceY
+        );
+      }
+
+      function setPlaying(playing) {
+        state.playing = playing;
+        setRootVariable('--play-state', playing ? 'running' : 'paused');
+        if (svgRoot) svgRoot.classList.toggle('is-paused', !playing);
+        updateStatus();
+      }
+
+      function restart() {
+        if (!svgRoot) return;
+        state.loopCount = 0;
+        state.playing = true;
+        svgRoot.classList.remove('is-paused');
+        svgRoot.classList.add('is-restarting');
+        svgRoot.getBoundingClientRect();
+        requestAnimationFrame(() => {
+          svgRoot.classList.remove('is-restarting');
+          setRootVariable('--play-state', 'running');
+          updateStatus();
+        });
+      }
+
+      function setSize(size) {
+        state.size = size;
+        stage.style.setProperty('--pet-size', `${size}px`);
+        document.querySelectorAll('[data-size]').forEach((button) => {
+          button.setAttribute('aria-pressed', String(Number(button.dataset.size) === size));
+        });
+        writePointerValues(tracking.currentX, tracking.currentY);
+        updateStatus();
+      }
+
+      function setBackground(background) {
+        state.background = background;
+        stage.dataset.background = background;
+        document.querySelectorAll('[data-background]').forEach((button) => {
+          button.setAttribute('aria-pressed', String(button.dataset.background === background));
+        });
+      }
+
+      function handleSvgLoad() {
+        if (!svgRoot || state.loaded) return;
+        state.loaded = true;
+        svgRoot.style.setProperty('--play-state', state.playing ? 'running' : 'paused');
+        const floatLayer = svgRoot.querySelector('#float-js');
+        if (floatLayer) {
+          floatLayer.addEventListener('animationiteration', (event) => {
+            if (event.target !== floatLayer || event.animationName !== 'gpt-idle-float') return;
+            state.loopCount += 1;
+            updateStatus();
+          });
+        } else {
+          state.errors.push('缺少 float-js 动画图层');
+        }
+        writePointerValues(0, 0);
+        updateStatus();
+      }
+
+      pointerCapture.addEventListener('pointermove', handlePointerMove);
+      pointerCapture.addEventListener('pointerdown', handlePointerMove);
+      pointerCapture.addEventListener('pointerleave', scheduleReturnToCenter);
+      document.getElementById('play-button').addEventListener('click', () => setPlaying(true));
+      document.getElementById('pause-button').addEventListener('click', () => setPlaying(false));
+      document.getElementById('restart-button').addEventListener('click', restart);
+      document.querySelectorAll('[data-size]').forEach((button) => {
+        button.addEventListener('click', () => setSize(Number(button.dataset.size)));
+      });
+      document.querySelectorAll('[data-background]').forEach((button) => {
+        button.addEventListener('click', () => setBackground(button.dataset.background));
+      });
+      window.addEventListener('error', (event) => state.errors.push(event.message || 'window error'));
+      window.addEventListener('unhandledrejection', (event) => state.errors.push(String(event.reason)));
+
+      window.petQA = {
+        getState: () => JSON.parse(JSON.stringify(state)),
+        setSize,
+        setBackground,
+        pause: () => setPlaying(false),
+        play: () => setPlaying(true),
+        restart,
+        simulatePointer: (x, y) => setPointerTarget(x, y),
+        resetPointer: returnToCenter
+      };
+
+      handleSvgLoad();
+      updateStatus();
+    })();
+  </script>
+</body>
+</html>

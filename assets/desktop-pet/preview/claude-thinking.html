@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Claude thinking Preview</title>
+  <style>
+    :root{color-scheme:dark;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#11151d;color:#e8edf5}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px}main{width:min(760px,100%)}
+    h1{margin:0 0 6px;font-size:24px}p{margin:0 0 16px;color:#aeb8c8}
+    .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}.label{margin-left:8px;color:#9aa6b8;font-size:13px}
+    button{border:1px solid #465166;border-radius:8px;background:#202735;color:#edf3ff;padding:7px 10px;cursor:pointer}
+    button[aria-pressed="true"]{border-color:#a878ef;background:#3c2855}.stage{position:relative;height:360px;overflow:hidden;display:grid;place-items:center;border:1px solid #303849;border-radius:14px}
+    .stage[data-background="transparent"]{background-color:#f4f5f7;background-image:linear-gradient(45deg,#d4d7dd 25%,transparent 25%),linear-gradient(-45deg,#d4d7dd 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#d4d7dd 75%),linear-gradient(-45deg,transparent 75%,#d4d7dd 75%);background-size:24px 24px;background-position:0 0,0 12px,12px -12px,-12px 0}
+    .stage[data-background="dark"]{background:#0d1220}.stage[data-background="light"]{background:#eef2f8}
+    #pet-object{position:relative;z-index:2;width:128px;height:128px;background:transparent;pointer-events:none}#pet-object>svg{display:block;width:100%;height:100%;overflow:visible}
+    #pointer-capture{position:absolute;inset:0;z-index:3}.tracking-hitbox{position:absolute;width:18px;height:18px;opacity:0;pointer-events:auto}
+    .tl{top:0;left:0}.tr{top:0;right:0}.bl{bottom:0;left:0}.br{bottom:0;right:0}.top{top:0;left:50%;transform:translateX(-50%)}.bottom{bottom:0;left:50%;transform:translateX(-50%)}.left{left:0;top:50%;transform:translateY(-50%)}.right{right:0;top:50%;transform:translateY(-50%)}.center{top:50%;left:50%;transform:translate(-50%,-50%)}
+    #status{min-height:22px;margin-top:12px;color:#aeb8c8;font-size:13px}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Claude · thinking</h1>
+    <p>Centered downward focus with inward eyes, rhythmic top-tuft response and the existing front symbol settling.</p>
+    <div class="controls" aria-label="Preview controls">
+      <span class="label">Animation</span><button id="play-button" type="button">Play</button><button id="pause-button" type="button">Pause</button><button id="restart-button" type="button">Restart</button>
+      <span class="label">Size</span><button type="button" data-size="64">64px</button><button type="button" data-size="96">96px</button><button type="button" data-size="128" aria-pressed="true">128px</button>
+      <span class="label">Background</span><button type="button" data-background="transparent" aria-pressed="true">Transparent</button><button type="button" data-background="dark">Dark</button><button type="button" data-background="light">Light</button>
+    </div>
+    <div id="stage" class="stage" data-background="transparent" data-testid="preview-stage">
+      <div id="pet-object" role="img" aria-label="Claude thinking animation">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" preserveAspectRatio="xMidYMid meet" style="background-color:transparent;overflow:visible;--eye-x:0px;--eye-y:0px;--body-x:0px;--body-y:0px;--body-tilt:0deg;--shadow-x:0px;--shadow-y:0px;--shadow-stretch:1;--play-state:running">
+          <defs>
+            <style>
+              #pointer-body-js{transform:translate(var(--body-x),var(--body-y)) rotate(var(--body-tilt));transform-box:view-box;transform-origin:128px 158px}
+              #eyes-js{transform:translate(var(--eye-x),var(--eye-y))}
+              #shadow-js{transform:translate(var(--shadow-x),var(--shadow-y)) scaleX(var(--shadow-stretch));transform-box:view-box;transform-origin:128px 232px}
+              .is-restarting *{animation:none!important}
+              #thinking-pose-js{animation:claude-thinking-pose 3600ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 158px}
+              #top-tuft-js{animation:claude-thinking-tuft 3600ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 96px}
+              #thinking-gaze-js{animation:claude-thinking-gaze 3600ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 138px}
+              #left-eye-js{animation:claude-thinking-eye-left 3600ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:93px 138px}
+              #right-eye-js{animation:claude-thinking-eye-right 3600ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:163px 138px}
+              #emblem-js{animation:claude-thinking-emblem 3600ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:view-box;transform-origin:128px 199px}
+              #blink-js{animation:claude-thinking-blink 3600ms linear infinite;animation-play-state:var(--play-state);transform-box:fill-box;transform-origin:center}
+              #shadow-pulse-js{animation:claude-thinking-shadow 3600ms cubic-bezier(0.45,0,0.55,1) infinite;animation-play-state:var(--play-state);transform-box:fill-box;transform-origin:center}
+              @keyframes claude-thinking-pose{0%{transform:translateY(0) rotate(0)}16%{transform:translateY(1px) rotate(-.2deg)}32%{transform:translateY(2px) rotate(-.4deg)}48%{transform:translateY(2px) rotate(.4deg)}64%{transform:translateY(.8px) rotate(0)}76%{transform:translateY(0) rotate(0)}84%{transform:translateY(.2px) rotate(-.1deg)}100%{transform:translateY(0) rotate(0)}}
+              @keyframes claude-thinking-tuft{0%{transform:translateY(0) rotate(0)}16%{transform:translateY(1px) rotate(-2deg)}32%{transform:translateY(2px) rotate(-4deg)}48%{transform:translateY(2px) rotate(3deg)}64%{transform:translateY(.8px) rotate(1deg)}76%{transform:translateY(0) rotate(0)}84%{transform:translateY(.2px) rotate(-.5deg)}100%{transform:translateY(0) rotate(0)}}
+              @keyframes claude-thinking-gaze{0%{transform:translateY(0)}16%{transform:translateY(.6px)}32%{transform:translateY(1.1px)}48%{transform:translateY(1.2px)}64%{transform:translateY(.5px)}76%{transform:translateY(0)}84%{transform:translateY(.2px)}100%{transform:translateY(0)}}
+              @keyframes claude-thinking-eye-left{0%{transform:translateX(0)}16%{transform:translateX(.2px)}32%{transform:translateX(.45px)}48%{transform:translateX(.6px)}64%{transform:translateX(.25px)}76%{transform:translateX(0)}84%{transform:translateX(.1px)}100%{transform:translateX(0)}}
+              @keyframes claude-thinking-eye-right{0%{transform:translateX(0)}16%{transform:translateX(-.2px)}32%{transform:translateX(-.45px)}48%{transform:translateX(-.6px)}64%{transform:translateX(-.25px)}76%{transform:translateX(0)}84%{transform:translateX(-.1px)}100%{transform:translateX(0)}}
+              @keyframes claude-thinking-emblem{0%{transform:rotate(0)}16%{transform:rotate(-1deg)}32%{transform:rotate(-3deg)}48%{transform:rotate(3deg)}64%{transform:rotate(1deg)}76%{transform:rotate(0)}84%{transform:rotate(-.5deg)}100%{transform:rotate(0)}}
+              @keyframes claude-thinking-blink{0%{transform:scaleY(1)}16%{transform:scaleY(1)}32%{transform:scaleY(1)}48%{transform:scaleY(1)}64%{transform:scaleY(1)}76%{transform:scaleY(.12)}84%{transform:scaleY(1)}100%{transform:scaleY(1)}}
+              @keyframes claude-thinking-shadow{0%{transform:scaleX(1)}16%{transform:scaleX(1.01)}32%{transform:scaleX(1.02)}48%{transform:scaleX(1.02)}64%{transform:scaleX(.99)}76%{transform:scaleX(1)}84%{transform:scaleX(1)}100%{transform:scaleX(1)}}
+            </style>
+          </defs>
+          <g id="shadow-js">
+            <g id="shadow-pulse-js" opacity="0.22">
+              <ellipse cx="128" cy="232" rx="46" ry="6" fill="#6b2817"/>
+            </g>
+          </g>
+          <g id="pointer-body-js" shape-rendering="crispEdges">
+            <g id="float-js">
+              <g id="thinking-pose-js">
+              <g id="accessory-js">
+                <g id="top-tuft-js">
+                  <path d="M100 100h34V82h-8V70h-8v-8H98v6h-10v14h8v10h4z" fill="#b43d1b"/>
+                  <path d="M104 94h22V82h-8V72h-8v-6H100v6h-8v8h8v8h4z" fill="#f36b2e"/>
+                  <path d="M98 66h12v6h8v8h-8v-6H98z" fill="#ffad4d"/>
+                  <path d="M118 100h42V78h-8V52h-8V40h-14v12h-8v26h-4z" fill="#b43d1b"/>
+                  <path d="M124 94h28V78h-6V54h-8V44h-6v12h-6v24h-2z" fill="#f36b2e"/>
+                  <path d="M132 44h8v12h6v12h-8V58h-6z" fill="#ffad4d"/>
+                  <path d="M144 100h20v-8h12v-10h10V68h-20v6h-10v8h-12z" fill="#b43d1b"/>
+                  <path d="M150 94h12v-8h10v-8h8v-6h-12v6h-10v8h-8z" fill="#f36b2e"/>
+                  <path d="M168 72h12v6h-8v8h-10v-8h6z" fill="#ffad4d"/>
+                </g>
+              </g>
+              <g id="arms-js">
+                <g id="left-arm-js">
+                  <path d="M36 140h18v8h8v38h-8v10H36v-6h-8v-34h8z" fill="#a83a1c"/>
+                  <path d="M40 146h10v8h6v28h-6v8H40v-6h-6v-26h6z" fill="#f2672d"/>
+                  <path d="M34 156h6v28h6v6h-8v-6h-4z" fill="#ff9a43"/>
+                </g>
+                <g id="right-arm-js">
+                  <path d="M202 140h18v16h8v34h-8v6h-18v-10h-8v-38h8z" fill="#a83a1c"/>
+                  <path d="M206 146h10v12h6v26h-6v6h-10v-8h-6v-28h6z" fill="#f2672d"/>
+                  <path d="M216 156h6v28h-4v6h-8v-6h6z" fill="#ff9a43"/>
+                </g>
+              </g>
+              <g id="feet-js">
+                <g id="left-foot-js">
+                  <path d="M82 212h34v6h6v14H78v-14h4z" fill="#9b351a"/>
+                  <path d="M86 216h26v4h4v8H84v-8h2z" fill="#f2672d"/>
+                  <rect x="88" y="216" width="10" height="10" fill="#ffae4d"/>
+                </g>
+                <g id="right-foot-js">
+                  <path d="M142 212h34v6h4v14h-44v-14h6z" fill="#9b351a"/>
+                  <path d="M146 216h26v4h2v8h-32v-8h4z" fill="#f2672d"/>
+                  <rect x="146" y="216" width="10" height="10" fill="#ffae4d"/>
+                </g>
+              </g>
+              <g id="body-js">
+                <path d="M82 82h92v6h18v10h12v14h8v18h6v54h-6v18h-10v12h-16v8h-24v6H94v-6H70v-8H54v-12H44v-18h-6v-54h6v-18h8V98h12V88h18z" fill="#9f3419"/>
+                <path d="M86 88h84v6h18v10h10v14h8v20h4v42h-4v18h-10v10h-14v8h-22v6H98v-6H76v-8H62v-10H52v-18h-4v-42h4v-20h8v-14h10V94h16z" fill="#f2692f"/>
+                <path d="M86 92h80v6h18v10h10v14h8v18h-8v-10h-8v-10h-14v-8H84v6H70v10H60v14h-8v20h-4v-24h4v-20h8v-14h10V96h16z" fill="#ff8b3e"/>
+                <path d="M48 178h8v18h10v10h14v8h22v6h58v-6h22v-8h14v-10h10v-18h8v8h-2v16h-10v12h-16v8h-24v6H94v-6H70v-8H54v-12H44v-16h4z" fill="#c94a21"/>
+                <path d="M62 126h8v-10h12v-8h18v6H84v8H72v12H62z" fill="#ffab4b"/>
+              </g>
+              <g id="head-js">
+                <g id="face-js">
+                  <path d="M78 100h100v6h14v10h8v44h-8v10h-14v8H78v-8H64v-10h-8v-44h8v-10h14z" fill="#efb657"/>
+                  <path d="M82 106h92v6h12v8h6v36h-6v8h-12v6H82v-6H70v-8h-6v-36h6v-8h12z" fill="#ffe4a0"/>
+                  <path d="M82 110h84v4h14v8H80v4H70v28h-6v-34h6v-8h12z" fill="#fff0bd"/>
+                </g>
+                <g id="eyes-js">
+                  <g id="thinking-gaze-js">
+                    <g id="blink-js">
+                      <g id="left-eye-js">
+                        <path d="M84 124h18v4h4v20h-4v6H84v-4h-4v-22h4z" fill="#7b2c17"/>
+                        <path d="M86 122h14v4h4v18h-4v4H86v-4h-4v-18h4z" fill="#28150e"/>
+                        <rect x="94" y="126" width="6" height="8" fill="#fff0b7"/>
+                      </g>
+                      <g id="right-eye-js">
+                        <path d="M154 124h18v4h4v22h-4v4h-18v-6h-4v-20h4z" fill="#7b2c17"/>
+                        <path d="M156 122h14v4h4v18h-4v4h-14v-4h-4v-18h4z" fill="#28150e"/>
+                        <rect x="164" y="126" width="6" height="8" fill="#fff0b7"/>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+                <path id="mouth-js" d="M112 150h8v4h16v-4h8v8h-8v4h-16v-4h-8z" fill="#4b1d13"/>
+              </g>
+              <g id="emblem-js" fill="#ffd383">
+                <rect x="124" y="180" width="8" height="38"/>
+                <rect x="106" y="195" width="44" height="8"/>
+                <path d="M110 182h8v6h6v12h-8v-8h-6z"/>
+                <path d="M140 182h8v10h-6v8h-8v-12h6z"/>
+                <path d="M110 208h6v-8h8v12h-6v8h-8z"/>
+                <path d="M134 200h8v8h6v12h-8v-8h-6z"/>
+                <rect x="124" y="195" width="8" height="8" fill="#ffe6a5"/>
+              </g>
+              </g>
+            </g>
+          </g>
+        </svg>
+        
+      </div>
+      <div id="pointer-capture" aria-hidden="true">
+        <span id="tracking-top-left" class="tracking-hitbox tl"></span><span class="tracking-hitbox tr"></span><span class="tracking-hitbox bl"></span><span id="tracking-bottom-right" class="tracking-hitbox br"></span>
+        <span class="tracking-hitbox top"></span><span class="tracking-hitbox bottom"></span><span class="tracking-hitbox left"></span><span class="tracking-hitbox right"></span><span id="tracking-center" class="tracking-hitbox center"></span>
+      </div>
+    </div>
+    <div id="status" role="status"></div>
+  </main>
+  <script>
+    (() => {
+      const stage=document.getElementById('stage'),petObject=document.getElementById('pet-object'),pointerCapture=document.getElementById('pointer-capture'),status=document.getElementById('status'),svgRoot=petObject.querySelector('svg');
+      const state={loaded:false,playing:true,size:128,background:'transparent',loopCount:0,errors:[],warnings:[]};
+      const nativeConsoleError=console.error.bind(console),nativeConsoleWarn=console.warn.bind(console);console.error=(...args)=>{state.errors.push(args.map(String).join(' '));nativeConsoleError(...args);updateStatus();};console.warn=(...args)=>{state.warnings.push(args.map(String).join(' '));nativeConsoleWarn(...args);updateStatus();};
+      const C={fullScaleStageRatioX:.30,fullScaleStageRatioY:.30,bodyMaxX:16,bodyMaxY:12,bodyMaxTilt:3,eyeMax:3,shadowMaxX:12,shadowMaxY:5,shadowMaxStretch:1.08,smoothingCoefficient:.20,returnDelayMs:650,returnSettleThreshold:.003,expectedReturnDurationMs:500};
+      let currentX=0,currentY=0,targetX=0,targetY=0,lastFrameAt=performance.now(),lastInputAt=performance.now(),returnTimer=0,settleTimer=0,returnStartedAt=0,centeredAt=0,rafId=0;
+      const clamp=(v,min,max)=>Math.min(max,Math.max(min,v));
+      const shadowDistance=x=>Math.abs(x);
+      function updateStatus(){status.textContent=`SVG loaded · ${state.playing?'playing':'paused'} · ${state.size}px · ${state.loopCount} loops`;document.documentElement.dataset.qaState=JSON.stringify(state);}
+      function writePointerValues(x,y){
+        svgRoot.style.setProperty('--body-x',`${(x*C.bodyMaxX).toFixed(2)}px`);svgRoot.style.setProperty('--body-y',`${(y*C.bodyMaxY).toFixed(2)}px`);svgRoot.style.setProperty('--body-tilt',`${(x*C.bodyMaxTilt).toFixed(2)}deg`);
+        svgRoot.style.setProperty('--eye-x',`${(x*C.eyeMax).toFixed(2)}px`);svgRoot.style.setProperty('--eye-y',`${(y*C.eyeMax).toFixed(2)}px`);
+        svgRoot.style.setProperty('--shadow-x',`${(-x*C.shadowMaxX).toFixed(2)}px`);svgRoot.style.setProperty('--shadow-y',`${(-y*C.shadowMaxY).toFixed(2)}px`);svgRoot.style.setProperty('--shadow-stretch',(1+shadowDistance(x)*(C.shadowMaxStretch-1)).toFixed(3));
+        const s=state.size/256;petObject.dataset.pointerQa=JSON.stringify({normalizedX:+x.toFixed(4),normalizedY:+y.toFixed(4),targetX:+targetX.toFixed(4),targetY:+targetY.toFixed(4),bodyX:+(x*C.bodyMaxX).toFixed(2),bodyY:+(y*C.bodyMaxY).toFixed(2),bodyTilt:+(x*C.bodyMaxTilt).toFixed(2),eyeX:+(x*C.eyeMax).toFixed(2),eyeY:+(y*C.eyeMax).toFixed(2),shadowX:+(-x*C.shadowMaxX).toFixed(2),shadowY:+(-y*C.shadowMaxY).toFixed(2),shadowStretch:+(1+shadowDistance(x)*(C.shadowMaxStretch-1)).toFixed(3),visibleBodyX:+(x*C.bodyMaxX*s).toFixed(2),visibleBodyY:+(y*C.bodyMaxY*s).toFixed(2),visibleEyeX:+(x*C.eyeMax*s).toFixed(2),visibleEyeY:+(y*C.eyeMax*s).toFixed(2),visibleShadowX:+(-x*C.shadowMaxX*s).toFixed(2),visibleShadowY:+(-y*C.shadowMaxY*s).toFixed(2),lastInputAt,returnStartedAt,centeredAt,measuredWaitMs:returnStartedAt?Math.round(returnStartedAt-lastInputAt):null,measuredReturnMs:centeredAt&&returnStartedAt?Math.round(centeredAt-returnStartedAt):null});
+      }
+      function tick(now){const ratio=clamp((now-lastFrameAt)/(1000/60),.5,6),alpha=1-Math.pow(1-C.smoothingCoefficient,ratio);currentX+=(targetX-currentX)*alpha;currentY+=(targetY-currentY)*alpha;if(returnStartedAt&&!centeredAt&&Math.abs(currentX)<C.returnSettleThreshold&&Math.abs(currentY)<C.returnSettleThreshold){currentX=0;currentY=0;centeredAt=now;if(settleTimer){clearTimeout(settleTimer);settleTimer=0}}writePointerValues(currentX,currentY);lastFrameAt=now;rafId=requestAnimationFrame(tick);}
+      function ensureTick(){if(!rafId){lastFrameAt=performance.now();rafId=requestAnimationFrame(tick)}}
+      function beginReturn(){returnTimer=0;returnStartedAt=performance.now();centeredAt=0;targetX=0;targetY=0;if(settleTimer)clearTimeout(settleTimer);settleTimer=setTimeout(()=>{if(returnStartedAt&&targetX===0&&targetY===0&&!centeredAt){currentX=0;currentY=0;centeredAt=performance.now();writePointerValues(0,0)}settleTimer=0},C.expectedReturnDurationMs);ensureTick();}
+      function scheduleReturn(){if(returnTimer)clearTimeout(returnTimer);returnTimer=setTimeout(beginReturn,C.returnDelayMs);}
+      function setPointerTarget(x,y){if(returnTimer){clearTimeout(returnTimer);returnTimer=0}if(settleTimer){clearTimeout(settleTimer);settleTimer=0}returnStartedAt=0;centeredAt=0;targetX=clamp(x,-1,1);targetY=clamp(y,-1,1);lastInputAt=performance.now();scheduleReturn();ensureTick();}
+      function handlePointerMove(e){const sr=stage.getBoundingClientRect(),pr=petObject.getBoundingClientRect(),ox=pr.left+pr.width/2,oy=pr.top+pr.height/2;setPointerTarget((e.clientX-ox)/(sr.width*C.fullScaleStageRatioX),(e.clientY-oy)/(sr.height*C.fullScaleStageRatioY));}
+      function setPlaying(v){state.playing=v;svgRoot.style.setProperty('--play-state',v?'running':'paused');updateStatus();}
+      function restart(){state.loopCount=0;svgRoot.classList.add('is-restarting');void svgRoot.getBoundingClientRect();requestAnimationFrame(()=>{svgRoot.classList.remove('is-restarting');svgRoot.style.setProperty('--play-state',state.playing?'running':'paused')});updateStatus();}
+      function setSize(size){state.size=size;petObject.style.width=`${size}px`;petObject.style.height=`${size}px`;document.querySelectorAll('[data-size]').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.size===size)));writePointerValues(currentX,currentY);updateStatus();}
+      function setBackground(bg){state.background=bg;stage.dataset.background=bg;document.querySelectorAll('[data-background]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.background===bg)));updateStatus();}
+      const required=["pointer-body-js","float-js","thinking-pose-js","eyes-js","thinking-gaze-js","left-eye-js","right-eye-js","blink-js","top-tuft-js","shadow-js","shadow-pulse-js"];for(const id of required)if(!svgRoot.querySelector('#'+id))state.errors.push('Missing '+id);
+      const loopLayer=svgRoot.querySelector('#thinking-pose-js');if(loopLayer){loopLayer.addEventListener('animationiteration',e=>{if(e.target===loopLayer&&e.animationName==='claude-thinking-pose'){state.loopCount++;updateStatus()}});state.loaded=true;}
+      pointerCapture.addEventListener('pointermove',handlePointerMove);pointerCapture.addEventListener('pointerdown',handlePointerMove);pointerCapture.addEventListener('pointerleave',scheduleReturn);
+      document.getElementById('play-button').addEventListener('click',()=>setPlaying(true));document.getElementById('pause-button').addEventListener('click',()=>setPlaying(false));document.getElementById('restart-button').addEventListener('click',restart);
+      document.querySelectorAll('[data-size]').forEach(b=>b.addEventListener('click',()=>setSize(+b.dataset.size)));document.querySelectorAll('[data-background]').forEach(b=>b.addEventListener('click',()=>setBackground(b.dataset.background)));
+      window.addEventListener('error',e=>{state.errors.push(e.message||'window error');updateStatus()});window.addEventListener('unhandledrejection',e=>{state.errors.push(String(e.reason));updateStatus()});
+      window.petQA={getState:()=>JSON.parse(JSON.stringify(state)),getPointer:()=>JSON.parse(petObject.dataset.pointerQa||'{}'),setSize,setBackground,pause:()=>setPlaying(false),play:()=>setPlaying(true),restart,simulatePointer:setPointerTarget,resetPointer:beginReturn};
+      writePointerValues(0,0);rafId=requestAnimationFrame(tick);updateStatus();
+    })();
+  </script>
+</body>
+</html>
+
+

@@ -1,0 +1,26 @@
+{
+  "character": "claude",
+  "bridge": "clawd-on-desk/themes/clawd",
+  "upstream": "https://github.com/rullerzhou-afk/clawd-on-desk",
+  "note": "SVGs are fetched locally and gitignored. See ATTRIBUTION.md.",
+  "fetchScript": "scripts/fetch-clawd-claude-assets.mjs",
+  "actions": {
+    "idle": "clawd-idle-follow.svg",
+    "idleLook": "clawd-idle-look.svg",
+    "thinking": "clawd-working-thinking.svg",
+    "working": "clawd-working-typing.svg",
+    "building": "clawd-working-building.svg",
+    "juggling": "clawd-working-juggling.svg",
+    "error": "clawd-error.svg",
+    "happy": "clawd-happy.svg",
+    "notification": "clawd-notification.svg",
+    "yawning": "clawd-idle-yawn.svg",
+    "sleeping": "clawd-sleeping.svg",
+    "waking": "clawd-wake.svg",
+    "drag": "clawd-react-drag.svg",
+    "clickLeft": "clawd-react-left.svg",
+    "clickRight": "clawd-react-right.svg",
+    "annoyed": "clawd-react-annoyed.svg",
+    "double": "clawd-react-double.svg"
+  }
+}

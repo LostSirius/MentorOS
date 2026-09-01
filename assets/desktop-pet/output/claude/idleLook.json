@@ -1,0 +1,218 @@
+{
+  "character": "claude",
+  "action": "idleLook",
+  "keyframeCount": 8,
+  "keyframes": [
+    {
+      "index": 1,
+      "percent": 0,
+      "poseX": 0,
+      "poseY": 0,
+      "poseRotateDeg": 0,
+      "gazeX": 0,
+      "gazeY": 0,
+      "topTuftX": 0,
+      "topTuftY": 0,
+      "topTuftRotateDeg": 0,
+      "eyeScaleY": 1,
+      "shadowStateScaleX": 1,
+      "description": "基准姿态。"
+    },
+    {
+      "index": 2,
+      "percent": 20,
+      "poseX": 0,
+      "poseY": 0,
+      "poseRotateDeg": 0,
+      "gazeX": 1.1,
+      "gazeY": -0.6,
+      "topTuftX": 0,
+      "topTuftY": 0,
+      "topTuftRotateDeg": -0.5,
+      "eyeScaleY": 1,
+      "shadowStateScaleX": 0.998,
+      "description": "眼睛先注意右上方。"
+    },
+    {
+      "index": 3,
+      "percent": 32,
+      "poseX": 0.4,
+      "poseY": -0.2,
+      "poseRotateDeg": 0.2,
+      "gazeX": 2.2,
+      "gazeY": -1.3,
+      "topTuftX": 0.4,
+      "topTuftY": -0.2,
+      "topTuftRotateDeg": 1.5,
+      "eyeScaleY": 1,
+      "shadowStateScaleX": 0.995,
+      "description": "视线到达目标，主体和顶部部件开始跟随。"
+    },
+    {
+      "index": 4,
+      "percent": 46,
+      "poseX": 0.8,
+      "poseY": -0.4,
+      "poseRotateDeg": 0.4,
+      "gazeX": 2.2,
+      "gazeY": -1.3,
+      "topTuftX": 0.8,
+      "topTuftY": -0.5,
+      "topTuftRotateDeg": 2,
+      "eyeScaleY": 1,
+      "shadowStateScaleX": 0.99,
+      "description": "保持单一方向注视。"
+    },
+    {
+      "index": 5,
+      "percent": 58,
+      "poseX": 0.8,
+      "poseY": -0.4,
+      "poseRotateDeg": 0.4,
+      "gazeX": 2.2,
+      "gazeY": -1.3,
+      "topTuftX": 0.8,
+      "topTuftY": -0.5,
+      "topTuftRotateDeg": 2,
+      "eyeScaleY": 0.12,
+      "shadowStateScaleX": 0.99,
+      "description": "保持方向并自然眨眼。"
+    },
+    {
+      "index": 6,
+      "percent": 70,
+      "poseX": 0.8,
+      "poseY": -0.4,
+      "poseRotateDeg": 0.4,
+      "gazeX": 0.8,
+      "gazeY": -0.4,
+      "topTuftX": 0.5,
+      "topTuftY": -0.3,
+      "topTuftRotateDeg": 1,
+      "eyeScaleY": 1,
+      "shadowStateScaleX": 0.994,
+      "description": "重新睁眼，眼睛先回中。"
+    },
+    {
+      "index": 7,
+      "percent": 84,
+      "poseX": 0.25,
+      "poseY": -0.12,
+      "poseRotateDeg": 0.12,
+      "gazeX": 0.2,
+      "gazeY": -0.1,
+      "topTuftX": 0.2,
+      "topTuftY": -0.1,
+      "topTuftRotateDeg": 0.4,
+      "eyeScaleY": 1,
+      "shadowStateScaleX": 0.998,
+      "description": "主体和顶部部件随后复位。"
+    },
+    {
+      "index": 8,
+      "percent": 100,
+      "poseX": 0,
+      "poseY": 0,
+      "poseRotateDeg": 0,
+      "gazeX": 0,
+      "gazeY": 0,
+      "topTuftX": 0,
+      "topTuftY": 0,
+      "topTuftRotateDeg": 0,
+      "eyeScaleY": 1,
+      "shadowStateScaleX": 1,
+      "description": "全部参数恢复首帧。"
+    }
+  ],
+  "durationMs": 4000,
+  "loop": true,
+  "easing": "cubic-bezier(0.45, 0, 0.55, 1)",
+  "blinkEasing": "linear",
+  "layers": [
+    "pointer-body-js",
+    "float-js",
+    "body-js",
+    "head-js",
+    "face-js",
+    "eyes-js",
+    "blink-js",
+    "left-eye-js",
+    "right-eye-js",
+    "mouth-js",
+    "arms-js",
+    "left-arm-js",
+    "right-arm-js",
+    "feet-js",
+    "left-foot-js",
+    "right-foot-js",
+    "accessory-js",
+    "top-tuft-js",
+    "emblem-js",
+    "shadow-js",
+    "shadow-pulse-js",
+    "idle-look-pose-js",
+    "idle-look-gaze-js",
+    "shadow-idle-look-js"
+  ],
+  "pointerTrackingLayers": [
+    "pointer-body-js",
+    "eyes-js",
+    "shadow-js"
+  ],
+  "partMotion": {
+    "poseMaxXUserUnits": 0.8,
+    "poseMaxYUserUnits": 0.4,
+    "poseMaxRotateDeg": 0.4,
+    "gazeMaxXUserUnits": 2.2,
+    "gazeMaxYUserUnits": 1.3,
+    "topTuftMaxXUserUnits": 0.8,
+    "topTuftMaxYUserUnits": 0.5,
+    "topTuftMaxRotateDeg": 2,
+    "shadowStateScaleMin": 0.99,
+    "shadowStateScaleMax": 1,
+    "usesWholeBodyScale": false,
+    "usesBlur": false,
+    "usesNewGeometry": false
+  },
+  "baseIdleMotion": {
+    "durationMs": 4000,
+    "maxUpUserUnits": 5,
+    "maxDownUserUnits": 1
+  },
+  "pointerTracking": {
+    "normalization": {
+      "origin": "rendered Claude character center",
+      "fullScaleStageRatioX": 0.3,
+      "fullScaleStageRatioY": 0.3,
+      "clampMin": -1,
+      "clampMax": 1
+    },
+    "body": {
+      "maxXUserUnits": 16,
+      "maxYUserUnits": 12,
+      "maxTiltDeg": 3,
+      "layer": "pointer-body-js"
+    },
+    "eyes": {
+      "maxXUserUnits": 3,
+      "maxYUserUnits": 3,
+      "layer": "eyes-js"
+    },
+    "shadow": {
+      "maxReverseXUserUnits": 12,
+      "maxReverseYUserUnits": 5,
+      "maxPointerStretch": 1.08,
+      "layer": "shadow-js",
+      "stateScaleLayer": "shadow-pulse-js"
+    },
+    "response": {
+      "smoothingCoefficient": 0.2,
+      "returnDelayMs": 650,
+      "returnSettleThreshold": 0.003,
+      "expectedReturnDurationMs": 500,
+      "engine": "requestAnimationFrame"
+    }
+  },
+  "seamStrategy": "第8帧将自动视线、主体跟随、顶部部件、眨眼与阴影状态精确恢复为第1帧；鼠标追踪位于独立外层。"
+}
+

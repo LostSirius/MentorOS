@@ -1,0 +1,201 @@
+{
+  "character": "grok",
+  "action": "notification",
+  "keyframeCount": 8,
+  "keyframes": [
+    {
+      "index": 1,
+      "percent": 0,
+      "phase": "base",
+      "transforms": {
+        "#notification-pose-js": "translateY(0px) rotate(0deg)",
+        "#notification-gaze-js": "translate(0px,0px)",
+        "#blink-js": "scaleY(1)",
+        "#shadow-pulse-js": "scaleX(1)",
+        "#head-build-js": "translate(0px,0px) rotate(0deg)",
+        "#left-arm-build-js": "translate(0px,0px) rotate(0deg)",
+        "#right-arm-build-js": "translate(0px,0px) rotate(0deg)",
+        "#bolt-js": "translate(0px,0px) rotate(0deg)"
+      }
+    },
+    {
+      "index": 2,
+      "percent": 8,
+      "phase": "strong-pulse",
+      "transforms": {
+        "#notification-pose-js": "translateY(-2px) rotate(0.4deg)",
+        "#notification-gaze-js": "translate(0px,-1.5px)",
+        "#blink-js": "scaleY(1)",
+        "#shadow-pulse-js": "scaleX(0.98)",
+        "#head-build-js": "translate(0px,-2px) rotate(0.6deg)",
+        "#left-arm-build-js": "translate(1px,-2px) rotate(-2deg)",
+        "#right-arm-build-js": "translate(-1px,-2px) rotate(2deg)",
+        "#bolt-js": "translate(0px,-2px) rotate(5deg)"
+      }
+    },
+    {
+      "index": 3,
+      "percent": 16,
+      "phase": "first-reset",
+      "transforms": {
+        "#notification-pose-js": "translateY(0px) rotate(0deg)",
+        "#notification-gaze-js": "translate(0px,0px)",
+        "#blink-js": "scaleY(1)",
+        "#shadow-pulse-js": "scaleX(1)",
+        "#head-build-js": "translate(0px,0px) rotate(0deg)",
+        "#left-arm-build-js": "translate(0px,0px) rotate(0deg)",
+        "#right-arm-build-js": "translate(0px,0px) rotate(0deg)",
+        "#bolt-js": "translate(0px,0px) rotate(0deg)"
+      }
+    },
+    {
+      "index": 4,
+      "percent": 26,
+      "phase": "weak-pulse",
+      "transforms": {
+        "#notification-pose-js": "translateY(-1px) rotate(-0.2deg)",
+        "#notification-gaze-js": "translate(0px,-0.75px)",
+        "#blink-js": "scaleY(1)",
+        "#shadow-pulse-js": "scaleX(0.99)",
+        "#head-build-js": "translate(0px,-1px) rotate(-0.3deg)",
+        "#left-arm-build-js": "translate(0.5px,-1px) rotate(-1deg)",
+        "#right-arm-build-js": "translate(-0.5px,-1px) rotate(1deg)",
+        "#bolt-js": "translate(0px,-1px) rotate(2.5deg)"
+      }
+    },
+    {
+      "index": 5,
+      "percent": 36,
+      "phase": "quiet-start",
+      "transforms": {
+        "#notification-pose-js": "translateY(0px) rotate(0deg)",
+        "#notification-gaze-js": "translate(0px,0px)",
+        "#blink-js": "scaleY(1)",
+        "#shadow-pulse-js": "scaleX(1)",
+        "#head-build-js": "translate(0px,0px) rotate(0deg)",
+        "#left-arm-build-js": "translate(0px,0px) rotate(0deg)",
+        "#right-arm-build-js": "translate(0px,0px) rotate(0deg)",
+        "#bolt-js": "translate(0px,0px) rotate(0deg)"
+      }
+    },
+    {
+      "index": 6,
+      "percent": 40,
+      "phase": "quiet-hold",
+      "transforms": {
+        "#notification-pose-js": "translateY(0px) rotate(0deg)",
+        "#notification-gaze-js": "translate(0px,0px)",
+        "#blink-js": "scaleY(1)",
+        "#shadow-pulse-js": "scaleX(1)",
+        "#head-build-js": "translate(0px,0px) rotate(0deg)",
+        "#left-arm-build-js": "translate(0px,0px) rotate(0deg)",
+        "#right-arm-build-js": "translate(0px,0px) rotate(0deg)",
+        "#bolt-js": "translate(0px,0px) rotate(0deg)"
+      }
+    },
+    {
+      "index": 7,
+      "percent": 70,
+      "phase": "quiet-hold",
+      "transforms": {
+        "#notification-pose-js": "translateY(0px) rotate(0deg)",
+        "#notification-gaze-js": "translate(0px,0px)",
+        "#blink-js": "scaleY(1)",
+        "#shadow-pulse-js": "scaleX(1)",
+        "#head-build-js": "translate(0px,0px) rotate(0deg)",
+        "#left-arm-build-js": "translate(0px,0px) rotate(0deg)",
+        "#right-arm-build-js": "translate(0px,0px) rotate(0deg)",
+        "#bolt-js": "translate(0px,0px) rotate(0deg)"
+      }
+    },
+    {
+      "index": 8,
+      "percent": 100,
+      "phase": "base",
+      "transforms": {
+        "#notification-pose-js": "translateY(0px) rotate(0deg)",
+        "#notification-gaze-js": "translate(0px,0px)",
+        "#blink-js": "scaleY(1)",
+        "#shadow-pulse-js": "scaleX(1)",
+        "#head-build-js": "translate(0px,0px) rotate(0deg)",
+        "#left-arm-build-js": "translate(0px,0px) rotate(0deg)",
+        "#right-arm-build-js": "translate(0px,0px) rotate(0deg)",
+        "#bolt-js": "translate(0px,0px) rotate(0deg)"
+      }
+    }
+  ],
+  "durationMs": 2400,
+  "loop": true,
+  "easing": "cubic-bezier(0.45, 0, 0.55, 1)",
+  "blinkEasing": "linear",
+  "layers": [
+    "pointer-body-js",
+    "float-js",
+    "notification-pose-js",
+    "body-js",
+    "head-js",
+    "eyes-js",
+    "notification-gaze-js",
+    "blink-js",
+    "arms-js",
+    "accessory-js",
+    "effect-js",
+    "shadow-js",
+    "shadow-pulse-js",
+    "head-build-js",
+    "left-arm-build-js",
+    "right-arm-build-js",
+    "bolt-js"
+  ],
+  "pointerTrackingLayers": [
+    "pointer-body-js",
+    "eyes-js",
+    "shadow-js"
+  ],
+  "partMotion": {
+    "bodyMaxTranslateUserUnits": 2,
+    "bodyMaxRotateDeg": 0.4,
+    "partMaxTranslateUserUnits": 2,
+    "partMaxRotateDeg": 5,
+    "usesNewGeometry": false,
+    "usesWholeBodyScale": false,
+    "usesColorChange": false,
+    "usesBlur": false,
+    "usesRaster": false
+  },
+  "pointerTracking": {
+    "normalization": {
+      "origin": "rendered grok character center",
+      "fullScaleStageRatioX": 0.3,
+      "fullScaleStageRatioY": 0.3,
+      "clampMin": -1,
+      "clampMax": 1
+    },
+    "body": {
+      "maxXUserUnits": 16,
+      "maxYUserUnits": 12,
+      "maxTiltDeg": 3,
+      "layer": "pointer-body-js"
+    },
+    "eyes": {
+      "maxXUserUnits": 3,
+      "maxYUserUnits": 3,
+      "layer": "eyes-js"
+    },
+    "shadow": {
+      "maxReverseXUserUnits": 12,
+      "maxReverseYUserUnits": 5,
+      "maxPointerStretch": 1.08,
+      "layer": "shadow-js",
+      "stateScaleLayer": "shadow-pulse-js"
+    },
+    "response": {
+      "smoothingCoefficient": 0.2,
+      "returnDelayMs": 650,
+      "returnSettleThreshold": 0.003,
+      "expectedReturnDurationMs": 500,
+      "engine": "requestAnimationFrame"
+    }
+  },
+  "seamStrategy": "A strong pulse and weaker pulse finish by 36%; every notification transform is at the base value from 40% through 100%, and keyframe 8 exactly matches keyframe 1."
+}

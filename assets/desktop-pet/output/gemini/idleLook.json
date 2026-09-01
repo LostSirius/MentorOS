@@ -1,0 +1,53 @@
+{
+  "character": "gemini",
+  "action": "idleLook",
+  "keyframeCount": 8,
+  "keyframes": [
+    {"index":1,"percent":0,"lookDirection":"right-up","poseX":0,"poseY":0,"poseRotateDeg":0,"gazeX":0,"gazeY":0,"eyeScaleY":1,"idleLookShadowScaleX":1,"description":"完整基准待机姿态；视线、菱形主体和阴影均处于中心，三颗星保持原样。"},
+    {"index":2,"percent":20,"lookDirection":"right-up","poseX":0,"poseY":0,"poseRotateDeg":0,"gazeX":1.2,"gazeY":-0.8,"eyeScaleY":1,"idleLookShadowScaleX":0.997,"description":"眼睛先注意到右上方；主体暂时不跟随，形成自然的注意力起点。"},
+    {"index":3,"percent":32,"lookDirection":"right-up","poseX":0.4,"poseY":-0.2,"poseRotateDeg":0.2,"gazeX":2.4,"gazeY":-1.5,"eyeScaleY":1,"idleLookShadowScaleX":0.994,"description":"视线到达右上目标；无独立头部的菱形主体开始克制地同向跟随。"},
+    {"index":4,"percent":46,"lookDirection":"right-up","poseX":0.8,"poseY":-0.4,"poseRotateDeg":0.4,"gazeX":2.4,"gazeY":-1.5,"eyeScaleY":1,"idleLookShadowScaleX":0.99,"description":"稳定注视同一右上方向；主体保持轻微跟随，不进行扫描或方向比较。"},
+    {"index":5,"percent":58,"lookDirection":"right-up","poseX":0.8,"poseY":-0.4,"poseRotateDeg":0.4,"gazeX":2.4,"gazeY":-1.5,"eyeScaleY":0.08,"idleLookShadowScaleX":0.99,"description":"维持右上注视并完成一次短促自然眨眼；三颗星仍完全静止。"},
+    {"index":6,"percent":70,"lookDirection":"right-up","poseX":0.8,"poseY":-0.4,"poseRotateDeg":0.4,"gazeX":1,"gazeY":-0.6,"eyeScaleY":1,"idleLookShadowScaleX":0.994,"description":"重新睁眼后眼睛先向中心返回，主体仍短暂保持右上跟随姿态。"},
+    {"index":7,"percent":84,"lookDirection":"right-up","poseX":0.3,"poseY":-0.1,"poseRotateDeg":0.15,"gazeX":0.2,"gazeY":-0.1,"eyeScaleY":1,"idleLookShadowScaleX":0.998,"description":"视线基本回中；菱形主体随后平滑复位，注意力自然结束。"},
+    {"index":8,"percent":100,"lookDirection":"right-up","poseX":0,"poseY":0,"poseRotateDeg":0,"gazeX":0,"gazeY":0,"eyeScaleY":1,"idleLookShadowScaleX":1,"description":"视线、主体、眨眼和idleLook阴影参数精确恢复第1帧。"}
+  ],
+  "durationMs": 4000,
+  "loop": true,
+  "easing": "cubic-bezier(0.45, 0, 0.55, 1)",
+  "blinkEasing": "linear",
+  "layers": ["pointer-body-js","float-js","idle-look-pose-js","body-js","eyes-js","idle-look-gaze-js","blink-js","accessory-js","effect-js","shadow-js","shadow-pulse-js","shadow-idle-look-js"],
+  "pointerTrackingLayers": ["pointer-body-js","eyes-js","shadow-js"],
+  "partMotion": {
+    "direction": "right-up",
+    "bodyMaxXUserUnits": 0.8,
+    "bodyMaxYUserUnits": 0.4,
+    "bodyMaxRotateDeg": 0.4,
+    "gazeMaxXUserUnits": 2.4,
+    "gazeMaxYUserUnits": 1.5,
+    "blinkMinScaleY": 0.08,
+    "idleLookShadowScaleXMin": 0.99,
+    "idleLookShadowScaleXMax": 1,
+    "independentHeadLayerUsed": false,
+    "starsAnimatedIndependently": false,
+    "starColorOpacityAndRelativePositionChanged": false,
+    "usesNewGeometry": false,
+    "usesWholeBodyScale": false,
+    "usesBlur": false
+  },
+  "baseIdleMotion": {
+    "layer": "float-js",
+    "durationMs": 4000,
+    "easing": "cubic-bezier(0.45, 0, 0.55, 1)",
+    "keyframes": [{"percent":0,"bodyY":0},{"percent":20,"bodyY":-5},{"percent":40,"bodyY":-10},{"percent":60,"bodyY":-5},{"percent":76,"bodyY":1},{"percent":79,"bodyY":3},{"percent":82,"bodyY":1},{"percent":100,"bodyY":0}],
+    "preservedFromIdle": true
+  },
+  "pointerTracking": {
+    "normalization": {"origin":"rendered Gemini character center","fullScaleStageRatioX":0.3,"fullScaleStageRatioY":0.3,"clampMin":-1,"clampMax":1},
+    "body": {"maxXUserUnits":16,"maxYUserUnits":12,"maxTiltDeg":3,"layer":"pointer-body-js"},
+    "eyes": {"maxXUserUnits":3,"maxYUserUnits":3,"layer":"eyes-js"},
+    "shadow": {"maxReverseXUserUnits":12,"maxReverseYUserUnits":5,"maxPointerStretch":1.08,"layer":"shadow-js","idleScaleLayer":"shadow-pulse-js","idleLookScaleLayer":"shadow-idle-look-js"},
+    "response": {"smoothingCoefficient":0.2,"returnDelayMs":650,"returnSettleThreshold":0.001,"expectedReturnDurationMs":500,"engine":"requestAnimationFrame"}
+  },
+  "seamStrategy": "第8帧将idleLook主体跟随、自动视线、眨眼和附加阴影全部还原为第1帧；复用的Gemini idle悬浮与阴影脉冲也在同一4000ms时间轴的100%精确回到0%参数。"
+}

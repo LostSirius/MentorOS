@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" preserveAspectRatio="xMidYMid meet" style="--eye-x:0px;--eye-y:0px;--body-x:0px;--body-y:0px;--body-tilt:0deg;--shadow-x:0px;--shadow-y:0px;--shadow-stretch:1;--play-state:running">
+  <defs>
+    <linearGradient id="gemini-body-gradient-thinking" x1="128" y1="72" x2="128" y2="216" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4388f5"/>
+      <stop offset="0.38" stop-color="#696fee"/>
+      <stop offset="0.68" stop-color="#a45ee7"/>
+      <stop offset="1" stop-color="#fb6aac"/>
+    </linearGradient>
+    <clipPath id="gemini-body-clip-thinking">
+      <path d="M114 72h20v8h8v8h8v8h8v8h8v8h8v8h8v8h16v8h16v16h-16v8h-8v8h-8v8h-8v8h-8v16h-16v16h-16v-16h-16v16h-16v-16H86v-16h-8v-8h-8v-8h-8v-8H46v-8h-8v-16h16v-8h8v-8h8v-8h8v-8h8v-8h8v-8h8v-8h12z"/>
+    </clipPath>
+    <style>
+      #pointer-body-js {
+        transform: translate(var(--body-x), var(--body-y)) rotate(var(--body-tilt));
+        transform-box: view-box;
+        transform-origin: 128px 152px;
+      }
+      #float-js {
+        animation: gemini-thinking-pose 3600ms cubic-bezier(0.45, 0, 0.55, 1) infinite;
+        animation-play-state: var(--play-state);
+        transform-box: view-box;
+        transform-origin: 128px 152px;
+      }
+      #eyes-js { transform: translate(var(--eye-x), var(--eye-y)); }
+      #thinking-gaze-js {
+        animation: gemini-thinking-gaze 3600ms cubic-bezier(0.45, 0, 0.55, 1) infinite;
+        animation-play-state: var(--play-state);
+        transform-box: view-box;
+        transform-origin: 128px 152px;
+      }
+      #blink-js {
+        animation: gemini-thinking-blink 3600ms linear infinite;
+        animation-play-state: var(--play-state);
+        transform-box: fill-box;
+        transform-origin: center;
+      }
+      #shadow-js {
+        transform: translate(var(--shadow-x), var(--shadow-y)) scaleX(var(--shadow-stretch));
+        transform-box: view-box;
+        transform-origin: 128px 224px;
+      }
+      #shadow-pulse-js {
+        animation: gemini-thinking-shadow 3600ms cubic-bezier(0.45, 0, 0.55, 1) infinite;
+        animation-play-state: var(--play-state);
+        transform-box: fill-box;
+        transform-origin: center;
+      }
+      #think-light-green-js,
+      #think-light-yellow-js,
+      #think-light-cyan-js {
+        animation-duration: 3600ms;
+        animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+        animation-iteration-count: infinite;
+        animation-play-state: var(--play-state);
+        transform-box: fill-box;
+        transform-origin: center;
+      }
+      #think-light-green-js { animation-name: gemini-thinking-light-green; }
+      #think-light-yellow-js { animation-name: gemini-thinking-light-yellow; }
+      #think-light-cyan-js { animation-name: gemini-thinking-light-cyan; }
+      .is-paused * { animation-play-state: paused !important; }
+      .is-restarting * { animation: none !important; }
+
+      @keyframes gemini-thinking-pose {
+        0% { transform: translateY(0) rotate(0); }
+        16% { transform: translateY(-1px) rotate(-0.5deg); }
+        32% { transform: translateY(-2px) rotate(0); }
+        48% { transform: translateY(-1px) rotate(0.5deg); }
+        64% { transform: translateY(-2px) rotate(0); }
+        76% { transform: translateY(0) rotate(-0.4deg); }
+        84% { transform: translateY(-1px) rotate(0); }
+        100% { transform: translateY(0) rotate(0); }
+      }
+      @keyframes gemini-thinking-gaze {
+        0% { transform: translate(0, 0); }
+        16% { transform: translate(-1px, -1px); }
+        32% { transform: translate(0, -1.5px); }
+        48% { transform: translate(1px, -1px); }
+        64% { transform: translate(0, -1px); }
+        76% { transform: translate(-0.5px, -0.5px); }
+        84% { transform: translate(0, -0.5px); }
+        100% { transform: translate(0, 0); }
+      }
+      @keyframes gemini-thinking-blink {
+        0% { transform: scaleY(1); }
+        16% { transform: scaleY(1); }
+        32% { transform: scaleY(1); }
+        48% { transform: scaleY(1); }
+        64% { transform: scaleY(1); }
+        76% { transform: scaleY(0.08); }
+        84% { transform: scaleY(1); }
+        100% { transform: scaleY(1); }
+      }
+      @keyframes gemini-thinking-shadow {
+        0% { transform: scaleX(1); opacity: 0.22; }
+        16% { transform: scaleX(0.99); opacity: 0.21; }
+        32% { transform: scaleX(0.97); opacity: 0.20; }
+        48% { transform: scaleX(0.99); opacity: 0.21; }
+        64% { transform: scaleX(0.97); opacity: 0.20; }
+        76% { transform: scaleX(1.01); opacity: 0.22; }
+        84% { transform: scaleX(0.99); opacity: 0.21; }
+        100% { transform: scaleX(1); opacity: 0.22; }
+      }
+      @keyframes gemini-thinking-light-green {
+        0% { transform: translateY(0) scale(1); }
+        16% { transform: translateY(-2px) scale(1.06); }
+        32% { transform: translateY(-1px) scale(1.02); }
+        48% { transform: translateY(0) scale(1); }
+        64% { transform: translateY(-1px) scale(1.02); }
+        76% { transform: translateY(0) scale(1); }
+        84% { transform: translateY(0) scale(1.01); }
+        100% { transform: translateY(0) scale(1); }
+      }
+      @keyframes gemini-thinking-light-yellow {
+        0% { transform: translateY(0) scale(1); }
+        16% { transform: translateY(-1px) scale(1.02); }
+        32% { transform: translateY(-2px) scale(1.06); }
+        48% { transform: translateY(-1px) scale(1.02); }
+        64% { transform: translateY(-1px) scale(1.03); }
+        76% { transform: translateY(0) scale(1); }
+        84% { transform: translateY(0) scale(1.01); }
+        100% { transform: translateY(0) scale(1); }
+      }
+      @keyframes gemini-thinking-light-cyan {
+        0% { transform: translateY(0) scale(1); }
+        16% { transform: translateY(0) scale(1); }
+        32% { transform: translateY(-1px) scale(1.02); }
+        48% { transform: translateY(-2px) scale(1.06); }
+        64% { transform: translateY(-1px) scale(1.02); }
+        76% { transform: translateY(0) scale(1); }
+        84% { transform: translateY(0) scale(1.01); }
+        100% { transform: translateY(0) scale(1); }
+      }
+    </style>
+  </defs>
+
+  <g id="shadow-js">
+    <ellipse id="shadow-pulse-js" cx="128" cy="224" rx="48" ry="6" fill="#120d2b"/>
+  </g>
+
+  <g id="pointer-body-js" shape-rendering="crispEdges">
+    <g id="float-js">
+      <g id="accessory-js">
+        <path id="think-light-yellow-js" d="M122 18h12v9h9v12h-9v9h-12v-9h-9V27h9z" fill="#ffd81a"/>
+        <path id="think-light-green-js" d="M92 45h10v8h8v10h-8v8H92v-8h-8V53h8z" fill="#55b94a"/>
+        <path id="think-light-cyan-js" d="M158 49h10v9h9v10h-9v9h-10v-9h-9V58h9z" fill="#3bb9e9"/>
+      </g>
+
+      <g id="body-js">
+        <path d="M114 72h20v8h8v8h8v8h8v8h8v8h8v8h8v8h16v8h16v16h-16v8h-8v8h-8v8h-8v8h-8v16h-16v16h-16v-16h-16v16h-16v-16H86v-16h-8v-8h-8v-8h-8v-8H46v-8h-8v-16h16v-8h8v-8h8v-8h8v-8h8v-8h8v-8h8v-8h12z" fill="url(#gemini-body-gradient-thinking)"/>
+        <g clip-path="url(#gemini-body-clip-thinking)">
+          <path d="M94 88h68v16h16v16h-40v8h-36v-8H78v-16h16z" fill="#4d83f5" opacity="0.36"/>
+          <path d="M62 128h40v-8h36v8h40v-8h20v24h-36v8h-36v-8H86v8H62z" fill="#bd65ea" opacity="0.34"/>
+          <path d="M54 160h32v-8h32v8h44v-8h32v32h-28v16H86v-16H62z" fill="#ff70ae" opacity="0.34"/>
+        </g>
+      </g>
+
+      <g id="effect-js">
+        <g id="body-sheen-js" clip-path="url(#gemini-body-clip-thinking)" opacity="0.42">
+          <path d="M70 112h36v-8h28v8h32v8h-40v8H94v-8H70z" fill="#77a1ff"/>
+          <path d="M62 144h28v-8h36v8h32v-8h36v16h-36v8h-36v-8H86v8H62z" fill="#d77aec" opacity="0.58"/>
+        </g>
+      </g>
+
+      <g id="eyes-js" fill="#080b16">
+        <g id="thinking-gaze-js">
+          <g id="blink-js">
+            <rect x="96" y="140" width="14" height="24"/>
+            <rect x="146" y="140" width="14" height="24"/>
+          </g>
+        </g>
+      </g>
+      <path id="mouth-js" d="M116 164h8v6h12v-6h8v6h-4v7h-20v-7h-4z" fill="#080b16"/>
+    </g>
+  </g>
+</svg>

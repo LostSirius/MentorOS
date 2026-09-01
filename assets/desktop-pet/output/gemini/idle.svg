@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" preserveAspectRatio="xMidYMid meet" style="--eye-x:0px;--eye-y:0px;--body-x:0px;--body-y:0px;--body-tilt:0deg;--shadow-x:0px;--shadow-y:0px;--shadow-stretch:1;--play-state:running">
+  <defs>
+    <linearGradient id="gemini-body-gradient-idle" x1="128" y1="72" x2="128" y2="216" gradientUnits="userSpaceOnUse">
+      <stop class="flow-stop-blue-js" offset="0" stop-color="#4388f5"/>
+      <stop class="flow-stop-violet-js" offset="0.42" stop-color="#7568ee"/>
+      <stop class="flow-stop-pink-js" offset="1" stop-color="#fb6aac"/>
+    </linearGradient>
+    <clipPath id="gemini-body-clip-idle">
+      <path d="M114 72h20v8h8v8h8v8h8v8h8v8h8v8h8v8h16v8h16v16h-16v8h-8v8h-8v8h-8v8h-8v16h-16v16h-16v-16h-16v16h-16v-16H86v-16h-8v-8h-8v-8h-8v-8H46v-8h-8v-16h16v-8h8v-8h8v-8h8v-8h8v-8h8v-8h8v-8h12z"/>
+    </clipPath>
+    <style>
+      #pointer-body-js {
+        transform: translate(var(--body-x), var(--body-y)) rotate(var(--body-tilt));
+        transform-box: view-box;
+        transform-origin: 128px 152px;
+      }
+      #float-js {
+        animation: gemini-idle-float 4000ms cubic-bezier(0.45, 0, 0.55, 1) infinite;
+        animation-play-state: var(--play-state);
+        transform-box: view-box;
+        transform-origin: 128px 152px;
+      }
+      #eyes-js {
+        transform: translate(var(--eye-x), var(--eye-y));
+      }
+      #blink-js {
+        animation: gemini-idle-blink 4000ms linear infinite;
+        animation-play-state: var(--play-state);
+        transform-box: fill-box;
+        transform-origin: center;
+      }
+      #shadow-js {
+        transform: translate(var(--shadow-x), var(--shadow-y)) scaleX(var(--shadow-stretch));
+        transform-box: view-box;
+        transform-origin: 128px 224px;
+      }
+      #shadow-pulse-js {
+        animation: gemini-idle-shadow 4000ms cubic-bezier(0.45, 0, 0.55, 1) infinite;
+        animation-play-state: var(--play-state);
+        transform-box: fill-box;
+        transform-origin: center;
+      }
+      #sheen-flow-js {
+        animation: gemini-idle-sheen 4000ms cubic-bezier(0.45, 0, 0.55, 1) infinite;
+        animation-play-state: var(--play-state);
+      }
+      .flow-stop-blue-js,
+      .flow-stop-violet-js,
+      .flow-stop-pink-js {
+        animation-duration: 4000ms;
+        animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+        animation-iteration-count: infinite;
+        animation-play-state: var(--play-state);
+      }
+      .flow-stop-blue-js { animation-name: gemini-blue-flow; }
+      .flow-stop-violet-js { animation-name: gemini-violet-flow; }
+      .flow-stop-pink-js { animation-name: gemini-pink-flow; }
+      .is-paused * { animation-play-state: paused !important; }
+      .is-restarting * { animation: none !important; }
+
+      @keyframes gemini-idle-float {
+        0% { transform: translateY(0px); }
+        20% { transform: translateY(-5px); }
+        40% { transform: translateY(-10px); }
+        60% { transform: translateY(-5px); }
+        76% { transform: translateY(1px); }
+        79% { transform: translateY(3px); }
+        82% { transform: translateY(1px); }
+        100% { transform: translateY(0px); }
+      }
+      @keyframes gemini-idle-shadow {
+        0% { transform: scaleX(1); opacity: 0.22; }
+        20% { transform: scaleX(0.90); opacity: 0.20; }
+        40% { transform: scaleX(0.80); opacity: 0.17; }
+        60% { transform: scaleX(0.90); opacity: 0.20; }
+        76% { transform: scaleX(1.05); opacity: 0.23; }
+        79% { transform: scaleX(1.10); opacity: 0.24; }
+        82% { transform: scaleX(1.05); opacity: 0.23; }
+        100% { transform: scaleX(1); opacity: 0.22; }
+      }
+      @keyframes gemini-idle-blink {
+        0% { transform: scaleY(1); }
+        20% { transform: scaleY(1); }
+        40% { transform: scaleY(1); }
+        60% { transform: scaleY(1); }
+        76% { transform: scaleY(0.62); }
+        79% { transform: scaleY(0.08); }
+        82% { transform: scaleY(1); }
+        100% { transform: scaleY(1); }
+      }
+      @keyframes gemini-idle-sheen {
+        0% { transform: translateX(-32px); opacity: 0; }
+        20% { transform: translateX(-18px); opacity: 0.16; }
+        40% { transform: translateX(-2px); opacity: 0.26; }
+        60% { transform: translateX(16px); opacity: 0.22; }
+        76% { transform: translateX(28px); opacity: 0.16; }
+        79% { transform: translateX(34px); opacity: 0.12; }
+        82% { transform: translateX(40px); opacity: 0.08; }
+        100% { transform: translateX(52px); opacity: 0; }
+      }
+      @keyframes gemini-blue-flow {
+        0% { stop-color: #4388f5; }
+        20% { stop-color: #4d82f7; }
+        40% { stop-color: #596ff1; }
+        60% { stop-color: #467ff6; }
+        76% { stop-color: #3f8cf4; }
+        79% { stop-color: #4388f5; }
+        82% { stop-color: #4685f5; }
+        100% { stop-color: #4388f5; }
+      }
+      @keyframes gemini-violet-flow {
+        0% { stop-color: #7568ee; }
+        20% { stop-color: #8466ef; }
+        40% { stop-color: #9c62eb; }
+        60% { stop-color: #8a65ef; }
+        76% { stop-color: #716dee; }
+        79% { stop-color: #7568ee; }
+        82% { stop-color: #7968ee; }
+        100% { stop-color: #7568ee; }
+      }
+      @keyframes gemini-pink-flow {
+        0% { stop-color: #fb6aac; }
+        20% { stop-color: #f36db9; }
+        40% { stop-color: #df68ce; }
+        60% { stop-color: #ef68bf; }
+        76% { stop-color: #ff70a5; }
+        79% { stop-color: #fb6aac; }
+        82% { stop-color: #f96bae; }
+        100% { stop-color: #fb6aac; }
+      }
+    </style>
+  </defs>
+
+  <g id="shadow-js">
+    <ellipse id="shadow-pulse-js" cx="128" cy="224" rx="48" ry="6" fill="#120d2b"/>
+  </g>
+
+  <g id="pointer-body-js" shape-rendering="crispEdges">
+    <g id="float-js">
+      <g id="accessory-js">
+        <path d="M122 18h12v9h9v12h-9v9h-12v-9h-9V27h9z" fill="#ffd81a"/>
+        <path d="M92 45h10v8h8v10h-8v8H92v-8h-8V53h8z" fill="#55b94a"/>
+        <path d="M158 49h10v9h9v10h-9v9h-10v-9h-9V58h9z" fill="#3bb9e9"/>
+      </g>
+
+      <g id="body-js">
+        <path d="M114 72h20v8h8v8h8v8h8v8h8v8h8v8h8v8h16v8h16v16h-16v8h-8v8h-8v8h-8v8h-8v16h-16v16h-16v-16h-16v16h-16v-16H86v-16h-8v-8h-8v-8h-8v-8H46v-8h-8v-16h16v-8h8v-8h8v-8h8v-8h8v-8h8v-8h8v-8h12z" fill="url(#gemini-body-gradient-idle)"/>
+        <g clip-path="url(#gemini-body-clip-idle)">
+          <path d="M94 88h68v16h16v16h-40v8h-36v-8H78v-16h16z" fill="#4d83f5" opacity="0.36"/>
+          <path d="M62 128h40v-8h36v8h40v-8h20v24h-36v8h-36v-8H86v8H62z" fill="#bd65ea" opacity="0.34"/>
+          <path d="M54 160h32v-8h32v8h44v-8h32v32h-28v16H86v-16H62z" fill="#ff70ae" opacity="0.34"/>
+        </g>
+      </g>
+
+      <g id="effect-js" clip-path="url(#gemini-body-clip-idle)" opacity="0.42">
+        <g id="sheen-flow-js">
+          <path d="M70 112h36v-8h28v8h32v8h-40v8H94v-8H70z" fill="#77a1ff"/>
+          <path d="M62 144h28v-8h36v8h32v-8h36v16h-36v8h-36v-8H86v8H62z" fill="#d77aec" opacity="0.58"/>
+        </g>
+      </g>
+
+      <g id="eyes-js" fill="#080b16">
+        <g id="blink-js">
+          <rect x="96" y="140" width="14" height="24"/>
+          <rect x="146" y="140" width="14" height="24"/>
+        </g>
+      </g>
+      <path id="mouth-js" d="M116 164h8v6h12v-6h8v6h-4v7h-20v-7h-4z" fill="#080b16"/>
+    </g>
+  </g>
+</svg>

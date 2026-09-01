@@ -1,0 +1,30 @@
+{
+  "character": "gpt",
+  "action": "thinking",
+  "keyframeCount": 8,
+  "keyframes": [
+    {"index":1,"percent":0,"bodyY":0,"bodyRotateDeg":0,"headX":0,"headY":0,"headRotateDeg":0,"gazeX":0,"gazeY":0,"eyeScaleY":1,"knotCoreRotateDeg":0,"knotGlowRotateDeg":0,"knotGlowOpacity":0.08,"shadowScaleX":1,"description":"Baseline mechanical thinking pose with the original eyes and green knot at rest."},
+    {"index":2,"percent":16,"bodyY":-1,"bodyRotateDeg":-0.4,"headX":-1,"headY":0,"headRotateDeg":-0.3,"gazeX":-1.2,"gazeY":0,"eyeScaleY":1,"knotCoreRotateDeg":2,"knotGlowRotateDeg":-1,"knotGlowOpacity":0.10,"shadowScaleX":0.99,"description":"The existing eyes and head check left while the original knot begins a restrained layered rotation."},
+    {"index":3,"percent":32,"bodyY":-2,"bodyRotateDeg":0.4,"headX":1,"headY":-1,"headRotateDeg":0.3,"gazeX":1.5,"gazeY":0,"eyeScaleY":1,"knotCoreRotateDeg":6,"knotGlowRotateDeg":-3,"knotGlowOpacity":0.14,"shadowScaleX":0.97,"description":"The gaze compares the right side as the knot core and its existing glow continue in opposite directions."},
+    {"index":4,"percent":48,"bodyY":-1,"bodyRotateDeg":0,"headX":0,"headY":-1,"headRotateDeg":0,"gazeX":0,"gazeY":-0.5,"eyeScaleY":1,"knotCoreRotateDeg":12,"knotGlowRotateDeg":-6,"knotGlowOpacity":0.18,"shadowScaleX":0.99,"description":"A short central pause marks peak analysis with the original green knot at maximum counter-rotation."},
+    {"index":5,"percent":64,"bodyY":-2,"bodyRotateDeg":0.6,"headX":0,"headY":0,"headRotateDeg":0.2,"gazeX":0,"gazeY":-1.2,"eyeScaleY":1,"knotCoreRotateDeg":8,"knotGlowRotateDeg":-4,"knotGlowOpacity":0.14,"shadowScaleX":0.97,"description":"The gaze lifts to center and the layered knot motion starts to converge."},
+    {"index":6,"percent":76,"bodyY":0,"bodyRotateDeg":-0.3,"headX":-0.5,"headY":0,"headRotateDeg":-0.2,"gazeX":-0.5,"gazeY":-0.5,"eyeScaleY":0.08,"knotCoreRotateDeg":4,"knotGlowRotateDeg":-2,"knotGlowOpacity":0.10,"shadowScaleX":1.02,"description":"A short mechanical blink punctuates the analysis while the knot continues its controlled reset."},
+    {"index":7,"percent":84,"bodyY":-1,"bodyRotateDeg":0,"headX":0,"headY":0,"headRotateDeg":0,"gazeX":0,"gazeY":-0.4,"eyeScaleY":1,"knotCoreRotateDeg":2,"knotGlowRotateDeg":-1,"knotGlowOpacity":0.09,"shadowScaleX":0.99,"description":"The eyes reopen and the head, gaze and original knot settle toward the baseline."},
+    {"index":8,"percent":100,"bodyY":0,"bodyRotateDeg":0,"headX":0,"headY":0,"headRotateDeg":0,"gazeX":0,"gazeY":0,"eyeScaleY":1,"knotCoreRotateDeg":0,"knotGlowRotateDeg":0,"knotGlowOpacity":0.08,"shadowScaleX":1,"description":"All pose, gaze, blink, knot and shadow values exactly match the first frame."}
+  ],
+  "durationMs": 3600,
+  "loop": true,
+  "easing": "cubic-bezier(0.45, 0, 0.55, 1)",
+  "blinkEasing": "linear",
+  "layers": ["pointer-body-js","float-js","thinking-pose-js","body-js","head-motion-js","head-js","eyes-js","thinking-gaze-js","blink-js","arms-js","accessory-js","knot-core-rotation-js","effect-js","knot-glow-rotation-js","shadow-js","shadow-pulse-js"],
+  "pointerTrackingLayers": ["pointer-body-js","eyes-js","shadow-js"],
+  "partMotion": {"bodyMaxYUserUnits":2,"bodyMaxRotateDeg":0.6,"headMaxXUserUnits":1,"headMaxYUserUnits":1,"headMaxRotateDeg":0.3,"gazeMaxXUserUnits":1.5,"gazeMaxYUserUnits":1.2,"armIndependentMotionUserUnits":0,"knotCoreMaxRotateDeg":12,"knotGlowMaxRotateDeg":6,"knotGlowOpacityMin":0.08,"knotGlowOpacityMax":0.18,"shadowScaleMin":0.97,"shadowScaleMax":1.02,"usesWholeBodyScale":false,"usesBlur":false},
+  "pointerTracking": {
+    "normalization":{"origin":"rendered GPT character center","fullScaleStageRatioX":0.3,"fullScaleStageRatioY":0.3,"clampMin":-1,"clampMax":1},
+    "body":{"maxXUserUnits":16,"maxYUserUnits":12,"maxTiltDeg":3,"layer":"pointer-body-js"},
+    "eyes":{"maxXUserUnits":3,"maxYUserUnits":3,"layer":"eyes-js"},
+    "shadow":{"maxReverseXUserUnits":12,"maxReverseYUserUnits":5,"maxPointerStretch":1.08,"layer":"shadow-js","thinkingScaleLayer":"shadow-pulse-js"},
+    "response":{"smoothingCoefficient":0.2,"returnDelayMs":650,"returnSettleThreshold":0.001,"expectedReturnDurationMs":500,"engine":"requestAnimationFrame"}
+  },
+  "seamStrategy":"Frame 8 restores the full pose, head, gaze, blink, original knot layers and shadow to the exact values of frame 1 on the shared 3600ms timeline."
+}
